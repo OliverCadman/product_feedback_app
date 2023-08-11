@@ -1,0 +1,63 @@
+/* ----- Font Colours ----- */
+
+/* ----- Background/Foreground Colors ----- */
+
+/* Block */
+$magenta: #AD1FEA;
+$blue: #4661E6;
+$lightblue: #62bcfa;
+$dark-blue-1 : #373f68;
+$dark-blue-2: #3a4374;
+$light-grayblue: #f2f4ff;
+$dark-gray-blue: #647196;
+$light-gray: #f7f8fd;
+$orange: #f49f85;
+$white: #ffffff;
+
+/* Gradient */
+$bg-gradient-fallback: #A337F6;
+
+
+/* Font Family */
+$font-primary: "Jost", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+/* ----- Font sizes ----- */
+
+/* Headings */
+
+$fs-header-lg: 1.125rem;
+$fs-header-md: 1.0875rem;
+$fs-header-sm: 0.875rem;
+$fs-header-xs: 0.875rem;
+$fs-nav-header: 0.875rem;
+$fs-nav-p: 0.813rem;
+
+@include tablet() {
+    $fs-header-lg: 1.5rem;
+    $fs-header-md: 1.25rem;
+    $fs-header-sm: 1.125rem;
+    $fs-header-xs: 0.875rem;
+
+    $fs-nav-header: 1.25rem;
+
+}
+
+/* Paragraphs */
+
+$fs-body-1: 0.785rem;
+
+@include tablet() {
+
+    $fs-body-1: 1rem;
+    $fs-body-2: 0.9875rem;
+    $fs-body-3: 0.785rem;
+}
+
+
+/* ----- Font weights ----- */
+$fw-regular: 400;
+$fw-semibold: 500;
+$fw-bold: 700;
+
+

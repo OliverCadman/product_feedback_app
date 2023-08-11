@@ -1,0 +1,22 @@
+.nav--mobile {
+    background-color: $magenta;
+    background: radial-gradient(166.82% 166.82% at 103.90% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+    padding: 1rem 1.5rem;
+    color: $white;
+}
+
+.nav--elements {
+    h1 {
+        font-size: $fs-nav-header;
+        font-weight: $fw-bold;
+        line-height: 21.68px;
+        letter-spacing: -0.19px;
+    }
+
+    p {
+        font-size: $fs-nav-p;
+        font-weight: $fw-regular;
+        line-height: 18.79px;
+        opacity: 0.75;
+    }
+}
