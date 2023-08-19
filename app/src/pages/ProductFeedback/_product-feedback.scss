@@ -1,0 +1,68 @@
+.product-feedback__container {
+  padding: 5.875rem 1.5rem 3.348rem 1.5rem;
+  width: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  flex-flow: row wrap;
+
+  @include tablet() {
+    padding: 3.5rem 2.5rem;
+  }
+
+  @include desktop() {
+      gap: 1.875rem;
+  }
+}
+
+
+.product-feedback__panels {
+  flex-basis: 100%;
+
+  @include tablet() {
+    display: flex;
+  }
+
+  @include desktop() {
+    flex-basis: 255px;
+    flex-shrink: 0;
+    display: block;
+  }
+}
+
+.product-feedback__panel {
+    border-radius: 10px;
+}
+
+.logo-brand {
+    display: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include tablet() {
+        display: block;
+
+        width: 223px;
+        height: 178px;
+        padding-left: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    @include desktop() {
+        width: 255px;
+        height: 137px;
+    }
+
+    .logo-brand__content {
+        color: $white;
+        h1 {
+            font-size: 1.25rem;
+            letter-spacing: -0.25px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 0.928rem;
+            opacity: 0.8;
+        }
+    }
+}

@@ -1,8 +1,14 @@
 import React from 'react'
 
-const CategoryWidget: React.FC = () => {
+interface Props {
+    children: React.ReactNode
+}
+
+const CategoryWidget: React.FC<Props> = ({children}) => {
   return (
-    <div>CategoryWidget</div>
+    <button className="category__widget" type="button">
+        {children}
+    </button>
   )
 }
 

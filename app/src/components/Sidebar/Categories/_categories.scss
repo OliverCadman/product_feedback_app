@@ -5,6 +5,7 @@
     background-color: $light-grayblue;
     transition: all 0.3s ease;
     font-size: 0.813rem;
+    border: none;
     
     &.active {
         background-color: $blue;
