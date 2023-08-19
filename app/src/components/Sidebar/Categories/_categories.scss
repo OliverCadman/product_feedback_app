@@ -1,0 +1,17 @@
+.category__widget {
+    padding: 0.313rem 1rem;
+    font-weight: $fw-semibold;
+    color: $blue;
+    background-color: $light-grayblue;
+    transition: all 0.3s ease;
+    font-size: 0.813rem;
+    
+    &.active {
+        background-color: $blue;
+        color: $white;
+    }
+
+    &:hover {
+        background-color: $lightblue-hover;
+    }
+}

@@ -3,6 +3,10 @@
     background: radial-gradient(166.82% 166.82% at 103.90% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
     padding: 1rem 1.5rem;
     color: $white;
+
+    @include tablet() {
+        display: none;
+    }
 }
 
 .nav--elements {
@@ -20,3 +24,4 @@
         opacity: 0.75;
     }
 }
+
