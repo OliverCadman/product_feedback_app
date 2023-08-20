@@ -1,25 +1,29 @@
 .product-feedback__container {
   padding: 5.875rem 1.5rem 3.348rem 1.5rem;
   width: 100%;
-  max-width: 1110px;
   margin: 0 auto;
   flex-flow: row wrap;
 
   @include tablet() {
-    padding: 3.5rem 2.5rem;
+    padding: 3.5rem 0;
+    max-width: 689px;
   }
 
   @include desktop() {
       gap: 1.875rem;
+      padding: 5.875rem 10.313rem;
+      max-width: none;
   }
 }
 
 
 .product-feedback__panels {
+  display: none;
   flex-basis: 100%;
 
   @include tablet() {
     display: flex;
+    gap: 10px;
   }
 
   @include desktop() {
@@ -31,6 +35,11 @@
 
 .product-feedback__panel {
     border-radius: 10px;
+
+    @include tablet() {
+        width: 223px;
+        min-height: 168px;
+    }
 }
 
 .logo-brand {
@@ -65,4 +74,26 @@
             opacity: 0.8;
         }
     }
+}
+
+.categories__widget-wrapper {
+    flex-flow: row wrap;
+}
+
+.widget-container {
+   padding: 1.5rem;
+   border-radius: 10px;
+   background-color: $white;
+   margin: 1.5rem 0;
+
+   
+   @include tablet() {
+    margin: 0 0.625rem;
+
+   }
+
+   @include desktop() {
+    margin: 1.5rem 0;
+    width: 100%;
+   }
 }

@@ -1,14 +1,17 @@
 import React from 'react'
 
-interface Props {
-    children: React.ReactNode
-}
-
-const CategoryWidget: React.FC<Props> = ({children}) => {
+const CategoryWidget: React.FC = () => {
   return (
-    <button className="category__widget" type="button">
-        {children}
-    </button>
+     <div className="product-feedback__panel widget-container categories">
+          <div className="categories__widget-wrapper flex">
+            {Array.from(new Array(10)).map(x => {
+              return <button className="category__widget" type="button">
+                        UX
+                    </button>
+            })}
+          </div>
+        </div>
+    
   )
 }
 

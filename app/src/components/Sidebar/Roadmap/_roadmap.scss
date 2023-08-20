@@ -1,0 +1,38 @@
+.roadmap__header {
+    h2 {
+        font-size: 1.125rem;
+        letter-spacing: -0.25px;
+        font-weight: $fw-semibold;
+    }
+
+    .roadmap__link {
+        font-size: 0.813rem;
+        color: $blue;
+        font-weight: $fw-semibold;
+        display: inline;
+        vertical-align: bottom;
+    }
+}
+
+.roadmap__items-list {
+    padding-left: 0.875rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: $dark-gray-blue;
+    li {
+        &::marker {
+            margin-right: 1rem;
+            color: pink;
+            font-size: 1.25rem;
+        }
+
+        p {
+            display: inline;
+            font-weight: $fw-bold;
+        }
+
+        & p:first-of-type {
+            font-weight: $fw-light;
+        }
+    }
+}

@@ -2,8 +2,10 @@ import React from 'react';
 import NavMob from '../../components/mobile/Nav/NavMob';
 import FeedbackBoard from '../../components/FeedbackBoard/FeedbackBoard';
 import CategoryWidget from '../../components/Sidebar/Categories/CategoryWidget';
+import Roadmap from '../../components/Sidebar/Roadmap/Roadmap';
 import LogoBrandBackgroundDesktop from "../../assets/suggestions/desktop/background-header.png";
 import LogoBrandBackgroundTablet from "../../assets/suggestions/tablet/background-header.png";
+import SidebarMob from '../../components/mobile/Sidebar/SidebarMob';
 
 const backgroundCSS = `
   @media screen and (min-width: 768px) {
@@ -25,6 +27,8 @@ const ProductFeedback: React.FC = () => {
     <>
     <style scoped>{backgroundCSS}</style>
     <NavMob />
+    <SidebarMob />
+    <div className="opaque-overlay"></div>
     <div className="product-feedback__container flex">
       <aside className="product-feedback__panels">
         <div 
@@ -36,18 +40,9 @@ const ProductFeedback: React.FC = () => {
             </div>
           </div>
         </div>
-        <div 
-        className="product-feedback__panel widget-container"
-        >
-          
-        </div>
-        <div className="product-feedback__panel widget-container categories">
-          <div className="categories__widget-wrapper flex">
-            {Array.from(new Array(5)).map(x => {
-              return <CategoryWidget>UX</CategoryWidget>
-            })}
-          </div>
-        </div>
+        <CategoryWidget />
+        <Roadmap />
+        
       </aside>
       <section className="product-feedback__board">
         <FeedbackBoard />

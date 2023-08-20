@@ -1,0 +1,29 @@
+.sidebar-mob {
+    width: 271px;
+    height: 100%;
+    position: absolute;
+    top: 72.469px; // Height of mobile navbar
+    bottom: 0;
+    right: 0;
+    background-color: $light-gray;
+    z-index: 2;
+    padding: 1.5rem;
+
+    @include tablet() {
+        display: none;
+    }
+}
+
+.product-feedback__panels.mob {
+    display: block;
+
+    .product-feedback__panel {
+        min-height: 178px;
+
+        &:first-of-type {
+            margin: 0;
+        }
+
+        margin: 1.5rem 0;
+    }
+}

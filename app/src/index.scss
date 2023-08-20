@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap');
 @import "./assets/css/mixins";
 @import "./assets/css/variables";
 
@@ -28,6 +28,10 @@
   display: flex;
 }
 
+.flex-inline {
+  display: inline-flex;
+}
+
 .flex-end {
   align-items: flex-end;
 }
@@ -41,7 +45,27 @@
   align-items: center;
 }
 
+// Mobile Overlay
+.opaque-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 72.469px; // Height of mobile navbar
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  @include tablet() {
+    display: none;
+  }
+}
+
 @import "./components/mobile/Nav/navmob";
 @import "./components/FeedbackBoard/feedbackboard";
 @import "./components/Sidebar/Categories/categories";
+@import "./components/Sidebar/Roadmap/roadmap";
 @import "./pages/ProductFeedback/product-feedback";
+
+// Mobile-specific Styles
+@import "./components/mobile/Nav/navmob";
+@import "./components/mobile/Sidebar/sidebar-mob";
