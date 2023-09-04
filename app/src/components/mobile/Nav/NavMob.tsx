@@ -5,7 +5,7 @@ import { ReactComponent as CloseIcon } from "../../../assets/shared/mobile/icon-
 const NavMob: React.FC = () => {
   return (
     <nav>
-      <div className="nav--mobile flex row-between align-center"
+      <div className="nav--mobile flex row-between align-center bar-padding"
         >
           <div className="nav--elements flex row-between">
             <div className="nav--text-content">

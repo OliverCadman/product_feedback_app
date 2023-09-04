@@ -6,6 +6,7 @@ import Roadmap from '../../components/Sidebar/Roadmap/Roadmap';
 import LogoBrandBackgroundDesktop from "../../assets/suggestions/desktop/background-header.png";
 import LogoBrandBackgroundTablet from "../../assets/suggestions/tablet/background-header.png";
 import SidebarMob from '../../components/mobile/Sidebar/SidebarMob';
+import Toolbar from '../../components/Toolbar/Toolbar';
 
 const backgroundCSS = `
   @media screen and (min-width: 768px) {
@@ -25,29 +26,36 @@ const backgroundCSS = `
 const ProductFeedback: React.FC = () => {
   return (
     <>
-    <style scoped>{backgroundCSS}</style>
-    <NavMob />
-    <SidebarMob />
-    <div className="opaque-overlay"></div>
-    <div className="product-feedback__container flex">
-      <aside className="product-feedback__panels">
-        <div 
-        className="product-feedback__panel logo-brand">
-          <div className="logo-brand__content-wrapper h-100 flex flex-end">
-            <div className="logo-brand__content">
-              <h1>Frontend Mentor</h1>
-            <p>Feedback Board</p>
+      <style scoped>{backgroundCSS}</style>
+      <NavMob />
+      <SidebarMob />
+      <div className="toolbar-sm__container toolbar-bg">
+        <Toolbar />
+      </div>
+    <main>
+      <div className="opaque-overlay"></div>
+      <div className="product-feedback__container flex">
+        <aside className="product-feedback__panels">
+          <div 
+          className="product-feedback__panel logo-brand">
+            <div className="logo-brand__content-wrapper h-100 flex flex-end">
+              <div className="logo-brand__content">
+                <h1>Frontend Mentor</h1>
+                <p>Feedback Board</p>
+              </div>
             </div>
           </div>
-        </div>
-        <CategoryWidget />
-        <Roadmap />
-        
-      </aside>
-      <section className="product-feedback__board">
-        <FeedbackBoard />
-      </section>
-    </div>
+          <CategoryWidget />
+          <Roadmap />
+        </aside>
+        <section className="product-feedback__board">
+          <div className="toolbar-lg__container toolbar-bg">
+            <Toolbar />
+          </div>
+          <FeedbackBoard />
+        </section>
+      </div>
+    </main>
     </>
   )
 }

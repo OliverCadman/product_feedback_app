@@ -7,12 +7,15 @@
   @include tablet() {
     padding: 3.5rem 0;
     max-width: 689px;
+    align-items: center;
   }
 
   @include desktop() {
       gap: 1.875rem;
       padding: 5.875rem 10.313rem;
       max-width: none;
+      width: 100%;
+      align-items: flex-start;
   }
 }
 
@@ -23,6 +26,7 @@
 
   @include tablet() {
     display: flex;
+    align-items: center;
     gap: 10px;
   }
 
@@ -37,8 +41,8 @@
     border-radius: 10px;
 
     @include tablet() {
-        width: 223px;
-        min-height: 168px;
+        flex-basis: 223px;
+        min-height: 178px;
     }
 }
 
@@ -85,15 +89,15 @@
    border-radius: 10px;
    background-color: $white;
    margin: 1.5rem 0;
+}
 
-   
-   @include tablet() {
-    margin: 0 0.625rem;
+.product-feedback__board {
+  @include tablet() {
+    flex-basis: 100%;
+  }
 
-   }
-
-   @include desktop() {
-    margin: 1.5rem 0;
-    width: 100%;
-   }
+  @include desktop() {
+    flex-grow: 1;
+    flex-basis: auto;
+  }
 }

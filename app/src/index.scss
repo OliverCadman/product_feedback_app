@@ -18,10 +18,18 @@
   background-color: $light-gray;
 }
 
+menu, ul, ol {
+  list-style-type: none;
+}
+
 /* Utilities */
 
 .h-100 {
   height: 100%;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 .flex {
@@ -47,6 +55,7 @@
 
 // Mobile Overlay
 .opaque-overlay {
+  display: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -60,10 +69,16 @@
   }
 }
 
+.bar-padding {
+  padding: 1rem 1.5rem;
+}
+
+
 @import "./components/mobile/Nav/navmob";
 @import "./components/FeedbackBoard/feedbackboard";
 @import "./components/Sidebar/Categories/categories";
 @import "./components/Sidebar/Roadmap/roadmap";
+@import "./components/Toolbar/toolbar";
 @import "./pages/ProductFeedback/product-feedback";
 
 // Mobile-specific Styles
