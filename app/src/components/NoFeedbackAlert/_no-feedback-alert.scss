@@ -1,0 +1,46 @@
+.no-feedback__container {
+    background-color: $white;
+    border-radius: 10px;
+    height: 100%;
+    flex-grow: 1;
+    padding: 0 1.5rem;
+
+    @include tablet() {
+        min-height: 600px;
+        margin-top: 1.5rem;
+
+    }
+
+    .no-feedback__content {
+        text-align: center;
+
+        @include tablet() {
+             width: 100%;
+             max-width: 410px;
+        }
+
+        h2 {
+            margin-top: 2.438rem;
+            margin-bottom: 0.875rem;
+            font-size: 1.125rem;
+            color: $dark-blue-2;
+            @include tablet() {
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+            }
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 0.813rem;
+            color: $dark-gray-blue;
+            font-weight: $fw-light;
+
+            @include tablet() {
+                margin-bottom: 3rem;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+

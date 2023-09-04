@@ -36,6 +36,12 @@ menu, ul, ol {
   display: flex;
 }
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .flex-inline {
   display: inline-flex;
 }
@@ -76,10 +82,12 @@ menu, ul, ol {
 
 @import "./components/mobile/Nav/navmob";
 @import "./components/FeedbackBoard/feedbackboard";
+@import "./components/NoFeedbackAlert/no-feedback-alert";
 @import "./components/Sidebar/Categories/categories";
 @import "./components/Sidebar/Roadmap/roadmap";
 @import "./components/Toolbar/toolbar";
 @import "./pages/ProductFeedback/product-feedback";
+@import "./components/FeedbackButton/feedback-button";
 
 // Mobile-specific Styles
 @import "./components/mobile/Nav/navmob";

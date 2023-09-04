@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactComponent as IconSuggestions} from "../../assets/suggestions/icon-suggestions.svg";
-import {ReactComponent as IconPlus} from "../../assets/shared/icon-plus.svg";
+import FeedbackButton from '../FeedbackButton/FeedbackButton';
 
 const Toolbar = () => {
   return (
@@ -17,9 +17,7 @@ const Toolbar = () => {
                     </select>
                 </li>
                 <li>
-                    <button type="button" className="toolbar-btn"> 
-                        + Add Feedback
-                    </button>
+                 <FeedbackButton />
                 </li>
             </menu>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavMob from '../../components/mobile/Nav/NavMob';
 import FeedbackBoard from '../../components/FeedbackBoard/FeedbackBoard';
+import NoFeedbackAlert from '../../components/NoFeedbackAlert/NoFeedbackAlert';
 import CategoryWidget from '../../components/Sidebar/Categories/CategoryWidget';
 import Roadmap from '../../components/Sidebar/Roadmap/Roadmap';
 import LogoBrandBackgroundDesktop from "../../assets/suggestions/desktop/background-header.png";
@@ -52,7 +53,8 @@ const ProductFeedback: React.FC = () => {
           <div className="toolbar-lg__container toolbar-bg">
             <Toolbar />
           </div>
-          <FeedbackBoard />
+          {/* <FeedbackBoard /> */}
+          <NoFeedbackAlert />
         </section>
       </div>
     </main>
