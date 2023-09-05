@@ -53,8 +53,8 @@ const ProductFeedback: React.FC = () => {
             <div className="toolbar-lg__container toolbar-bg">
               <Toolbar />
             </div>
-            {/* <FeedbackBoard /> */}
-            <NoFeedbackAlert />
+            <FeedbackBoard />
+            {/* <NoFeedbackAlert /> */}
           </section>
       </div>
     </main>

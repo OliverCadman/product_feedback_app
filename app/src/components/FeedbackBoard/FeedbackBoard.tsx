@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import SuggestionList from '../SuggestionList/SuggestionList';
 
 const FeedbackBoard: React.FC = () => {
   return (
-    <div>FeedbackBoard</div>
+    <SuggestionList />
   )
 }
 

@@ -69,22 +69,4 @@
         font-size: 0.813rem;
     }
 
-    .toolbar-btn {
-        border-radius: 10px;
-        background-color: $magenta;
-        width: 134px;
-        height: 40px;
-        border: none;
-        color: $white;
-        font-family: $font-primary;
-        font-weight: $fw-semibold;
-        padding: 0.616rem 1rem;
-        font-size: 0.813rem;
-
-        @include tablet() {
-            width: 158px;
-            height: 44px;
-            font-size: 0.875rem;
-        }
-    }
 }

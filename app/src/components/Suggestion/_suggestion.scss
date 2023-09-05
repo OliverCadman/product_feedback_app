@@ -1,0 +1,136 @@
+.suggestion__container {
+    background-color: $white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1rem 0;
+
+
+    @include tablet() {
+        font-size: 1.125rem;
+        padding: 1.75rem 2rem;
+    }
+
+
+    .suggestion__content,
+    .suggestion__icon-wrapper.category {
+        flex-basis: 100%;
+    }
+
+    .suggestion__content {
+        h2 {
+            margin-bottom: 0.563rem;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+
+         h2 {
+            color: $dark-blue-2;
+            font-size: 0.813rem;
+            letter-spacing: -0.28px;
+            margin-bottom: 0.563rem;
+        }
+
+        p {
+            color: $dark-gray-blue;
+            font-size: 0.813rem;
+            font-weight: $fw-regular;
+            margin-bottom: 0.5rem;
+
+            @include tablet() {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .suggestion__icon.pill {
+        min-width: 69px;
+        min-height: 32px;
+        align-items: center;
+        border-radius: 10px;
+
+        svg {
+            margin-right: 0.625rem;
+        }
+
+        p {
+            font-weight: $fw-bold;
+            color: $dark-blue-2;
+        }
+    }
+
+    .suggestion__icon.comment {
+        svg {
+            margin-right: 0.675rem;
+        }
+
+        p {
+            color: $dark-blue-2;
+            font-weight: $fw-bold;
+        }
+    }
+
+    @include tablet() {
+        .suggestion__content {
+            flex-basis: 60%;
+            order: 2;
+        }
+    
+        .suggestion__icon-wrapper.category {
+            order: 4;
+        }
+
+        .suggestion__icon-wrapper.comment {
+            order: 3;
+        }
+    
+        .suggestion__icon-wrapper.pill {
+            order: 1;
+       }
+
+       .suggestion__icon.pill {
+        flex-direction: column;
+        min-width: 40px;
+        min-height: 53px;
+        padding-top: 0.875rem;
+        padding-bottom: 0.5rem;
+
+            svg {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 0.813rem;
+            }
+       }
+
+        .suggestion__content {
+            h2 {
+                font-size: 1.125rem;
+                margin-bottom: 0.25rem;
+            }
+
+            p {
+                font-size: 1rem;
+                margin-bottom: 1.125rem;
+            }
+        }
+
+        .suggestion__icon-wrapper.comment {
+            display: flex;
+        }
+    }
+
+    .category__widget.suggestion {
+        margin: 0;
+        margin-bottom: 1rem;
+        font-size: 0.813rem;
+    }
+
+
+}
+

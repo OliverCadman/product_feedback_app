@@ -6,11 +6,15 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+:root, button {
+  font-family: $font-primary;
   font-size: 16px;
 }
 
-:root {
-  font-family: $font-primary;
+button {
+  font-weight: $fw-semibold;
 }
 
 #root {
@@ -37,9 +41,16 @@ menu, ul, ol {
 }
 
 .centered {
-  display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
 }
 
 .flex-inline {
@@ -79,12 +90,18 @@ menu, ul, ol {
   padding: 1rem 1.5rem;
 }
 
+.pill-bg {
+  background-color: $light-grayblue;
+}
+
 
 @import "./components/mobile/Nav/navmob";
 @import "./components/FeedbackBoard/feedbackboard";
 @import "./components/NoFeedbackAlert/no-feedback-alert";
 @import "./components/Sidebar/Categories/categories";
 @import "./components/Sidebar/Roadmap/roadmap";
+@import "./components/Suggestion/suggestion";
+@import "./components/SuggestionList/suggestion-list";
 @import "./components/Toolbar/toolbar";
 @import "./pages/ProductFeedback/product-feedback";
 @import "./components/FeedbackButton/feedback-button";
