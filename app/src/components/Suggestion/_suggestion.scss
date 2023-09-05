@@ -70,6 +70,10 @@
         p {
             color: $dark-blue-2;
             font-weight: $fw-bold;
+
+            &.greyed-out {
+                opacity: 0.5;
+            }
         }
     }
 

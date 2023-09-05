@@ -6,7 +6,10 @@ import { Dispatch } from "../types/reducer/ReducerTypes";
 
 import data from "../data/data";
 
-const AppDataContext = createContext<{state: IAppData, dispatch: Dispatch} | null>(null);
+const AppDataContext = createContext<
+{state: IAppData, dispatch: React.Dispatch<any>}>(
+    {state: data, dispatch: () => null}
+    );
 
 export const AppDataProvider: React.FC<ChildProps> = ({children}) => {
     const [state, dispatch] = useReducer(reducer, data)
@@ -16,4 +19,4 @@ export const AppDataProvider: React.FC<ChildProps> = ({children}) => {
     </AppDataContext.Provider>
 }
 
-export const UseAppState = () => useContext(AppDataContext);
+export const UseAppContext = () => useContext(AppDataContext);

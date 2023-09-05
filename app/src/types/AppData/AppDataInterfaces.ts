@@ -14,7 +14,7 @@ interface IProductRequest {
     comments?: IComment[]
 }
 
-interface IComment {
+export interface IComment {
     id: string,
     content: string,
     user: IUser

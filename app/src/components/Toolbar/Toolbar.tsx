@@ -13,7 +13,7 @@ const Toolbar = () => {
                 <li>
                     <label htmlFor="suggestion__sort-select">Sort by : </label>
                     <select id="suggestion__sort-select">
-                        <option value="" selected>Most Upvotes</option>
+                        <option value="" defaultValue={"Most Upvotes"}>Most Upvotes</option>
                     </select>
                 </li>
                 <li>

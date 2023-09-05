@@ -1,12 +1,31 @@
 import React from 'react';
 import Suggestion from '../Suggestion/Suggestion';
+import { UseAppContext } from '../../context/AppDataContext';
 
 const SuggestionList = () => {
+  const {state} = UseAppContext();
+  console.log(state)
   return (
     <section className="section-list">
-        {Array.from(new Array(5)).map(_ => {
-            return <Suggestion />
-        })}
+        {
+            state.productRequests?.map((request) => {
+                const {id, description, status, title, upvotes, comments, category} = request;
+                return (
+                    <Suggestion 
+                        key={id}
+                        id={id}
+                        description={description}
+                        status={status}
+                        title={title}
+                        upvotes={upvotes}
+                        comments={comments}
+                        category={category}
+                    />
+                )
+
+     
+            })
+        }
     </section>
   )
 }
