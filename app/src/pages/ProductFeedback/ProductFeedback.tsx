@@ -30,32 +30,32 @@ const ProductFeedback: React.FC = () => {
       <style scoped>{backgroundCSS}</style>
       <NavMob />
       <SidebarMob />
+      <main>
       <div className="toolbar-sm__container toolbar-bg">
         <Toolbar />
       </div>
-    <main>
       <div className="opaque-overlay"></div>
-      <div className="product-feedback__container flex">
-        <aside className="product-feedback__panels">
-          <div 
-          className="product-feedback__panel logo-brand">
-            <div className="logo-brand__content-wrapper h-100 flex flex-end">
-              <div className="logo-brand__content">
-                <h1>Frontend Mentor</h1>
-                <p>Feedback Board</p>
+        <div className="product-feedback__container flex">
+          <aside className="product-feedback__panels">
+            <div 
+            className="product-feedback__panel logo-brand">
+              <div className="logo-brand__content-wrapper h-100 flex flex-end">
+                <div className="logo-brand__content">
+                  <h1>Frontend Mentor</h1>
+                  <p>Feedback Board</p>
+                </div>
               </div>
             </div>
-          </div>
-          <CategoryWidget />
-          <Roadmap />
-        </aside>
-        <section className="product-feedback__board">
-          <div className="toolbar-lg__container toolbar-bg">
-            <Toolbar />
-          </div>
-          {/* <FeedbackBoard /> */}
-          <NoFeedbackAlert />
-        </section>
+            <CategoryWidget />
+            <Roadmap />
+          </aside>
+          <section className="product-feedback__board">
+            <div className="toolbar-lg__container toolbar-bg">
+              <Toolbar />
+            </div>
+            {/* <FeedbackBoard /> */}
+            <NoFeedbackAlert />
+          </section>
       </div>
     </main>
     </>

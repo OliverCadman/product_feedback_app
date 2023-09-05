@@ -1,6 +1,7 @@
 main {
-  min-height: calc(100vh - 125px);
+  min-height: calc(100vh - 72.469px);
   display: flex;
+  flex-direction: column;
 
   @include tablet() {
     display: block;
@@ -13,6 +14,7 @@ main {
   width: 100%;
   margin: 0 auto;
   flex-flow: row wrap;
+  flex-grow: 1;
 
 
   @include tablet() {
