@@ -1,5 +1,5 @@
 import { AppDataAction } from "../types/reducer/ReducerTypes"
-import { IAppData } from "../types/AppData/AppDataInterfaces";
+import { IAppData } from "../types/AppData/appdata.types";
 import { Reducer } from "react";
 
 export const reducer: Reducer<IAppData, AppDataAction> = (state: IAppData, action: AppDataAction | undefined) => {

@@ -1,4 +1,4 @@
-import { IAppData } from "../AppData/AppDataInterfaces"
+import { IAppData } from "../AppData/appdata.types"
 
 export type AppDataState = {
    appData : IAppData

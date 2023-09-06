@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { IAppData } from "../types/AppData/AppDataInterfaces";
+import { IAppData } from "../types/AppData/appdata.types";
 
 const data: IAppData = {
   currentUser: {

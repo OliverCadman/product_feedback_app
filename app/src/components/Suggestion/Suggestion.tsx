@@ -2,7 +2,8 @@ import React from 'react';
 import { capitalize } from '../../data/utils/formatting';
 import {ReactComponent as CaretUpIcon} from "../../assets/shared/icon-arrow-up.svg";
 import {ReactComponent as CommentIcon} from "../../assets/shared/icon-comments.svg";
-import { ISuggestion } from '../../types/PropTypes/Suggestion';
+import { ISuggestion } from '../../types/PropTypes/prop.types';
+import { Link } from 'react-router-dom';
 
 const Suggestion: React.FC<ISuggestion> = (
     {id, status, description, comments, upvotes, title, category}
@@ -15,7 +16,9 @@ const Suggestion: React.FC<ISuggestion> = (
     <article className="suggestion__container row-between">
         <div className="suggestion__content">
             <h2>
-                {title}
+                <Link to={`/${id}`} className="link suggestion__link">
+                    {title}
+                </Link>
             </h2>
             <p>
                 {description}

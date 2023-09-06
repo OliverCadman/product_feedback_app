@@ -1,8 +1,7 @@
 import React, { useContext, createContext, useReducer } from "react";
-import { IAppData } from "../types/AppData/AppDataInterfaces";
+import { IAppData } from "../types/AppData/appdata.types";
 import { ChildProps } from "../types/shared/Props";
 import { reducer } from "../store/reducer";
-import { Dispatch } from "../types/reducer/ReducerTypes";
 
 import data from "../data/data";
 

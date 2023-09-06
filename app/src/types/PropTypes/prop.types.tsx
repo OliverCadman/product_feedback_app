@@ -1,4 +1,4 @@
-import { IComment } from "../AppData/AppDataInterfaces"
+import { IComment } from "../AppData/appdata.types"
 
 export interface ISuggestion {
     id: string,
@@ -8,4 +8,9 @@ export interface ISuggestion {
     title: string,
     comments?: IComment[],
     category: string
+}
+
+export interface IButton {
+    className: string,
+    textContent: string
 }

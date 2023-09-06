@@ -12,7 +12,7 @@ const NoFeedbackAlert = () => {
                 Got a suggestion? Found a bug that needs to be squashed? 
                 We love hearing about new ideas to improve our app.
             </p>
-            <FeedbackButton />
+            <FeedbackButton className="btn-magenta" textContent="+ Add Feedback"/>
         </div>
     </section>
   )

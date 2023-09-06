@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { IButton } from '../../types/PropTypes/prop.types';
 
-const FeedbackButton = () => {
+const FeedbackButton: React.FC<IButton> = ({className, textContent}) => {
   return (
-       <button type="button" className="btn-magenta"> 
-            + Add Feedback
+       <button type="button" className={`btn ${className}`}> 
+            {textContent}
         </button>
   )
 }

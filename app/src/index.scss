@@ -70,6 +70,10 @@ menu, ul, ol {
   align-items: center;
 }
 
+.link { // all <a> tags
+  text-decoration: none;
+}
+
 // Mobile Overlay
 .opaque-overlay {
   display: none;
@@ -94,6 +98,32 @@ menu, ul, ol {
   background-color: $light-grayblue;
 }
 
+.btn {
+    border-radius: 10px;
+    width: 134px;
+    height: 40px;
+    border: none;
+    color: $white;
+    font-family: $font-primary;
+    font-weight: $fw-semibold;
+    padding: 0.616rem 1rem;
+    font-size: 0.813rem;
+
+    @include tablet() {
+        width: 158px;
+        height: 44px;
+        font-size: 0.875rem;
+    }
+}
+
+.btn-magenta {
+  background-color: $magenta;
+}
+
+.btn-blue {
+  background-color: $blue;
+}
+
 
 @import "./components/mobile/Nav/navmob";
 @import "./components/FeedbackBoard/feedbackboard";
@@ -103,9 +133,11 @@ menu, ul, ol {
 @import "./components/Suggestion/suggestion";
 @import "./components/SuggestionList/suggestion-list";
 @import "./components/Toolbar/toolbar";
-@import "./pages/ProductFeedback/product-feedback";
-@import "./components/FeedbackButton/feedback-button";
+@import "./components/DetailNavBanner/detail-nav-banner";
 
 // Mobile-specific Styles
 @import "./components/mobile/Nav/navmob";
 @import "./components/mobile/Sidebar/sidebar-mob";
+
+@import "./pages/ProductFeedback/product-feedback";
+@import "./pages/FeedbackDetail/feedback-detail";

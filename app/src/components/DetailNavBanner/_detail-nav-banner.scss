@@ -1,0 +1,35 @@
+.arrow-left-icon {
+    margin-right: 1rem;
+}
+
+.detail-link {
+    font-weight: $fw-semibold;
+    color: $dark-gray-blue;
+    font-size: 0.813rem;
+    position: relative;
+
+    @include tablet() {
+        font-size: 0.875rem;
+    }
+
+    @include desktop() {
+        &::before {
+            content: "";
+            position: absolute;
+            border-bottom: 3px solid transparent;
+            border-color: $dark-gray-blue;
+            border-image-slice: 1;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        &:hover {       
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+}

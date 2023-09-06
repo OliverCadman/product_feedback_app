@@ -135,6 +135,15 @@
         font-size: 0.813rem;
     }
 
+    .suggestion__link {
+        color: $dark-blue-2;
+        transition: color 0.2s ease;
 
+        @include desktop() {
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
 }
 
