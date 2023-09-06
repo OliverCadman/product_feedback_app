@@ -4,7 +4,7 @@ interface IUser {
     username: string
 }
 
-interface IProductRequest {
+export interface IProductRequest {
     id: string,
     title: string,
     category: string,

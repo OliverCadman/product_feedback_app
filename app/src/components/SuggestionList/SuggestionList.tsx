@@ -20,6 +20,7 @@ const SuggestionList = () => {
                         upvotes={upvotes}
                         comments={comments}
                         category={category}
+                        page="product-feedback"
                     />
                 )
 

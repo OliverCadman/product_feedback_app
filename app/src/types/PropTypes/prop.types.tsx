@@ -1,13 +1,14 @@
 import { IComment } from "../AppData/appdata.types"
 
 export interface ISuggestion {
-    id: string,
-    status: string,
-    upvotes: number,
-    description: string,
-    title: string,
+    id?: string,
+    status?: string,
+    upvotes?: number,
+    description?: string,
+    title?: string,
     comments?: IComment[],
-    category: string
+    category?: string
+    page?: string
 }
 
 export interface IButton {

@@ -6,7 +6,7 @@ import { ISuggestion } from '../../types/PropTypes/prop.types';
 import { Link } from 'react-router-dom';
 
 const Suggestion: React.FC<ISuggestion> = (
-    {id, status, description, comments, upvotes, title, category}
+    {id, status, description, comments, upvotes, title, category, page}
 ) => {
 
 
@@ -15,11 +15,19 @@ const Suggestion: React.FC<ISuggestion> = (
   return (
     <article className="suggestion__container row-between">
         <div className="suggestion__content">
-            <h2>
-                <Link to={`/${id}`} className="link suggestion__link">
-                    {title}
-                </Link>
-            </h2>
+            {
+                page === "product-feedback" ? (
+                    <h2>
+                        <Link to={`/${id}`} className="link suggestion__link">
+                            {title}
+                        </Link>
+                    </h2>
+                ) : (
+                    <h2>
+                        {title}
+                    </h2>
+                )
+            }
             <p>
                 {description}
             </p>
