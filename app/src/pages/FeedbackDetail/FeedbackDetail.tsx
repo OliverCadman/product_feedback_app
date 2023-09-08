@@ -3,7 +3,7 @@ import DetailNavBanner from '../../components/DetailNavBanner/DetailNavBanner';
 import Suggestion from '../../components/Suggestion/Suggestion';
 import { useParams } from 'react-router-dom';
 import { UseAppContext } from '../../context/AppDataContext';
-import { findNestedObject } from '../../utils/helpers';
+import CommentList from '../../components/CommentList/CommentList';
 
 const FeedbackDetail: React.FC = () => {
   const {id} = useParams();
@@ -15,7 +15,7 @@ const FeedbackDetail: React.FC = () => {
     const {title, comments, status, upvotes, category, description} = foundSuggestion;
   
     return (
-      <div className="feedback-detail__container">
+      <main className="feedback-detail__container">
         <DetailNavBanner />
         <div className="feedback-detail__wrapper">
           <Suggestion 
@@ -27,7 +27,16 @@ const FeedbackDetail: React.FC = () => {
           description={description}
           page="feedback-detail"/>
         </div>
-      </div>
+        <div className="comments__container white-bg border-10">
+          <div className="comments__header">
+              <h2>
+                { comments ? `${comments.length} comments` : 'No Comments'}
+              </h2>
+          </div>
+          <CommentList comments={comments} />
+        </div>
+      </main>
+
     )
   } else {
     return <div className="feedback-detail__container">

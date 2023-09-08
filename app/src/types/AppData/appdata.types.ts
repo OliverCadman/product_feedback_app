@@ -1,4 +1,4 @@
-interface IUser {
+export interface IUser {
     image: string,
     name: string,
     username: string
@@ -15,13 +15,13 @@ export interface IProductRequest {
 }
 
 export interface IComment {
-    id: string,
-    content: string,
-    user: IUser
-    replies?: IReply[]
+    id: string;
+    content: string;
+    user: IUser;
+    replies?: IReply[];
 }
 
-interface IReply {
+export interface IReply {
     id: string,
     content: string,
     replyingTo: string,

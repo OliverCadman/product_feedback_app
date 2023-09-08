@@ -6,7 +6,6 @@ const Router = () => {
     const pageRoutes = pagesData.map((page: RouterType, index: number) => {
         const {path, title, element} = page;
         if (title.includes("Detail")) {
-            console.log('hello')
             return <Route path={`/:id`} element={element} key={index}/>
         } else {
             return <Route path={`/${path}`} element={element} key={index}/>

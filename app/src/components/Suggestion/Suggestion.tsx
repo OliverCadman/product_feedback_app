@@ -2,10 +2,10 @@ import React from 'react';
 import { capitalize } from '../../data/utils/formatting';
 import {ReactComponent as CaretUpIcon} from "../../assets/shared/icon-arrow-up.svg";
 import {ReactComponent as CommentIcon} from "../../assets/shared/icon-comments.svg";
-import { ISuggestion } from '../../types/PropTypes/prop.types';
+import { SuggestionProps } from '../../types/PropTypes/prop.types';
 import { Link } from 'react-router-dom';
 
-const Suggestion: React.FC<ISuggestion> = (
+const Suggestion: React.FC<SuggestionProps> = (
     {id, status, description, comments, upvotes, title, category, page}
 ) => {
 

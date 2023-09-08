@@ -1,0 +1,58 @@
+.comment__container {
+    margin: 1.5rem 0;
+}
+
+.comment__socials {
+    margin-bottom: 1rem;
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+        margin-right: 1rem;
+
+        @include tablet() {
+            margin-right: 2rem;
+        }
+    }
+
+    p:first-of-type {
+        color: $dark-blue-2;
+        font-weight: $fw-semibold;
+    }
+
+    p {
+        color: $dark-gray-blue;
+        font-weight: $fw-regular;
+    }
+
+    h2, p {
+        font-size: 0.813rem;
+
+        @include tablet() {
+            font-size: 0.875rem;
+        }
+    }
+}
+
+.reply-btn {
+    border: none;
+    background: transparent;
+    font-size: 0.813rem;
+    color: $blue;
+}
+
+.comment__content {
+    font-size: 0.813rem;
+    color: $dark-gray-blue;
+    font-weight: $fw-regular;
+
+    @include tablet() {
+        font-size: 0.938rem;
+        
+        &:not(.reply) {
+            padding-left: 4.5rem;
+        }
+    }
+}

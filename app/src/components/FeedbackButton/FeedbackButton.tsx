@@ -1,7 +1,7 @@
 import React from 'react';
-import { IButton } from '../../types/PropTypes/prop.types';
+import { ButtonProps } from '../../types/PropTypes/prop.types';
 
-const FeedbackButton: React.FC<IButton> = ({className, textContent}) => {
+const FeedbackButton: React.FC<ButtonProps> = ({className, textContent}) => {
   return (
        <button type="button" className={`btn ${className}`}> 
             {textContent}
