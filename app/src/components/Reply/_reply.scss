@@ -5,26 +5,7 @@
 
 .comment__container:has(> .reply-list__container) {
     position: relative;
-
-    &:before {
-        @include tablet() {
-            content: "";
-            position: absolute;
-            left: 18px;
-            top: 50px;
-            bottom: 7.75rem;
-            background: $dark-gray-blue;
-            opacity: .1;
-            width: 1px;
-        }
-
-        @include desktop() {
-            top: 50px;
-            bottom: 6.5rem;
-        }
-    }
 }
-
 
 .comment__container.reply {
     padding-left: 1.5rem;
@@ -36,7 +17,7 @@
         top: 0;
         bottom: -2.5rem;
         background: $dark-gray-blue;
-        opacity: .6;
+        opacity: .1;
         width: 1px;
     }
 

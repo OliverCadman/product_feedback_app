@@ -4,6 +4,8 @@ import Suggestion from '../../components/Suggestion/Suggestion';
 import { useParams } from 'react-router-dom';
 import { UseAppContext } from '../../context/AppDataContext';
 import CommentList from '../../components/CommentList/CommentList';
+import CommentInput from '../../components/CommentInput/CommentInput';
+import { RefContextProvider } from '../../context/RefContext';
 
 const FeedbackDetail: React.FC = () => {
   const {id} = useParams();
@@ -33,7 +35,13 @@ const FeedbackDetail: React.FC = () => {
                 { comments ? `${comments.length} comments` : 'No Comments'}
               </h2>
           </div>
-          <CommentList comments={comments} />
+          <RefContextProvider>
+            <CommentList comments={comments} />
+          </RefContextProvider>
+        </div>
+        <div className="comment-input__container white-bg border-10">
+          <h2>Add Comment</h2>
+          <CommentInput />
         </div>
       </main>
 

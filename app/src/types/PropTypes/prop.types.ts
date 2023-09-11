@@ -33,6 +33,9 @@ export interface ReplyProps {
     username: string;
     content: string;
     replyingTo: string;
+    imageElement: HTMLImageElement | null | undefined;
+    isLastReply: boolean;
+    getAndSetLineHeight: (calculatedLineHeight: number | undefined) => void;
 }
 
 export interface CommentListProps {
@@ -40,6 +43,8 @@ export interface CommentListProps {
 }
 
 export interface ReplyListProps {
-    replies?: IReply[]
+    replies?: IReply[];
+    imageElement: HTMLImageElement | null | undefined;
+    getAndSetLineHeight: (calculatedLineHeight: number | undefined) => void;
 }
 
