@@ -19,6 +19,7 @@ export interface IComment {
     content: string;
     user: IUser;
     replies?: IReply[];
+    isValid: boolean | undefined;
 }
 
 export interface IReply {
@@ -31,5 +32,6 @@ export interface IReply {
 export type IAppData = {
     currentUser: IUser
     productRequests: IProductRequest[]
-    
+
 }
+

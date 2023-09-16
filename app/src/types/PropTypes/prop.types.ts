@@ -48,3 +48,7 @@ export interface ReplyListProps {
     getAndSetLineHeight: (calculatedLineHeight: number | undefined) => void;
 }
 
+export interface CommentInputProps {
+    isReply: boolean;
+}
+

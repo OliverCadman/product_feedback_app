@@ -40,8 +40,7 @@ const FeedbackDetail: React.FC = () => {
           </RefContextProvider>
         </div>
         <div className="comment-input__container white-bg border-10">
-          <h2>Add Comment</h2>
-          <CommentInput />
+          <CommentInput isReply={false}/>
         </div>
       </main>
 
