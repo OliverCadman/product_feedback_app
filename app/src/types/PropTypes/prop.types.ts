@@ -14,6 +14,7 @@ export interface SuggestionProps {
 export interface ButtonProps {
     className: string;
     textContent: string;
+    buttonType: "button" | "submit" | "reset" | undefined;
 }
 
 export interface CommentProps {
@@ -50,5 +51,8 @@ export interface ReplyListProps {
 
 export interface CommentInputProps {
     isReply: boolean;
+    checkFormValidity: (e: React.SyntheticEvent) => boolean;
+    isInputValid: boolean | undefined;
+    setComment: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 

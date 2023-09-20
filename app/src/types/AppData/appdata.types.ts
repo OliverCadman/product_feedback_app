@@ -19,7 +19,6 @@ export interface IComment {
     content: string;
     user: IUser;
     replies?: IReply[];
-    isValid: boolean | undefined;
 }
 
 export interface IReply {
@@ -29,9 +28,19 @@ export interface IReply {
     user: IUser
 }
 
-export type IAppData = {
-    currentUser: IUser
-    productRequests: IProductRequest[]
+export interface IAppData {
+    currentUser: IUser;
+    productRequests: IProductRequest[];
+}
 
+export type AppData = {
+    data: {
+        currentUser: IUser;
+        productRequests: IProductRequest[];
+    }
+    isInputValid: boolean | undefined;
+    commentInput: '';
+    invalidInputFlagRaised: boolean;
+    showError: boolean;
 }
 

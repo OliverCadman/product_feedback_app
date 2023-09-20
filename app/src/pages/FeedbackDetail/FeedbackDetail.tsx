@@ -10,11 +10,24 @@ import { RefContextProvider } from '../../context/RefContext';
 const FeedbackDetail: React.FC = () => {
   const {id} = useParams();
   const {state, dispatch} = UseAppContext();
+
   
-  const foundSuggestion = state.productRequests.find(request => request.id === id);
+  const foundSuggestion = state.data.productRequests.find(request => request.id === id);
 
   if (foundSuggestion) {
     const {title, comments, status, upvotes, category, description} = foundSuggestion;
+
+    const checkFormValidity = (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      if (!state.commentInput) {
+        dispatch({type: "INVALID_INPUT", payload: null})
+      }
+      return true;
+    }
+
+    const setComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      dispatch({ type: "SET_COMMENT", payload: e.target.value});
+    }
   
     return (
       <main className="feedback-detail__container">
@@ -40,7 +53,12 @@ const FeedbackDetail: React.FC = () => {
           </RefContextProvider>
         </div>
         <div className="comment-input__container white-bg border-10">
-          <CommentInput isReply={false}/>
+          <CommentInput
+           isReply={false} 
+           checkFormValidity={checkFormValidity}
+           isInputValid={state.isInputValid}
+           setComment={setComment}
+           />
         </div>
       </main>
 

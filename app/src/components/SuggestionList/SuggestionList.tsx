@@ -4,11 +4,11 @@ import { UseAppContext } from '../../context/AppDataContext';
 
 const SuggestionList = () => {
   const {state} = UseAppContext();
-  console.log(state)
+
   return (
     <section className="section-list">
         {
-            state.productRequests?.map((request) => {
+            state.data.productRequests?.map((request) => {
                 const {id, description, status, title, upvotes, comments, category} = request;
                 return (
                     <Suggestion 

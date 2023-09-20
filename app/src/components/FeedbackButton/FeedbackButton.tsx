@@ -1,9 +1,9 @@
 import React from 'react';
 import { ButtonProps } from '../../types/PropTypes/prop.types';
 
-const FeedbackButton: React.FC<ButtonProps> = ({className, textContent}) => {
+const FeedbackButton: React.FC<ButtonProps> = ({className, textContent, buttonType}) => {
   return (
-       <button type="button" className={`btn ${className}`}> 
+       <button type={buttonType} className={`btn ${className}`}> 
             {textContent}
         </button>
   )
