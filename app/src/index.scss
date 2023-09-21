@@ -61,6 +61,10 @@ menu, ul, ol {
   align-items: flex-end;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .row-between {
   flex-direction: row;
   justify-content: space-between;
@@ -113,6 +117,10 @@ menu, ul, ol {
         width: 158px;
         height: 44px;
         font-size: 0.875rem;
+    }
+
+    &.submit-reply {
+      width: 117px;
     }
 }
 

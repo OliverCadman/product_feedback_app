@@ -42,5 +42,6 @@ export type AppData = {
     commentInput: '';
     invalidInputFlagRaised: boolean;
     showError: boolean;
+    showReplyInput: boolean;
 }
 

@@ -15,6 +15,7 @@ export interface ButtonProps {
     className: string;
     textContent: string;
     buttonType: "button" | "submit" | "reset" | undefined;
+    isReplyButton: boolean;
 }
 
 export interface CommentProps {

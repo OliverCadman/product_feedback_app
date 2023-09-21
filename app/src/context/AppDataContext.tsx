@@ -10,9 +10,10 @@ const initialState: AppData = {
     isInputValid: true,
     commentInput: '',
     invalidInputFlagRaised: false,
-    showError: false
-
+    showError: false,
+    showReplyInput: true
 }
+
 
 const AppDataContext = createContext<
 {state: AppData, dispatch: React.Dispatch<any>}>(
@@ -20,9 +21,9 @@ const AppDataContext = createContext<
     );
 
 export const AppDataProvider: React.FC<ChildProps> = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    return <AppDataContext.Provider value={{state, dispatch}}>
+    return <AppDataContext.Provider value={{state, dispatch, }}>
         {children}
     </AppDataContext.Provider>
 }

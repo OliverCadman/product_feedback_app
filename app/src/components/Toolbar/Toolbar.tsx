@@ -17,7 +17,7 @@ const Toolbar = () => {
                     </select>
                 </li>
                 <li>
-                 <FeedbackButton buttonType="button" className='btn-magenta' textContent="+ Add Feedback"/>
+                 <FeedbackButton isReplyButton={false} buttonType="button" className='btn-magenta' textContent="+ Add Feedback"/>
                 </li>
             </menu>
         </div>

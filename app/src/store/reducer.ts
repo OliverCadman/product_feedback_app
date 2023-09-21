@@ -4,7 +4,7 @@ import { Reducer } from "react";
 
 export const reducer: Reducer<AppData, AppDataAction> = (
     state: AppData, action: AppDataAction | undefined) => {
-
+        console.log('hi')
     switch (action?.type) {
         case "DELETE_FEEDBACK": {
             return state
