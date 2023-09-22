@@ -80,9 +80,12 @@ const Comment: React.FC<CommentProps> = (
                 </div>
                 <div className="comment-reply-btn__wrapper">
                     <button type="button" className="reply-btn" onClick={() => {
+                        if (!state.showReplyInput) {
+                            dispatch({type: "TOGGLE_REPLY", payload: true})
+                        } else if (state.showReplyInput && state.idOfCommentReceivingReply === id) {
+                            dispatch({type: "TOGGLE_REPLY", payload: false})
+                        }
                         dispatch({type: "SET_ID_COMMENT_RECEIVING_REPLY", payload: id})
-                        dispatch({type: "TOGGLE_REPLY", payload: true})
-
                     }}>
                         Reply
                     </button>

@@ -30,7 +30,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         case "TOGGLE_REPLY": {
             return {
                 ...state,
-                showReplyInput: !state.showReplyInput
+                showReplyInput: action.payload
             }
         }
         case "SET_ID_COMMENT_RECEIVING_REPLY": {

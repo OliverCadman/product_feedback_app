@@ -9,7 +9,7 @@ const Reply: React.FC<ReplyProps> = (props) => {
 
     const replyImageRef: React.RefObject<HTMLImageElement> = useRef(null);
 
-    const {state, dispatch} = UseAppContext();
+    const {dispatch} = UseAppContext();
 
     useEffect(() => {
         if (props.isLastReply) {
