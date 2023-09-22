@@ -4,7 +4,7 @@ import { Reducer } from "react";
 
 export const reducer: Reducer<AppData, AppDataAction> = (
     state: AppData, action: AppDataAction | undefined) => {
-        console.log('hi')
+
     switch (action?.type) {
         case "DELETE_FEEDBACK": {
             return state
@@ -25,6 +25,18 @@ export const reducer: Reducer<AppData, AppDataAction> = (
                 commentInput: action.payload,
                 showError: state.invalidInputFlagRaised ? true : false,
                 isInputValid: true
+            }
+        }
+        case "TOGGLE_REPLY": {
+            return {
+                ...state,
+                showReplyInput: !state.showReplyInput
+            }
+        }
+        case "SET_ID_COMMENT_RECEIVING_REPLY": {
+            return {
+                ...state,
+                idOfCommentReceivingReply: action.payload
             }
         }
         default: {

@@ -15,6 +15,7 @@ const CommentList: React.FC<CommentListProps> = ({comments}) => {
             content={content}
             replies={replies}
             lastComment={index === comments.length - 1}
+            id={id}
         />
     })
   )

@@ -3,7 +3,7 @@ import { ReplyListProps } from '../../types/PropTypes/prop.types';
 import Reply from '../Reply/Reply';
 import { useEffect, useRef, useState } from 'react';
 
-const ReplyList: React.FC<ReplyListProps> = ({replies, imageElement, getAndSetLineHeight}) => {
+const ReplyList: React.FC<ReplyListProps> = ({replies, imageElement, getAndSetLineHeight, commentId}) => {
    
 
   return (
@@ -21,6 +21,7 @@ const ReplyList: React.FC<ReplyListProps> = ({replies, imageElement, getAndSetLi
                     imageElement={imageElement}
                     isLastReply={index === replies.length - 1}
                     getAndSetLineHeight={getAndSetLineHeight}
+                    commentId={commentId}
                 />
             })
         }

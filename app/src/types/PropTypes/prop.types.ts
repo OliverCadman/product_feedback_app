@@ -30,6 +30,7 @@ export interface CommentProps {
 
 export interface ReplyProps {
     id?: string;
+    commentId: string | undefined;
     imgUrl: string;
     name: string;
     username: string;
@@ -48,6 +49,7 @@ export interface ReplyListProps {
     replies?: IReply[];
     imageElement: HTMLImageElement | null | undefined;
     getAndSetLineHeight: (calculatedLineHeight: number | undefined) => void;
+    commentId: string | undefined;
 }
 
 export interface CommentInputProps {
@@ -55,5 +57,6 @@ export interface CommentInputProps {
     checkFormValidity: (e: React.SyntheticEvent) => boolean;
     isInputValid: boolean | undefined;
     setComment: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    commentHasReplies: boolean | undefined;
 }
 

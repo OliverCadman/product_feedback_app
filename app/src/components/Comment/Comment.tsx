@@ -4,7 +4,9 @@ import { getImageURL } from '../../utils/helpers';
 import ReplyList from '../ReplyList/ReplyList';
 import { UseAppContext } from '../../context/AppStateContext';
 import { useWindowWidth } from '../../hooks/UseWindowWidth';
-import { UseRefContext } from '../../context/RefContext';
+import { UseAppContext as UseAppState } from '../../context/AppDataContext';
+import { IProductRequest } from '../../types/AppData/appdata.types';
+import CommentInput from '../CommentInput/CommentInput';
 
 const Comment: React.FC<CommentProps> = (
     {id, imgUrl, name, username, content, replies, lastComment}
@@ -16,6 +18,8 @@ const Comment: React.FC<CommentProps> = (
 
   const windowWidth = useWindowWidth();
   const {isTabletDevice, setIsTabletDevice} = UseAppContext(); 
+
+  const { state, dispatch } = UseAppState();
 
   const getAndSetLineHeight = (calculatedLineHeight: number | undefined) => {
     if (!calculatedLineHeight) return;
@@ -33,7 +37,19 @@ const Comment: React.FC<CommentProps> = (
         setIsTabletDevice(false);
     }
   })
-  
+
+   const checkFormValidity = (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      if (!state.commentInput) {
+        dispatch({type: "INVALID_INPUT", payload: null})
+      }
+      return true;
+    }
+
+    const setComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      dispatch({ type: "SET_COMMENT", payload: e.target.value});
+    }
+
   return (
     <>
         <article className="comment__container">
@@ -63,7 +79,11 @@ const Comment: React.FC<CommentProps> = (
                     </div>
                 </div>
                 <div className="comment-reply-btn__wrapper">
-                    <button type="button" className="reply-btn">
+                    <button type="button" className="reply-btn" onClick={() => {
+                        dispatch({type: "SET_ID_COMMENT_RECEIVING_REPLY", payload: id})
+                        dispatch({type: "TOGGLE_REPLY", payload: true})
+
+                    }}>
                         Reply
                     </button>
                 </div>
@@ -72,10 +92,24 @@ const Comment: React.FC<CommentProps> = (
                 <p>{content}</p>
             </div>
             { replies && replies.length > 0 ? (
-                    <ReplyList replies={replies} imageElement={imageElement} getAndSetLineHeight={getAndSetLineHeight}/>
+                    <ReplyList 
+                    replies={replies} 
+                    imageElement={imageElement} 
+                    getAndSetLineHeight={getAndSetLineHeight}
+                    commentId={id}/>
             ) : ""}
         </article>
-
+        {
+            (state.idOfCommentReceivingReply === id) && state.showReplyInput ? (
+                <CommentInput 
+                isReply={true} 
+                checkFormValidity={checkFormValidity}
+                isInputValid={state.isInputValid}
+                setComment={setComment}
+                commentHasReplies={replies && replies.length > 0}
+                />
+            ) : ""
+        }
         { !lastComment ? <hr /> : ""}
     </>
   )

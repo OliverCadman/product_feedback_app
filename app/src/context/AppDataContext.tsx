@@ -11,7 +11,8 @@ const initialState: AppData = {
     commentInput: '',
     invalidInputFlagRaised: false,
     showError: false,
-    showReplyInput: true
+    showReplyInput: false,
+    idOfCommentReceivingReply: ''
 }
 
 

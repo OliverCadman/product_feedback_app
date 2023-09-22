@@ -43,5 +43,7 @@ export type AppData = {
     invalidInputFlagRaised: boolean;
     showError: boolean;
     showReplyInput: boolean;
+    idOfCommentReceivingReply: string | undefined;
+
 }
 

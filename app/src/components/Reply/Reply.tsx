@@ -11,19 +11,6 @@ const Reply: React.FC<ReplyProps> = (props) => {
 
     const {state, dispatch} = UseAppContext();
 
-    const checkFormValidity = (e: React.SyntheticEvent) => {
-        console.log('eh')
-      e.preventDefault();
-      if (!state.commentInput) {
-        dispatch({type: "INVALID_INPUT", payload: null})
-      }
-      return true;
-    }
-
-    const setComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      dispatch({ type: "SET_COMMENT", payload: e.target.value});
-    }
-
     useEffect(() => {
         if (props.isLastReply) {
             const imageElRect = props.imageElement?.getBoundingClientRect();
@@ -58,7 +45,10 @@ const Reply: React.FC<ReplyProps> = (props) => {
                         </div>
                     </div>
                     <div className="comment-reply-btn__wrapper">
-                        <button type="button" className="reply-btn">
+                        <button type="button" className="reply-btn" onClick={() => {
+                            dispatch({type: "TOGGLE_REPLY", payload: true})
+                            dispatch({type: "SET_ID_COMMENT_RECEIVING_REPLY", payload: props.commentId})
+                        }}>
                             Reply
                         </button>
                     </div>
@@ -68,14 +58,6 @@ const Reply: React.FC<ReplyProps> = (props) => {
                         <span className="replying-to__span">@{props.replyingTo} </span>
                         {props.content}
                     </p>
-                     {state.showReplyInput ? (
-                        <CommentInput 
-                        checkFormValidity={checkFormValidity} 
-                        setComment={setComment} isReply={true} 
-                        isInputValid={state.isInputValid} 
-                        />
-                ) : ""
-                }
                 </div>
             </div>
         </div>

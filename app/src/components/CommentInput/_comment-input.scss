@@ -1,4 +1,13 @@
 .comment-input__form {
+    
+    &.reply {
+        margin-left: 1.5rem;
+
+        @include tablet() {
+            margin-left: 7.5rem;
+        }
+    }
+
     label {
         font-size: 1.125rem;
         letter-spacing: -0.25px;
@@ -30,16 +39,22 @@
         margin-top: 1.5rem;
         margin-bottom: 1rem;
 
-        @include tablet() {
-            gap: 1rem;
+        &.reply {
+            @include tablet() {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+            }
         }
     }
 
     .submit-btn__container {
         margin-top: 1rem;
 
-        &.mt-reply-0 {
-            margin-top: 0;
+        &.reply {
+            @include tablet() {
+                margin-top: 0;
+            }
         }
     }
 }
