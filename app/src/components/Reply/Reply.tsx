@@ -9,7 +9,7 @@ const Reply: React.FC<ReplyProps> = (props) => {
 
     const replyImageRef: React.RefObject<HTMLImageElement> = useRef(null);
 
-    const {dispatch} = UseAppContext();
+    const {state, dispatch} = UseAppContext();
 
     useEffect(() => {
         if (props.isLastReply) {
@@ -46,8 +46,12 @@ const Reply: React.FC<ReplyProps> = (props) => {
                     </div>
                     <div className="comment-reply-btn__wrapper">
                         <button type="button" className="reply-btn" onClick={() => {
-                            dispatch({type: "TOGGLE_REPLY", payload: true})
-                            dispatch({type: "SET_ID_COMMENT_RECEIVING_REPLY", payload: props.commentId})
+                             if (!state.showReplyInput) {
+                                dispatch({type: "TOGGLE_REPLY", payload: true})
+                            } else if (state.showReplyInput && state.idOfCommentReceivingReply === props.commentId) {
+                                dispatch({type: "TOGGLE_REPLY", payload: false})
+                            }
+                                dispatch({type: "SET_ID_COMMENT_RECEIVING_REPLY", payload: props.commentId})
                         }}>
                             Reply
                         </button>
