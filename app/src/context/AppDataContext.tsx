@@ -9,10 +9,14 @@ const initialState: AppData = {
   data: data,
   isInputValid: true,
   commentInput: "",
+  replyInput: "",
   invalidInputFlagRaised: false,
   showCommentInputError: false,
   showReplyInputError: false,
-  showReplyInput: false,
+  replyToggler: {
+    showReply: false,
+    replyingTo: "",
+  },
   idOfCommentReceivingReply: "",
 };
 

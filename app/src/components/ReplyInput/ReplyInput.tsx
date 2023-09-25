@@ -4,15 +4,15 @@ import { ReplyInputProps } from "../../types/PropTypes/prop.types";
 
 const ReplyInput: React.FC<ReplyInputProps> = ({
   showError,
-  checkFormValidity,
+  handleFormSubmit,
   setReply,
   commentHasReplies,
-  isCommentReceivingReply,
+  textAreaValue,
 }) => {
   return (
     <form
       className={`comment-input__form ${commentHasReplies ? "reply" : ""}`}
-      onSubmit={checkFormValidity}
+      onSubmit={handleFormSubmit}
     >
       <div className="comment-input__wrapper reply">
         <div className="flex-grow-1">
@@ -21,6 +21,7 @@ const ReplyInput: React.FC<ReplyInputProps> = ({
             aria-label="Add Reply"
             onChange={setReply}
             className={showError ? "error" : ""}
+            value={textAreaValue}
           ></textarea>
           {showError ? <p className="error-msg">Can't be empty</p> : ""}
         </div>

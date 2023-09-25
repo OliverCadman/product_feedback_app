@@ -4,18 +4,20 @@ import FeedbackButton from "../FeedbackButton/FeedbackButton";
 import { UseAppContext } from "../../context/AppDataContext";
 
 const CommentInput: React.FC<CommentInputProps> = ({
-  checkFormValidity,
+  handleFormSubmit,
   showError,
   setComment,
+  textAreaValue,
 }) => {
   return (
-    <form className="comment-input__form" onSubmit={checkFormValidity}>
+    <form className="comment-input__form" onSubmit={handleFormSubmit}>
       <label htmlFor="comment-input">Add Comment:</label>
       <div className="comment-input__wrapper">
         <textarea
           id="comment-input"
           onChange={setComment}
           className={showError ? "error" : ""}
+          value={textAreaValue}
         ></textarea>
         {showError ? <p className="error-msg">Can't be empty</p> : ""}
         <div className="submit-btn__container flex justify-end">

@@ -33,6 +33,11 @@ export interface IAppData {
   productRequests: IProductRequest[];
 }
 
+export interface IReplyToggler {
+  showReply: false;
+  replyingTo: string;
+}
+
 export type AppData = {
   data: {
     currentUser: IUser;
@@ -40,9 +45,10 @@ export type AppData = {
   };
   isInputValid: boolean | undefined;
   commentInput: "";
+  replyInput: "";
   invalidInputFlagRaised: boolean;
   showCommentInputError: boolean;
   showReplyInputError: boolean;
-  showReplyInput: boolean;
+  replyToggler: IReplyToggler;
   idOfCommentReceivingReply: string | undefined;
 };

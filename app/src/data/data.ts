@@ -25,6 +25,7 @@ const data: IAppData = {
             name: "Suzanne Chang",
             username: "upbeat1811",
           },
+          replies: [],
         },
         {
           id: nanoid(),
@@ -35,6 +36,7 @@ const data: IAppData = {
             name: "Thomas Hood",
             username: "brawnybrave",
           },
+          replies: [],
         },
       ],
     },
@@ -67,7 +69,7 @@ const data: IAppData = {
                 name: "Anne Valentine",
                 username: "annev1990",
               },
-            }
+            },
           ],
         },
         {
@@ -123,6 +125,7 @@ const data: IAppData = {
             name: "George Partridge",
             username: "soccerviewer8",
           },
+          replies: [],
         },
       ],
     },
@@ -143,6 +146,7 @@ const data: IAppData = {
             name: "Javier Pollard",
             username: "warlikeduke",
           },
+          replies: [],
         },
         {
           id: nanoid(),
@@ -153,6 +157,7 @@ const data: IAppData = {
             name: "Roxanne Travis",
             username: "peppersprime32",
           },
+          replies: [],
         },
       ],
     },
@@ -196,6 +201,7 @@ const data: IAppData = {
             name: "Jackson Barker",
             username: "countryspirit",
           },
+          replies: [],
         },
       ],
     },
@@ -226,6 +232,7 @@ const data: IAppData = {
             name: "Victoria Mejia",
             username: "arlen_the_marlin",
           },
+          replies: [],
         },
         {
           id: nanoid(),
@@ -236,6 +243,7 @@ const data: IAppData = {
             name: "Jackson Barker",
             username: "countryspirit",
           },
+          replies: [],
         },
       ],
     },
@@ -257,6 +265,7 @@ const data: IAppData = {
             name: "George Partridge",
             username: "soccerviewer8",
           },
+          replies: [],
         },
       ],
     },
@@ -278,6 +287,7 @@ const data: IAppData = {
             name: "Ryan Welles",
             username: "voyager.344",
           },
+          replies: [],
         },
       ],
     },
@@ -298,6 +308,7 @@ const data: IAppData = {
             name: "Suzanne Chang",
             username: "upbeat1811",
           },
+          replies: [],
         },
       ],
     },
@@ -345,6 +356,5 @@ const data: IAppData = {
     },
   ],
 };
-
 
 export default data;
