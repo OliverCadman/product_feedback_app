@@ -10,7 +10,8 @@ const initialState: AppData = {
     isInputValid: true,
     commentInput: '',
     invalidInputFlagRaised: false,
-    showError: false,
+    showCommentInputError: false,
+    showReplyInputError: false,
     showReplyInput: false,
     idOfCommentReceivingReply: ''
 }

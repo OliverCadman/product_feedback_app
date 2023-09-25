@@ -53,10 +53,16 @@ export interface ReplyListProps {
 }
 
 export interface CommentInputProps {
-    isReply: boolean;
     checkFormValidity: (e: React.SyntheticEvent) => boolean;
-    isInputValid: boolean | undefined;
+    showError: boolean | undefined;
     setComment: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+export interface ReplyInputProps {
+    checkFormValidity: (e: React.SyntheticEvent) => boolean;
+    showError: boolean | undefined;
+    setReply: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     commentHasReplies: boolean | undefined;
+    isCommentReceivingReply: boolean | undefined;
 }
 

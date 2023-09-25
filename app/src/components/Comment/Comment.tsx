@@ -6,7 +6,7 @@ import { UseAppContext } from '../../context/AppStateContext';
 import { useWindowWidth } from '../../hooks/UseWindowWidth';
 import { UseAppContext as UseAppState } from '../../context/AppDataContext';
 import { IProductRequest } from '../../types/AppData/appdata.types';
-import CommentInput from '../CommentInput/CommentInput';
+import ReplyInput from '../ReplyInput/ReplyInput';
 
 const Comment: React.FC<CommentProps> = (
     {id, imgUrl, name, username, content, replies, lastComment}
@@ -20,6 +20,7 @@ const Comment: React.FC<CommentProps> = (
   const {isTabletDevice, setIsTabletDevice} = UseAppContext(); 
 
   const { state, dispatch } = UseAppState();
+  console.log(state)
 
   const getAndSetLineHeight = (calculatedLineHeight: number | undefined) => {
     if (!calculatedLineHeight) return;
@@ -41,13 +42,13 @@ const Comment: React.FC<CommentProps> = (
    const checkFormValidity = (e: React.SyntheticEvent) => {
       e.preventDefault();
       if (!state.commentInput) {
-        dispatch({type: "INVALID_INPUT", payload: null})
+        dispatch({type: "INVALID_INPUT", payload: "reply"})
       }
       return true;
     }
 
     const setComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      dispatch({ type: "SET_COMMENT", payload: e.target.value});
+      dispatch({ type: "SET_COMMENT", payload: {input: e.target.value, inputType: "reply"}});
     }
 
   return (
@@ -104,12 +105,12 @@ const Comment: React.FC<CommentProps> = (
         </article>
         {
             (state.idOfCommentReceivingReply === id) && state.showReplyInput ? (
-                <CommentInput 
-                isReply={true} 
+                <ReplyInput 
                 checkFormValidity={checkFormValidity}
-                isInputValid={state.isInputValid}
-                setComment={setComment}
+                showError={state.showReplyInputError}
+                setReply={setComment}
                 commentHasReplies={replies && replies.length > 0}
+                isCommentReceivingReply={state.idOfCommentReceivingReply === id}
                 />
             ) : ""
         }

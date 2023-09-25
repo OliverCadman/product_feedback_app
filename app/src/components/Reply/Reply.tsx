@@ -19,7 +19,6 @@ const Reply: React.FC<ReplyProps> = (props) => {
             if (imageElRect && replyImageRect) {
                 const imageElBottom = imageElRect?.bottom;
                 const replyImageBottom = replyImageRect?.bottom;
-
                 const calculatedLineHeight = (replyImageBottom - imageElBottom) - 30;
                 props.getAndSetLineHeight(calculatedLineHeight);
             }
