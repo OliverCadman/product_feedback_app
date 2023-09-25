@@ -1,39 +1,40 @@
-import React from 'react';
-import FeedbackButton from '../FeedbackButton/FeedbackButton';
-import { ReplyInputProps } from '../../types/PropTypes/prop.types';
+import React from "react";
+import FeedbackButton from "../FeedbackButton/FeedbackButton";
+import { ReplyInputProps } from "../../types/PropTypes/prop.types";
 
 const ReplyInput: React.FC<ReplyInputProps> = ({
-    showError,
-    checkFormValidity,
-    setReply,
-    commentHasReplies,
-    isCommentReceivingReply
+  showError,
+  checkFormValidity,
+  setReply,
+  commentHasReplies,
+  isCommentReceivingReply,
 }) => {
   return (
-    <form 
+    <form
       className={`comment-input__form ${commentHasReplies ? "reply" : ""}`}
-      onSubmit={checkFormValidity} >
-        <div className="comment-input__wrapper reply">
-          <textarea 
-            id="comment-input" 
+      onSubmit={checkFormValidity}
+    >
+      <div className="comment-input__wrapper reply">
+        <div className="flex-grow-1">
+          <textarea
+            id="comment-input"
             aria-label="Add Reply"
-            onChange={setReply}></textarea>
-          <div className="submit-btn__container flex justify-end reply">
-            <FeedbackButton 
-              isReplyButton={true} 
-              buttonType="submit"
-              textContent="Post Reply"
-              className="btn-magenta" 
-            />
-          </div>
+            onChange={setReply}
+            className={showError ? "error" : ""}
+          ></textarea>
+          {showError ? <p className="error-msg">Can't be empty</p> : ""}
         </div>
-        {
-          showError ? (
-            <p>Input is NOT valid!</p>
-          ) : ""
-        }
-      </form>
-  )
-}
+        <div className="submit-btn__container flex justify-end reply">
+          <FeedbackButton
+            isReplyButton={true}
+            buttonType="submit"
+            textContent="Post Reply"
+            className="btn-magenta"
+          />
+        </div>
+      </div>
+    </form>
+  );
+};
 
-export default ReplyInput
+export default ReplyInput;
