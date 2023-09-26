@@ -107,6 +107,7 @@ menu, ul, ol {
 }
 
 .btn {
+    cursor: pointer;
     border-radius: 10px;
     width: 134px;
     height: 40px;
@@ -138,6 +139,13 @@ menu, ul, ol {
 
 .btn-magenta {
   background-color: $magenta;
+
+  @include desktop() {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: $magenta-hover;
+    }
+  }
 }
 
 .btn-blue {
@@ -146,6 +154,13 @@ menu, ul, ol {
 
 .btn-dark-blue {
   background-color: $dark-blue-2;
+
+  @include desktop() {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: $dark-blue-2-hover;
+    }
+  }
 }
 
 .white-bg {
@@ -154,6 +169,14 @@ menu, ul, ol {
 
 .border-10 {
   border-radius: 10px;
+}
+
+.input-focusable {
+  transition: outline 0.1s ease;
+
+      &:focus {
+          outline: 1px solid $blue;
+      }
 }
 
 // Components

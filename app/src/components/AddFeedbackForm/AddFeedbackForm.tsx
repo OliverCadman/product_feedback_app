@@ -31,7 +31,7 @@ const AddFeedbackForm = () => {
         <label htmlFor="feedback-title">Feedback Title</label>
         <p>Add a short, descriptive headline</p>
         <div className="form-control">
-          <input type="text" id="feedback-title" />
+          <input type="text" id="feedback-title" className="input-focusable" />
         </div>
       </div>
       <div className="form-group">
@@ -54,7 +54,7 @@ const AddFeedbackForm = () => {
           Include any specific comments on what should be improved, added etc
         </p>
         <div className="form-control">
-          <textarea id="feedback-detail"></textarea>
+          <textarea id="feedback-detail" className="input-focusable"></textarea>
         </div>
       </div>
       <div className="submit-btn__container">

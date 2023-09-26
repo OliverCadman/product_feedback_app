@@ -14,7 +14,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
       <label htmlFor="comment-input">Add Comment:</label>
       <div className="comment-input__wrapper">
         <textarea
-          id="comment-input"
+          id="comment-input input-focusable"
           onChange={setComment}
           className={showError ? "error" : ""}
           value={textAreaValue}

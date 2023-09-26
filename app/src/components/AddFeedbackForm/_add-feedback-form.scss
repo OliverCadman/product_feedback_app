@@ -37,7 +37,7 @@
 .form-control {
     width: 100%;
 
-    input, textarea, select {
+    input, textarea {
         width: 100%;
         border: none;
         background-color: $light-gray;
@@ -46,6 +46,7 @@
         color: $dark-blue-2;
         font-weight: $fw-regular;
         font-size: 0.813rem;
+        border-radius: 10px;
 
         @include tablet() {
             padding: 0.75rem 1.5rem;
@@ -64,10 +65,6 @@
 
     select {
         position: relative;
-
-        // .category-values__wrapper {
-        //     position: absolute;
-        // }
     }
 }
 
@@ -76,14 +73,45 @@
         menu {
             flex-direction: column;
 
+            @include tablet() {
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
             li {
                 &:first-of-type {
                     margin-bottom: 1rem;
                 }
+
+                @include tablet() {
+                    margin: 0 .5rem;
+                    &:first-of-type {
+                        order: 2;    
+                    }
+
+                    &:last-of-type {
+                        order: 1;
+                    }
+              
+                }
                 
             button {
                 width: 100%;
-            }
+
+                @include tablet() {
+
+
+                    &.btn-dark-blue {
+                        min-width: 93px;
+                        min-height: 44px;
+                    }
+
+                    &.btn-magenta {
+                        min-width: 144px;
+                        min-height: 44px;
+                    }
+                }
+                }
             }
         }
     }

@@ -17,7 +17,7 @@ const ReplyInput: React.FC<ReplyInputProps> = ({
       <div className="comment-input__wrapper reply">
         <div className="flex-grow-1">
           <textarea
-            id="comment-input"
+            id="comment-input input-focusable"
             aria-label="Add Reply"
             onChange={setReply}
             className={showError ? "error" : ""}

@@ -13,7 +13,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   selectedItem,
 }) => {
   return (
-    <div className="dd-wrapper">
+    <div className={`dd-wrapper ${isListOpen ? "focus" : ""}`}>
       <button type="button" className="dd-header" onClick={toggleList}>
         <div className="dd-header-title flex row-between">
           {headerTitle}
