@@ -1,0 +1,30 @@
+.feedback-form__container {
+    margin-top: 3.438rem;
+    border-radius: 10px;
+    padding: 2.75rem 1.469rem 1.5rem 1.469rem;
+    position: relative;
+
+    @include tablet() {
+        margin-top: 4.25rem;
+        padding: 3.25rem 2.625rem 2.5rem 2.625rem ;
+    }
+
+
+    .feedback-form__icon {
+        position: absolute;
+        top: -30px;
+        left: 16px;
+
+        @include tablet() {
+            left: 42px;
+        }
+
+        svg {
+            transform: scale(0.715);
+
+            @include tablet() {
+                transform: scale(1);
+            }
+        }
+    }
+}

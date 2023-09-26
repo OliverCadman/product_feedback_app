@@ -14,6 +14,13 @@ export interface IProductRequest {
   comments?: IComment[];
 }
 
+export interface ICategoryListItem {
+  id: number;
+  selected: boolean;
+  title: string;
+  key: string;
+}
+
 export interface IComment {
   id: string;
   content: string;
@@ -43,6 +50,11 @@ export type AppData = {
     currentUser: IUser;
     productRequests: IProductRequest[];
   };
+  dropdownState: {
+    isDropdownOpen: boolean;
+    selectedItem: string;
+  };
+  categories: ICategoryListItem[];
   isInputValid: boolean | undefined;
   commentInput: "";
   replyInput: "";

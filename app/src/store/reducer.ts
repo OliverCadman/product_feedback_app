@@ -1,5 +1,9 @@
 import { AppDataAction } from "../types/reducer/reducer.types";
-import { AppData, IProductRequest } from "../types/AppData/appdata.types";
+import {
+  AppData,
+  ICategoryListItem,
+  IProductRequest,
+} from "../types/AppData/appdata.types";
 import { Reducer } from "react";
 import { IComment } from "../types/AppData/appdata.types";
 
@@ -195,6 +199,36 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         replyToggler: {
           showReply: false,
           replyingTo: "",
+        },
+      };
+    }
+    case "TOGGLE_DROPDOWN": {
+      return {
+        ...state,
+        dropdownState: {
+          ...state.dropdownState,
+          isDropdownOpen: !state.dropdownState.isDropdownOpen,
+        },
+      };
+    }
+
+    case "SET_SELECTED_CATEGORY": {
+      const updatedCategories = state.categories.map(
+        (item: ICategoryListItem) => {
+          if (item.id === action.payload.id) {
+            item.selected = true;
+          } else {
+            item.selected = false;
+          }
+          return item;
+        },
+      );
+      return {
+        ...state,
+        categories: updatedCategories,
+        dropdownState: {
+          ...state.dropdownState,
+          isDropdownOpen: false,
         },
       };
     }

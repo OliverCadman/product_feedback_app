@@ -7,6 +7,17 @@ import data from "../data/data";
 
 const initialState: AppData = {
   data: data,
+  dropdownState: {
+    isDropdownOpen: false,
+    selectedItem: "Feature",
+  },
+  categories: [
+    { id: 1, title: "Feature", selected: true, key: "categories" },
+    { id: 2, title: "UI", selected: false, key: "categories" },
+    { id: 3, title: "UX", selected: false, key: "categories" },
+    { id: 4, title: "Enhancement", selected: false, key: "categories" },
+    { id: 5, title: "Bug", selected: false, key: "categories" },
+  ],
   isInputValid: true,
   commentInput: "",
   replyInput: "",

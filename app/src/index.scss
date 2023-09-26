@@ -128,12 +128,24 @@ menu, ul, ol {
     }
 }
 
+// For '+ Add Feedback' and 'Edit Feedback' buttons (<a> tags styled as buttons)
+.link-btn {
+  display: inline-block;
+  font-weight: $fw-semibold;
+  text-align: center;
+  text-decoration: none;
+}
+
 .btn-magenta {
   background-color: $magenta;
 }
 
 .btn-blue {
   background-color: $blue;
+}
+
+.btn-dark-blue {
+  background-color: $dark-blue-2;
 }
 
 .white-bg {
@@ -144,8 +156,10 @@ menu, ul, ol {
   border-radius: 10px;
 }
 
-
+// Components
 @import "./components/mobile/Nav/navmob";
+@import "./components/SharedNavBanner/shared-nav-banner";
+@import "./components/SharedFeedbackHeader/shared-feedback-header";
 @import "./components/FeedbackBoard/feedbackboard";
 @import "./components/NoFeedbackAlert/no-feedback-alert";
 @import "./components/Sidebar/Categories/categories";
@@ -153,15 +167,21 @@ menu, ul, ol {
 @import "./components/Suggestion/suggestion";
 @import "./components/SuggestionList/suggestion-list";
 @import "./components/Toolbar/toolbar";
-@import "./components/DetailNavBanner/detail-nav-banner";
+@import "./components/BackLink/back-link";
 @import "./components/Comment/comment";
 @import "./components/CommentInput/comment-input";
 @import "./components/ReplyList/reply-list";
 @import "./components/Reply/reply";
+@import "./components/Wrapper/wrapper";
+@import "./components/FeedbackFormContainer/feedback-form-container";
+@import "./components/FeedbackFormWrapper/feedback-form-wrapper";
+@import "./components/AddFeedbackForm/add-feedback-form";
+@import "./components/Dropdown/dropdown";
 
 // Mobile-specific Styles
 @import "./components/mobile/Nav/navmob";
 @import "./components/mobile/Sidebar/sidebar-mob";
 
+// Pages
 @import "./pages/ProductFeedback/product-feedback";
 @import "./pages/FeedbackDetail/feedback-detail";

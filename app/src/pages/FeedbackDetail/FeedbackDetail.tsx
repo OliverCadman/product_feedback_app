@@ -1,11 +1,12 @@
 import React, { FormEventHandler, useEffect } from "react";
-import DetailNavBanner from "../../components/DetailNavBanner/DetailNavBanner";
+import SharedNavBanner from "../../components/SharedNavBanner/SharedNavBanner";
 import Suggestion from "../../components/Suggestion/Suggestion";
 import { useParams } from "react-router-dom";
 import { UseAppContext } from "../../context/AppDataContext";
 import CommentList from "../../components/CommentList/CommentList";
 import CommentInput from "../../components/CommentInput/CommentInput";
 import { RefContextProvider } from "../../context/RefContext";
+import Wrapper from "../../components/Wrapper/Wrapper";
 
 import { nanoid } from "nanoid";
 
@@ -57,8 +58,8 @@ const FeedbackDetail: React.FC = () => {
     };
 
     return (
-      <main className="feedback-detail__container">
-        <DetailNavBanner />
+      <Wrapper>
+        <SharedNavBanner hasAccompanyingButton={true} />
         <div className="feedback-detail__wrapper">
           <Suggestion
             title={title}
@@ -86,7 +87,7 @@ const FeedbackDetail: React.FC = () => {
             textAreaValue={state.commentInput}
           />
         </div>
-      </main>
+      </Wrapper>
     );
   } else {
     return (

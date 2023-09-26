@@ -1,5 +1,9 @@
-import { FormEventHandler } from "react";
-import { IComment, IReply } from "../AppData/appdata.types";
+import { IComment, IReply, ICategoryListItem } from "../AppData/appdata.types";
+
+export interface FeedbackFormContainerProps {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
 
 export interface SuggestionProps {
   id?: string;
@@ -10,6 +14,23 @@ export interface SuggestionProps {
   comments?: IComment[];
   category?: string;
   page?: string;
+}
+
+export interface SharedNavBannerProps {
+  hasAccompanyingButton: boolean | undefined;
+}
+
+export interface SharedFeedbackHeaderProps {
+  textContent: string;
+}
+
+export interface DropdownProps {
+  headerTitle: string | undefined;
+  isListOpen: boolean;
+  listItems: ICategoryListItem[];
+  selectedItem: ICategoryListItem | undefined;
+  selectItem: (item: ICategoryListItem) => void;
+  toggleList: () => void;
 }
 
 export interface ButtonProps {
