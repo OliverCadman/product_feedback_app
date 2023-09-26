@@ -22,39 +22,35 @@ const Dropdown: React.FC<DropdownProps> = ({
           </span>
         </div>
       </button>
-      {isListOpen ? (
-        <ul className="dd-list" role="list">
-          {listItems.map((item, index) => {
-            const { id, title, selected, key } = item;
-            return (
-              <Transition
-                as="li"
-                className="dd-list-item"
-                key={id}
-                style={{ transitionDelay: `${100 * index}ms` }}
-                enter="transition-opacity duration-75"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-150"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-                show={isListOpen}
+      <ul className="dd-list" role="list">
+        {listItems.map((item, index) => {
+          const { id, title, selected, key } = item;
+          return (
+            <Transition
+              as="li"
+              key={id}
+              style={
+                isListOpen ? { transitionDelay: `${40 * index}ms` } : undefined
+              }
+              enter="transition ease-out duration-300"
+              enterFrom="transform opacity-0 translate-y-40"
+              leave="no-transition"
+              leaveFrom="transform opacity-100 translate-y-0"
+              leaveTo="opacity-0"
+              show={isListOpen}
+            >
+              <button
+                type="button"
+                className="flex row-between centered"
+                onClick={() => selectItem(item)}
               >
-                <button
-                  type="button"
-                  className="flex row-between centered"
-                  onClick={() => selectItem(item)}
-                >
-                  {title}
-                  {selectedItem?.title === title ? <IconCheck /> : ""}
-                </button>
-              </Transition>
-            );
-          })}
-        </ul>
-      ) : (
-        ""
-      )}
+                {title}
+                {selectedItem?.title === title ? <IconCheck /> : ""}
+              </button>
+            </Transition>
+          );
+        })}
+      </ul>
     </div>
   );
 };
