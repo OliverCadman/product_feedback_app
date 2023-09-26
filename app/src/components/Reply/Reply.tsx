@@ -66,6 +66,11 @@ const Reply: React.FC<ReplyProps> = (props) => {
                   type: "SET_ID_COMMENT_RECEIVING_REPLY",
                   payload: props.commentId,
                 });
+
+                dispatch({
+                  type: "INITIALIZE_INPUT",
+                  payload: null,
+                });
               }}
             >
               Reply

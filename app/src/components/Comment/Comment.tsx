@@ -136,6 +136,11 @@ const Comment: React.FC<CommentProps> = ({
                   type: "SET_ID_COMMENT_RECEIVING_REPLY",
                   payload: id,
                 });
+
+                dispatch({
+                  type: "INITIALIZE_INPUT",
+                  payload: null,
+                });
               }}
             >
               Reply

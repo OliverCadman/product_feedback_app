@@ -56,6 +56,8 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           showReply: action.payload.showReply,
           replyingTo: action.payload.replyingTo,
         },
+        showReplyInputError: false,
+        replyInput: "",
       };
     }
     case "SET_ID_COMMENT_RECEIVING_REPLY": {
@@ -64,6 +66,15 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         idOfCommentReceivingReply: action.payload,
       };
     }
+
+    case "INITIALIZE_INPUT": {
+      return {
+        ...state,
+        showReplyInputError: false,
+        replyInput: "",
+      };
+    }
+
     case "ADD_COMMENT": {
       const productRequestCopy = JSON.parse(
         JSON.stringify(state.data.productRequests),
