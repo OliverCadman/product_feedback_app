@@ -20,18 +20,6 @@
             letter-spacing: -0.19px;
         }
     }
-
-    p {
-        font-size: 0.813rem;
-        color: $dark-gray-blue;
-        margin-bottom: 1rem;
-        margin-top: 0.133rem;
-        font-weight: $fw-regular;
-
-        @include tablet() {
-            font-size: 0.875rem;
-        }
-    }
 }
 
 .form-control {
@@ -95,12 +83,13 @@
               
                 }
                 
-            button {
+            button, a {
                 width: 100%;
+                display: block;
+                text-decoration: none;
+                text-align: center;
 
                 @include tablet() {
-
-
                     &.btn-dark-blue {
                         min-width: 93px;
                         min-height: 44px;
@@ -115,3 +104,16 @@
             }
         }
     }
+
+// General paragraph styling. Can be overridden with error message styling.
+p {
+    font-size: 0.813rem;
+    color: $dark-gray-blue;
+    margin-bottom: 1rem;
+    margin-top: 0.133rem;
+    font-weight: $fw-regular;
+
+    @include tablet() {
+        font-size: 0.875rem;
+    }
+}

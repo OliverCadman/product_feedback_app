@@ -33,7 +33,7 @@ export interface DropdownProps {
   headerTitle: string | undefined;
   isListOpen: boolean;
   listItems: ICategoryListItem[] | IStatusListItem[];
-  selectedItem: ICategoryListItem | IStatusListItem | undefined;
+  selectedItem: ICategoryListItem | IStatusListItem;
   selectItem: (item: ICategoryListItem | IStatusListItem) => void;
   toggleList: (listType: string) => void;
   listType: string;

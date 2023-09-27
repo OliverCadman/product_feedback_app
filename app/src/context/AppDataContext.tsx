@@ -17,6 +17,20 @@ const initialState: AppData = {
       selectedItem: "",
     },
   },
+  feedbackFormInputs: {
+    titleInput: {
+      isInputValid: true,
+      invalidInputFlagRaised: false,
+      showError: false,
+      inputValue: "",
+    },
+    descriptionInput: {
+      isInputValid: true,
+      invalidInputFlagRaised: false,
+      showError: false,
+      inputValue: "",
+    },
+  },
   categories: [
     { id: 1, title: "Feature", selected: true, key: "categories" },
     { id: 2, title: "UI", selected: false, key: "categories" },

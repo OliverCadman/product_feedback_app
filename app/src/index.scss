@@ -177,12 +177,18 @@ menu, ul, ol {
   border-radius: 10px;
 }
 
+// General input styling
+
 .input-focusable {
   transition: outline 0.1s ease;
 
       &:focus {
           outline: 1px solid $blue;
       }
+}
+
+.error {
+    outline: 1px solid $textfield-danger;
 }
 
 // Components
@@ -206,6 +212,7 @@ menu, ul, ol {
 @import "./components/FeedbackFormWrapper/feedback-form-wrapper";
 @import "./components/AddFeedbackForm/add-feedback-form";
 @import "./components/Dropdown/dropdown";
+@import "./components/InputErrorMessage/input-error-message";
 
 // Mobile-specific Styles
 @import "./components/mobile/Nav/navmob";

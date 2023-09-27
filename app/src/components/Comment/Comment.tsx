@@ -6,6 +6,7 @@ import { UseAppContext } from "../../context/AppStateContext";
 import { useWindowWidth } from "../../hooks/UseWindowWidth";
 import { UseAppContext as UseAppState } from "../../context/AppDataContext";
 import ReplyInput from "../ReplyInput/ReplyInput";
+import { checkFormValidity } from "../../data/utils/validation";
 
 import { nanoid } from "nanoid";
 
@@ -45,14 +46,6 @@ const Comment: React.FC<CommentProps> = ({
     }
   });
 
-  const checkFormValidity = (input: string) => {
-    if (!input) {
-      dispatch({ type: "INVALID_INPUT", payload: "reply" });
-      return false;
-    }
-    return true;
-  };
-
   const setReply = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({
       type: "SET_REPLY",
@@ -62,7 +55,13 @@ const Comment: React.FC<CommentProps> = ({
 
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (!checkFormValidity(state.replyInput)) return;
+    if (
+      !checkFormValidity(state.replyInput, dispatch, {
+        type: "INVALID_INPUT",
+        payload: "reply",
+      })
+    )
+      return;
 
     dispatch({
       type: "ADD_REPLY",

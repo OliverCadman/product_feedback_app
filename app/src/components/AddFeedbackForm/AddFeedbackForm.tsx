@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ICategoryListItem,
   IStatusListItem,
 } from "../../types/AppData/appdata.types";
 import Dropdown from "../Dropdown/Dropdown";
 import { UseAppContext } from "../../context/AppDataContext";
+import { Link } from "react-router-dom";
+import { checkFormValidity } from "../../data/utils/validation";
+import InputErrorMessage from "../InputErrorMessage/InputErrorMessage";
+import { nanoid } from "nanoid";
+
+import { useNavigate } from "react-router-dom";
 
 const AddFeedbackForm = () => {
   const { state, dispatch } = UseAppContext();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   const selectItem = (item: ICategoryListItem | IStatusListItem) => {
     const { id, key } = item;
@@ -25,6 +37,16 @@ const AddFeedbackForm = () => {
     }
   };
 
+  const setInput = (input: string, inputType: string) => {
+    dispatch({
+      type: "SET_FEEDBACK_FORM_INPUT",
+      payload: {
+        inputType,
+        input,
+      },
+    });
+  };
+
   const toggleList = (listType: string) => {
     if (listType.toLowerCase() === "category") {
       dispatch({ type: "TOGGLE_CATEGORY_DROPDOWN", payload: null });
@@ -38,18 +60,80 @@ const AddFeedbackForm = () => {
   };
 
   const findSelectedItem = (items: ICategoryListItem[] | IStatusListItem[]) => {
-    return items.find(
+    const foundItem = items.find(
       (item: ICategoryListItem | IStatusListItem) => item.selected === true,
     );
+
+    if (foundItem) return foundItem;
+
+    return items[0];
+  };
+
+  const handleFormSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const titleInput = state.feedbackFormInputs.titleInput.inputValue;
+    const descriptionInput =
+      state.feedbackFormInputs.descriptionInput.inputValue;
+
+    const invalidTitlePayload = {
+      type: "INVALID_INPUT",
+      payload: "feedbackTitle",
+    };
+
+    const invalidDescriptionPayload = {
+      type: "INVALID_INPUT",
+      payload: "feedbackDescription",
+    };
+
+    const titleValid = checkFormValidity(
+      state.feedbackFormInputs.titleInput.inputValue,
+      dispatch,
+      invalidTitlePayload,
+    );
+
+    const descriptionValid = checkFormValidity(
+      state.feedbackFormInputs.descriptionInput.inputValue,
+      dispatch,
+      invalidDescriptionPayload,
+    );
+
+    if (!titleValid || !descriptionValid) return false;
+
+    const feedbackPayload = {
+      id: nanoid(),
+      title: titleInput,
+      description: descriptionInput,
+      category: findSelectedItem(state.categories).title,
+      status: findSelectedItem(state.statuses).title,
+    };
+
+    dispatch({ type: "ADD_FEEDBACK", payload: feedbackPayload });
+
+    navigate("/");
   };
 
   return (
-    <form className="feedback__form">
+    <form className="feedback__form" onSubmit={handleFormSubmit}>
       <div className="form-group">
         <label htmlFor="feedback-title">Feedback Title</label>
         <p>Add a short, descriptive headline</p>
         <div className="form-control">
-          <input type="text" id="feedback-title" className="input-focusable" />
+          <input
+            type="text"
+            id="feedback-title"
+            className={`input-focusable ${
+              state.feedbackFormInputs.titleInput.showError ? "error" : ""
+            }`}
+            value={state.feedbackFormInputs.titleInput.inputValue}
+            onChange={(e: React.SyntheticEvent<HTMLInputElement>) =>
+              setInput((e.target as HTMLInputElement).value, "title")
+            }
+          />
+          {state.feedbackFormInputs.titleInput.showError ? (
+            <InputErrorMessage />
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="form-group">
@@ -92,7 +176,21 @@ const AddFeedbackForm = () => {
           Include any specific comments on what should be improved, added etc
         </p>
         <div className="form-control">
-          <textarea id="feedback-detail" className="input-focusable"></textarea>
+          <textarea
+            id="feedback-detail"
+            className={`input-focusable ${
+              state.feedbackFormInputs.descriptionInput.showError ? "error" : ""
+            }`}
+            value={state.feedbackFormInputs.descriptionInput.inputValue}
+            onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) =>
+              setInput((e.target as HTMLTextAreaElement).value, "description")
+            }
+          ></textarea>
+          {state.feedbackFormInputs.descriptionInput.showError ? (
+            <InputErrorMessage />
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="submit-btn__container">
@@ -103,9 +201,9 @@ const AddFeedbackForm = () => {
             </button>
           </li>
           <li>
-            <button type="button" className="btn btn-dark-blue">
+            <Link to="/" className="btn btn-dark-blue">
               Cancel
-            </button>
+            </Link>
           </li>
         </menu>
       </div>

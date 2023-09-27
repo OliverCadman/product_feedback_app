@@ -7,6 +7,7 @@ import CommentList from "../../components/CommentList/CommentList";
 import CommentInput from "../../components/CommentInput/CommentInput";
 import { RefContextProvider } from "../../context/RefContext";
 import Wrapper from "../../components/Wrapper/Wrapper";
+import { checkFormValidity } from "../../data/utils/validation";
 
 import { nanoid } from "nanoid";
 
@@ -21,18 +22,16 @@ const FeedbackDetail: React.FC = () => {
     const { title, comments, status, upvotes, category, description } =
       foundSuggestion;
 
-    const checkFormValidity = (input: string) => {
-      if (!input) {
-        dispatch({ type: "INVALID_INPUT", payload: "comment" });
-        return false;
-      }
-      return true;
-    };
-
     const handleFormSubmit = (e: React.SyntheticEvent) => {
       e.preventDefault();
 
-      if (!checkFormValidity(state.commentInput)) return;
+      if (
+        !checkFormValidity(state.commentInput, dispatch, {
+          type: "INVALID_INPUT",
+          payload: "comment",
+        })
+      )
+        return;
 
       dispatch({
         type: "ADD_COMMENT",

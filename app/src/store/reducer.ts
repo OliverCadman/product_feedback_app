@@ -16,20 +16,52 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       return state;
     }
     case "INVALID_INPUT": {
-      if (action.payload === "comment") {
-        return {
-          ...state,
-          isInputValid: false,
-          invalidInputFlagRaised: true,
-          showCommentInputError: true,
-        };
-      } else {
-        return {
-          ...state,
-          isInputValid: false,
-          invalidInputFlagRaised: true,
-          showReplyInputError: true,
-        };
+      switch (action.payload) {
+        case "comment": {
+          return {
+            ...state,
+            isInputValid: false,
+            invalidInputFlagRaised: true,
+            showCommentInputError: true,
+          };
+        }
+        case "reply": {
+          return {
+            ...state,
+            isInputValid: false,
+            invalidInputFlagRaised: true,
+            showReplyInputError: true,
+          };
+        }
+        case "feedbackTitle": {
+          return {
+            ...state,
+            feedbackFormInputs: {
+              ...state.feedbackFormInputs,
+              titleInput: {
+                ...state.feedbackFormInputs.titleInput,
+                isInputValid: false,
+                invalidInputFlagRaised: true,
+                showError: true,
+              },
+            },
+          };
+        }
+        case "feedbackDescription": {
+          console.log("feedback!");
+          return {
+            ...state,
+            feedbackFormInputs: {
+              ...state.feedbackFormInputs,
+              descriptionInput: {
+                ...state.feedbackFormInputs.descriptionInput,
+                isInputValid: false,
+                invalidInputFlagRaised: true,
+                showError: true,
+              },
+            },
+          };
+        }
       }
     }
     case "SET_COMMENT": {
@@ -279,6 +311,92 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "SET_FEEDBACK_FORM_INPUT": {
+      state.feedbackFormInputs.titleInput.isInputValid = true;
+      state.feedbackFormInputs.titleInput.invalidInputFlagRaised = false;
+
+      state.feedbackFormInputs.descriptionInput.isInputValid = true;
+      state.feedbackFormInputs.descriptionInput.invalidInputFlagRaised = false;
+
+      state.invalidInputFlagRaised = false;
+      if (action.payload.inputType === "title") {
+        return {
+          ...state,
+          feedbackFormInputs: {
+            ...state.feedbackFormInputs,
+            titleInput: {
+              ...state.feedbackFormInputs.titleInput,
+              inputValue: action.payload.input,
+              isInputValid: !!action.payload.input,
+              showError: state.feedbackFormInputs.titleInput
+                .invalidInputFlagRaised
+                ? true
+                : false,
+            },
+          },
+        };
+      } else {
+        return {
+          ...state,
+          feedbackFormInputs: {
+            ...state.feedbackFormInputs,
+            descriptionInput: {
+              ...state.feedbackFormInputs.descriptionInput,
+              inputValue: action.payload.input,
+              isInputValid: !!action.payload.input,
+              showError: state.feedbackFormInputs.descriptionInput
+                .invalidInputFlagRaised
+                ? true
+                : false,
+            },
+          },
+        };
+      }
+    }
+    case "ADD_FEEDBACK": {
+      const { id, title, description, status, category } = action.payload;
+
+      const productRequestCopy: IProductRequest[] = JSON.parse(
+        JSON.stringify(state.data.productRequests),
+      );
+
+      const newFeedback: IProductRequest = {
+        id,
+        title,
+        description,
+        status: status.toLowerCase(),
+        category: category.toLowerCase(),
+        upvotes: 0,
+        comments: [],
+      };
+
+      const newProductRequestArray = [...productRequestCopy];
+
+      newProductRequestArray.unshift(newFeedback);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          productRequests: newProductRequestArray,
+        },
+        feedbackFormInputs: {
+          ...state.feedbackFormInputs,
+          titleInput: {
+            inputValue: "",
+            isInputValid: true,
+            invalidInputFlagRaised: false,
+            showError: false,
+          },
+          descriptionInput: {
+            inputValue: "",
+            isInputValid: true,
+            invalidInputFlagRaised: false,
+            showError: false,
+          },
+        },
+      };
+    }
+
     default: {
       throw new Error("Unexpected action type.");
     }

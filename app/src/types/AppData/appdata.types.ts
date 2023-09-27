@@ -52,6 +52,13 @@ export interface IReplyToggler {
   replyingTo: string;
 }
 
+export interface IInput {
+  isInputValid: boolean;
+  inputValue: string;
+  invalidInputFlagRaised: boolean;
+  showError: boolean;
+}
+
 export type AppData = {
   data: {
     currentUser: IUser;
@@ -77,4 +84,8 @@ export type AppData = {
   showReplyInputError: boolean;
   replyToggler: IReplyToggler;
   idOfCommentReceivingReply: string | undefined;
+  feedbackFormInputs: {
+    titleInput: IInput;
+    descriptionInput: IInput;
+  };
 };

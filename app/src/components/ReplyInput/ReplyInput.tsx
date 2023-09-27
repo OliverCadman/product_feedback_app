@@ -1,6 +1,7 @@
 import React from "react";
 import FeedbackButton from "../FeedbackButton/FeedbackButton";
 import { ReplyInputProps } from "../../types/PropTypes/prop.types";
+import InputErrorMessage from "../InputErrorMessage/InputErrorMessage";
 
 const ReplyInput: React.FC<ReplyInputProps> = ({
   showError,
@@ -23,7 +24,7 @@ const ReplyInput: React.FC<ReplyInputProps> = ({
             className={showError ? "error" : ""}
             value={textAreaValue}
           ></textarea>
-          {showError ? <p className="error-msg">Can't be empty</p> : ""}
+          {showError ? <InputErrorMessage /> : ""}
         </div>
         <div className="submit-btn__container flex justify-end reply">
           <FeedbackButton

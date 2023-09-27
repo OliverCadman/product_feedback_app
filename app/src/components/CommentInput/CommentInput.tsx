@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import { CommentInputProps } from "../../types/PropTypes/prop.types";
 import FeedbackButton from "../FeedbackButton/FeedbackButton";
-import { UseAppContext } from "../../context/AppDataContext";
+import InputErrorMessage from "../InputErrorMessage/InputErrorMessage";
 
 const CommentInput: React.FC<CommentInputProps> = ({
   handleFormSubmit,
@@ -19,7 +19,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
           className={showError ? "error" : ""}
           value={textAreaValue}
         ></textarea>
-        {showError ? <p className="error-msg">Can't be empty</p> : ""}
+        {showError ? <InputErrorMessage /> : ""}
         <div className="submit-btn__container flex justify-end">
           <FeedbackButton
             isReplyButton={false}

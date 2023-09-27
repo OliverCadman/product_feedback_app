@@ -28,11 +28,6 @@
         font-size: 0.813rem;
         color: $dark-blue-2;
         font-family: $font-primary;
-        transition: outline 0.1s ease;
-
-        &:focus {
-            outline: 1px solid $blue;
-        }
 
         &.error {
             outline: 1px solid $textfield-danger;
@@ -60,16 +55,5 @@
                 margin-top: 0;
             }
         }
-    }
-}
-
-.error-msg {
-    font-size: 0.813rem;
-    color: $textfield-danger;
-    font-weight: $fw-regular;
-    margin-top: 0.25rem;
-    
-    @include tablet() {
-        font-size: 0.875rem;
     }
 }

@@ -1,0 +1,10 @@
+.error-msg {
+    font-size: 0.813rem;
+    color: $textfield-danger;
+    font-weight: $fw-regular;
+    margin-top: 0.25rem;
+    
+    @include tablet() {
+        font-size: 0.875rem;
+    }
+}
