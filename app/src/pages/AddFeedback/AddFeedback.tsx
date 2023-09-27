@@ -11,7 +11,12 @@ import { ICategoryListItem } from "../../types/AppData/appdata.types";
 const AddFeedback: React.FC = () => {
   return (
     <Wrapper>
-      <SharedNavBanner hasAccompanyingButton={false} />
+      <SharedNavBanner
+        urlPath={undefined}
+        historyPath="/"
+        hasAccompanyingButton={false}
+        feedbackId={undefined}
+      />
       <FeedbackFormContainer icon={<PlugSVG />}>
         <SharedFeedbackHeader textContent="Create New Feedback" />
         <FeedbackFormWrapper>

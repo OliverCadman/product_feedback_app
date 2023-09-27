@@ -28,10 +28,6 @@
         font-size: 0.813rem;
         color: $dark-blue-2;
         font-family: $font-primary;
-
-        &.error {
-            outline: 1px solid $textfield-danger;
-        }
     }
 
     .comment-input__wrapper {

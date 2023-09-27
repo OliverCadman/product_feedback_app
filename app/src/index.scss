@@ -26,6 +26,21 @@ menu, ul, ol {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a.btn-link {
+  text-align: center;
+  min-width: 119px;
+  min-height: 40px;
+
+  @include tablet() {
+    min-width: 142px;
+    min-height: 44px;
+  }
+}
+
 /* Utilities */
 
 .h-100 {
@@ -129,9 +144,31 @@ menu, ul, ol {
     }
 }
 
+.link-btn {
+  font-size: 0.813rem;
+  color: $white;
+  min-width: 119px;
+  min-height: 40px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+
+  @include tablet() {
+    font-size: .875rem;
+    min-width: 144px;
+    min-height: 42px;
+  }
+
+  @include desktop() {
+    &:hover {
+      background-color: $blue-hover;
+    }
+  }
+}
+
+
+
 // For '+ Add Feedback' and 'Edit Feedback' buttons (<a> tags styled as buttons)
 .link-btn {
-  display: inline-block;
   font-weight: $fw-semibold;
   text-align: center;
   text-decoration: none;

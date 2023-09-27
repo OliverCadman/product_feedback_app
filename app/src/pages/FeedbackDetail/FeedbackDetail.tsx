@@ -58,7 +58,12 @@ const FeedbackDetail: React.FC = () => {
 
     return (
       <Wrapper>
-        <SharedNavBanner hasAccompanyingButton={true} />
+        <SharedNavBanner
+          urlPath={`/edit-feedback/${id}`}
+          historyPath="/"
+          hasAccompanyingButton={true}
+          feedbackId={id}
+        />
         <div className="feedback-detail__wrapper">
           <Suggestion
             title={title}
