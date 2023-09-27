@@ -8,8 +8,14 @@ import data from "../data/data";
 const initialState: AppData = {
   data: data,
   dropdownState: {
-    isDropdownOpen: false,
-    selectedItem: "Feature",
+    categoryDropdown: {
+      isDropdownOpen: false,
+      selectedItem: "Feature",
+    },
+    statusDropdown: {
+      isDropdownOpen: false,
+      selectedItem: "",
+    },
   },
   categories: [
     { id: 1, title: "Feature", selected: true, key: "categories" },
@@ -17,6 +23,12 @@ const initialState: AppData = {
     { id: 3, title: "UX", selected: false, key: "categories" },
     { id: 4, title: "Enhancement", selected: false, key: "categories" },
     { id: 5, title: "Bug", selected: false, key: "categories" },
+  ],
+  statuses: [
+    { id: 1, title: "Suggestion", selected: true, key: "statuses" },
+    { id: 2, title: "Planned", selected: false, key: "statuses" },
+    { id: 3, title: "In-Progress", selected: false, key: "statuses" },
+    { id: 4, title: "Live", selected: false, key: "statuses" },
   ],
   isInputValid: true,
   commentInput: "",

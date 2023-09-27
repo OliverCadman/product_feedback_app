@@ -11,10 +11,15 @@ const Dropdown: React.FC<DropdownProps> = ({
   selectItem,
   toggleList,
   selectedItem,
+  listType,
 }) => {
   return (
     <div className={`dd-wrapper ${isListOpen ? "focus" : ""}`}>
-      <button type="button" className="dd-header" onClick={toggleList}>
+      <button
+        type="button"
+        className="dd-header"
+        onClick={() => toggleList(listType)}
+      >
         <div className="dd-header-title flex row-between">
           {headerTitle}
           <span className={`arrow-up-icon ${isListOpen ? "open" : ""} `}>
@@ -41,7 +46,9 @@ const Dropdown: React.FC<DropdownProps> = ({
             >
               <button
                 type="button"
-                className="flex row-between centered"
+                className={`flex row-between centered ${
+                  selectedItem?.title === title ? "active" : ""
+                }`}
                 onClick={() => selectItem(item)}
               >
                 {title}

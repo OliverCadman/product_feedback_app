@@ -4,7 +4,7 @@
     min-height: 44px;
     display: flex;
     padding: 0 1.5rem;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: outline 0.1s ease;
 
      &.focus {
@@ -36,6 +36,7 @@
 
     .dd-list {
         position: absolute;
+        z-index: 1;
         background-color: $white;
         width: 100%;
         right: 0;
@@ -60,11 +61,23 @@
                 width: 100%;
                 text-align: left;
                 color: $dark-gray-blue;
-                
+                transition: color 0.2s ease;
+
+                &.active {
+                    color: $magenta;
+                }
 
                 @include tablet() {
                     font-size: 1rem;
                 }
+
+                @include desktop() {
+                    cursor: pointer;
+                    &:hover {
+                        color: $magenta;
+                    }
+                }
+                
             }
         }
     }

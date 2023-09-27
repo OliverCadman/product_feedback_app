@@ -1,27 +1,45 @@
 import React from "react";
-import { ICategoryListItem } from "../../types/AppData/appdata.types";
+import {
+  ICategoryListItem,
+  IStatusListItem,
+} from "../../types/AppData/appdata.types";
 import Dropdown from "../Dropdown/Dropdown";
 import { UseAppContext } from "../../context/AppDataContext";
 
 const AddFeedbackForm = () => {
   const { state, dispatch } = UseAppContext();
 
-  const selectItem = (item: ICategoryListItem) => {
-    const { title, id, key } = item;
+  const selectItem = (item: ICategoryListItem | IStatusListItem) => {
+    const { id, key } = item;
 
-    dispatch({
-      type: "SET_SELECTED_CATEGORY",
-      payload: { id },
-    });
+    if (key.toLowerCase() === "categories") {
+      dispatch({
+        type: "SET_SELECTED_CATEGORY",
+        payload: { id },
+      });
+    } else {
+      dispatch({
+        type: "SET_SELECTED_STATUS",
+        payload: { id },
+      });
+    }
   };
 
-  const toggleList = () => {
-    dispatch({ type: "TOGGLE_DROPDOWN", payload: null });
+  const toggleList = (listType: string) => {
+    if (listType.toLowerCase() === "category") {
+      dispatch({ type: "TOGGLE_CATEGORY_DROPDOWN", payload: null });
+
+      if (state.dropdownState.statusDropdown.isDropdownOpen) {
+        dispatch({ type: "TOGGLE_STATUS_DROPDOWN", payload: null });
+      }
+    } else {
+      dispatch({ type: "TOGGLE_STATUS_DROPDOWN", payload: null });
+    }
   };
 
-  const findSelectedItem = () => {
-    return state.categories.find(
-      (item: ICategoryListItem) => item.selected === true,
+  const findSelectedItem = (items: ICategoryListItem[] | IStatusListItem[]) => {
+    return items.find(
+      (item: ICategoryListItem | IStatusListItem) => item.selected === true,
     );
   };
 
@@ -39,15 +57,35 @@ const AddFeedbackForm = () => {
         <p>Choose a category for your feedback</p>
         <div className="form-control">
           <Dropdown
-            headerTitle={findSelectedItem()?.title}
-            isListOpen={state.dropdownState.isDropdownOpen}
+            headerTitle={findSelectedItem(state.categories)?.title}
+            isListOpen={state.dropdownState.categoryDropdown.isDropdownOpen}
             listItems={state.categories}
             selectItem={selectItem}
             toggleList={toggleList}
-            selectedItem={findSelectedItem()}
+            selectedItem={findSelectedItem(state.categories)}
+            listType="category"
           />
         </div>
       </div>
+      {findSelectedItem(state.categories)?.title.toLowerCase() === "feature" ? (
+        <div className="form-group">
+          <label htmlFor="feedback-categories">Status</label>
+          <p>Change feature state</p>
+          <div className="form-control">
+            <Dropdown
+              headerTitle={findSelectedItem(state.statuses)?.title}
+              isListOpen={state.dropdownState.statusDropdown.isDropdownOpen}
+              listItems={state.statuses}
+              selectItem={selectItem}
+              toggleList={toggleList}
+              selectedItem={findSelectedItem(state.statuses)}
+              listType="feature"
+            />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="form-group">
         <label htmlFor="feedback-detail">Feedback Detail</label>
         <p>

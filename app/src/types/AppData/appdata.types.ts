@@ -21,6 +21,13 @@ export interface ICategoryListItem {
   key: string;
 }
 
+export interface IStatusListItem {
+  id: number;
+  selected: boolean;
+  title: string;
+  key: string;
+}
+
 export interface IComment {
   id: string;
   content: string;
@@ -51,10 +58,17 @@ export type AppData = {
     productRequests: IProductRequest[];
   };
   dropdownState: {
-    isDropdownOpen: boolean;
-    selectedItem: string;
+    categoryDropdown: {
+      isDropdownOpen: boolean;
+      selectedItem: string;
+    };
+    statusDropdown: {
+      isDropdownOpen: boolean;
+      selectedItem: string;
+    };
   };
   categories: ICategoryListItem[];
+  statuses: IStatusListItem[];
   isInputValid: boolean | undefined;
   commentInput: "";
   replyInput: "";

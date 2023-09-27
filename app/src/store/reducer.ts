@@ -202,16 +202,31 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
-    case "TOGGLE_DROPDOWN": {
+    case "TOGGLE_CATEGORY_DROPDOWN": {
       return {
         ...state,
         dropdownState: {
           ...state.dropdownState,
-          isDropdownOpen: !state.dropdownState.isDropdownOpen,
+          categoryDropdown: {
+            ...state.dropdownState.categoryDropdown,
+            isDropdownOpen:
+              !state.dropdownState.categoryDropdown.isDropdownOpen,
+          },
         },
       };
     }
-
+    case "TOGGLE_STATUS_DROPDOWN": {
+      return {
+        ...state,
+        dropdownState: {
+          ...state.dropdownState,
+          statusDropdown: {
+            ...state.dropdownState.statusDropdown,
+            isDropdownOpen: !state.dropdownState.statusDropdown.isDropdownOpen,
+          },
+        },
+      };
+    }
     case "SET_SELECTED_CATEGORY": {
       const updatedCategories = state.categories.map(
         (item: ICategoryListItem) => {
@@ -228,7 +243,39 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         categories: updatedCategories,
         dropdownState: {
           ...state.dropdownState,
-          isDropdownOpen: false,
+          categoryDropdown: {
+            ...state.dropdownState.categoryDropdown,
+            isDropdownOpen: false,
+          },
+          statusDropdown: {
+            ...state.dropdownState.statusDropdown,
+            isDropdownOpen: false,
+          },
+        },
+      };
+    }
+    case "SET_SELECTED_STATUS": {
+      const updatedStatuses = state.statuses.map((item: ICategoryListItem) => {
+        if (item.id === action.payload.id) {
+          item.selected = true;
+        } else {
+          item.selected = false;
+        }
+        return item;
+      });
+      return {
+        ...state,
+        statuses: updatedStatuses,
+        dropdownState: {
+          ...state.dropdownState,
+          categoryDropdown: {
+            ...state.dropdownState.categoryDropdown,
+            isDropdownOpen: false,
+          },
+          statusDropdown: {
+            ...state.dropdownState.statusDropdown,
+            isDropdownOpen: false,
+          },
         },
       };
     }

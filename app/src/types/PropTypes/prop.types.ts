@@ -1,4 +1,9 @@
-import { IComment, IReply, ICategoryListItem } from "../AppData/appdata.types";
+import {
+  IComment,
+  IReply,
+  ICategoryListItem,
+  IStatusListItem,
+} from "../AppData/appdata.types";
 
 export interface FeedbackFormContainerProps {
   icon: React.ReactNode;
@@ -27,10 +32,11 @@ export interface SharedFeedbackHeaderProps {
 export interface DropdownProps {
   headerTitle: string | undefined;
   isListOpen: boolean;
-  listItems: ICategoryListItem[];
-  selectedItem: ICategoryListItem | undefined;
-  selectItem: (item: ICategoryListItem) => void;
-  toggleList: () => void;
+  listItems: ICategoryListItem[] | IStatusListItem[];
+  selectedItem: ICategoryListItem | IStatusListItem | undefined;
+  selectItem: (item: ICategoryListItem | IStatusListItem) => void;
+  toggleList: (listType: string) => void;
+  listType: string;
 }
 
 export interface ButtonProps {

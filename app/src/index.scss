@@ -150,6 +150,12 @@ menu, ul, ol {
 
 .btn-blue {
   background-color: $blue;
+  @include desktop() {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: $blue-hover;
+    }
+  }
 }
 
 .btn-dark-blue {
