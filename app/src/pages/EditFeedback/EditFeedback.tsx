@@ -39,6 +39,7 @@ const EditFeedback = () => {
               feedbackDescription={feedback.description}
               feedbackCategory={feedback.category}
               feedbackStatus={feedback.status}
+              feedbackId={id}
             />
           </FeedbackFormWrapper>
         </FeedbackFormContainer>

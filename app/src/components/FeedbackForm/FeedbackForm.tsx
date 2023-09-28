@@ -19,6 +19,7 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
   feedbackDescription,
   feedbackCategory,
   feedbackStatus,
+  feedbackId,
 }) => {
   const { state, dispatch } = UseAppContext();
   const navigate = useNavigate();
@@ -51,8 +52,6 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
         },
       });
     }
-
-    console.log(state);
   }, []);
 
   const setInput = (input: string, inputType: string) => {
@@ -118,14 +117,19 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
     if (!titleValid || !descriptionValid) return false;
 
     const feedbackPayload = {
-      id: nanoid(),
       title: titleInput,
       description: descriptionInput,
       category: findSelectedItem(state.categories).title,
       status: findSelectedItem(state.statuses).title,
+      id: feedbackId,
     };
 
-    dispatch({ type: "ADD_FEEDBACK", payload: feedbackPayload });
+    if (isEditing) {
+      dispatch({ type: "EDIT_FEEDBACK", payload: feedbackPayload });
+    } else {
+      feedbackPayload.id = nanoid();
+      dispatch({ type: "ADD_FEEDBACK", payload: feedbackPayload });
+    }
 
     navigate("/");
   };

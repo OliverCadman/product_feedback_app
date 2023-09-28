@@ -17,6 +17,7 @@ export interface FeedbackFormProps {
   feedbackDescription?: string;
   feedbackStatus?: string;
   feedbackCategory?: string;
+  feedbackId?: string;
 }
 
 export interface SuggestionProps {

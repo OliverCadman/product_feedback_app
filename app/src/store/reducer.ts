@@ -397,6 +397,33 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "EDIT_FEEDBACK": {
+      const productRequestCopy: IProductRequest[] = JSON.parse(
+        JSON.stringify(state.data.productRequests),
+      );
+
+      const { id, title, description, category, status } = action.payload;
+      const feedbackToChange = productRequestCopy.find(
+        (item: IProductRequest) => {
+          return item.id === id;
+        },
+      );
+
+      if (feedbackToChange) {
+        feedbackToChange.title = title;
+        feedbackToChange.description = description;
+        feedbackToChange.category = category;
+        feedbackToChange.status = status;
+
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            productRequests: productRequestCopy,
+          },
+        };
+      }
+    }
     case "SET_DEFAULT_FORM_VALUES": {
       const { title, description, category, status } = action.payload;
 
@@ -418,7 +445,6 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       };
 
       const updatedCategories = updateItems(state.categories, category);
-      console.log(updatedCategories);
       const updatedStatuses = updateItems(state.statuses, status);
 
       return {
