@@ -20,6 +20,24 @@
             letter-spacing: -0.19px;
         }
     }
+    // General paragraph styling. Can be overridden with error message styling.
+    p {
+        font-size: 0.813rem;
+        color: $dark-gray-blue;
+        margin-bottom: 1rem;
+        margin-top: 0.133rem;
+        font-weight: $fw-regular;
+    
+        @include tablet() {
+            font-size: 0.875rem;
+        }
+
+        &.error-msg {
+            color: $textfield-danger;
+        }
+    }
+
+  
 }
 
 .form-control {
@@ -54,6 +72,7 @@
     select {
         position: relative;
     }
+
 }
 
   .submit-btn__container {
@@ -99,21 +118,9 @@
                         min-width: 144px;
                         min-height: 44px;
                     }
+                  
                 }
                 }
             }
         }
     }
-
-// General paragraph styling. Can be overridden with error message styling.
-p {
-    font-size: 0.813rem;
-    color: $dark-gray-blue;
-    margin-bottom: 1rem;
-    margin-top: 0.133rem;
-    font-weight: $fw-regular;
-
-    @include tablet() {
-        font-size: 0.875rem;
-    }
-}

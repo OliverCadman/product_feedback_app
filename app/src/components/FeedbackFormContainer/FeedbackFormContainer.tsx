@@ -5,10 +5,17 @@ import { FeedbackFormContainerProps } from "../../types/PropTypes/prop.types";
 const FeedbackFormContainer: React.FC<FeedbackFormContainerProps> = ({
   children,
   icon,
+  iconType,
 }) => {
   return (
     <div className="feedback-form__container white-bg">
-      <div className="feedback-form__icon">{icon}</div>
+      <div
+        className={`feedback-form__icon ${
+          iconType === "edit-feedback" ? "edit" : ""
+        }`}
+      >
+        {icon}
+      </div>
       {children}
     </div>
   );

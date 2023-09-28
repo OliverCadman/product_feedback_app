@@ -25,6 +25,24 @@
             @include tablet() {
                 transform: scale(1);
             }
+
+        }
+
+        &.edit {
+            top: -20px;
+            left: 24px;
+
+            svg {
+                transform: scale(1);
+            }
+          
+            @include tablet() {
+                left: 42px;
+
+                svg {
+                    transform: scale(1.4);
+                }
+            }
         }
     }
 }

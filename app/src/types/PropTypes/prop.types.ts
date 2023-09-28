@@ -7,6 +7,7 @@ import {
 
 export interface FeedbackFormContainerProps {
   icon: React.ReactNode;
+  iconType: string;
   children: React.ReactNode;
 }
 
