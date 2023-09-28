@@ -11,6 +11,14 @@ export interface FeedbackFormContainerProps {
   children: React.ReactNode;
 }
 
+export interface FeedbackFormProps {
+  isEditing: boolean;
+  feedbackTitle?: string;
+  feedbackDescription?: string;
+  feedbackStatus?: string;
+  feedbackCategory?: string;
+}
+
 export interface SuggestionProps {
   id?: string;
   status?: string;

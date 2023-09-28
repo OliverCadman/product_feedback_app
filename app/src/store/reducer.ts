@@ -3,6 +3,7 @@ import {
   AppData,
   ICategoryListItem,
   IProductRequest,
+  IStatusListItem,
 } from "../types/AppData/appdata.types";
 import { Reducer } from "react";
 import { IComment } from "../types/AppData/appdata.types";
@@ -396,7 +397,47 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "SET_DEFAULT_FORM_VALUES": {
+      const { title, description, category, status } = action.payload;
 
+      console.log(category);
+      console.log(status);
+
+      const updateItems = (
+        list: ICategoryListItem[] | IStatusListItem[],
+        title: string,
+      ) => {
+        return list.map((item: ICategoryListItem | IStatusListItem) => {
+          if (item.title.toLowerCase() === title.toLowerCase()) {
+            item.selected = true;
+          } else {
+            item.selected = false;
+          }
+          return item;
+        });
+      };
+
+      const updatedCategories = updateItems(state.categories, category);
+      console.log(updatedCategories);
+      const updatedStatuses = updateItems(state.statuses, status);
+
+      return {
+        ...state,
+        categories: updatedCategories,
+        statuses: updatedStatuses,
+        feedbackFormInputs: {
+          ...state.feedbackFormInputs,
+          titleInput: {
+            ...state.feedbackFormInputs.titleInput,
+            inputValue: title,
+          },
+          descriptionInput: {
+            ...state.feedbackFormInputs.descriptionInput,
+            inputValue: description,
+          },
+        },
+      };
+    }
     default: {
       throw new Error("Unexpected action type.");
     }

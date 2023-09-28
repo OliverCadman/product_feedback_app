@@ -11,15 +11,17 @@ import InputErrorMessage from "../InputErrorMessage/InputErrorMessage";
 import { nanoid } from "nanoid";
 
 import { useNavigate } from "react-router-dom";
+import { FeedbackFormProps } from "../../types/PropTypes/prop.types";
 
-const AddFeedbackForm = () => {
+const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
+  isEditing,
+  feedbackTitle,
+  feedbackDescription,
+  feedbackCategory,
+  feedbackStatus,
+}) => {
   const { state, dispatch } = UseAppContext();
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
 
   const selectItem = (item: ICategoryListItem | IStatusListItem) => {
     const { id, key } = item;
@@ -36,6 +38,22 @@ const AddFeedbackForm = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      dispatch({
+        type: "SET_DEFAULT_FORM_VALUES",
+        payload: {
+          title: feedbackTitle,
+          description: feedbackDescription,
+          category: feedbackCategory,
+          status: feedbackStatus,
+        },
+      });
+    }
+
+    console.log(state);
+  }, []);
 
   const setInput = (input: string, inputType: string) => {
     dispatch({
@@ -153,7 +171,9 @@ const AddFeedbackForm = () => {
       </div>
       {findSelectedItem(state.categories)?.title.toLowerCase() === "feature" ? (
         <div className="form-group">
-          <label htmlFor="feedback-categories">Status</label>
+          <label htmlFor="feedback-categories">
+            {isEditing ? "Update Status" : "Status"}
+          </label>
           <p>Change feature state</p>
           <div className="form-control">
             <Dropdown

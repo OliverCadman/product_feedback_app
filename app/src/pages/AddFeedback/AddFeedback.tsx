@@ -5,7 +5,7 @@ import FeedbackFormContainer from "../../components/FeedbackFormContainer/Feedba
 import FeedbackFormWrapper from "../../components/FeedbackFormWrapper/FeedbackFormWrapper";
 import SharedFeedbackHeader from "../../components/SharedFeedbackHeader/SharedFeedbackHeader";
 import { ReactComponent as PlugSVG } from "../../assets/shared/icon-new-feedback.svg";
-import AddFeedbackForm from "../../components/FeedbackForms/AddFeedbackForm";
+import FeedbackForm from "../../components/FeedbackForm/FeedbackForm";
 import { ICategoryListItem } from "../../types/AppData/appdata.types";
 
 const AddFeedback: React.FC = () => {
@@ -20,7 +20,7 @@ const AddFeedback: React.FC = () => {
       <FeedbackFormContainer icon={<PlugSVG />} iconType="add-feedback">
         <SharedFeedbackHeader textContent="Create New Feedback" />
         <FeedbackFormWrapper>
-          <AddFeedbackForm />
+          <FeedbackForm isEditing={false} />
         </FeedbackFormWrapper>
       </FeedbackFormContainer>
     </Wrapper>
