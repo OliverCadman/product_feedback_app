@@ -35,6 +35,7 @@ export interface SharedNavBannerProps {
   hasAccompanyingButton?: boolean;
   feedbackId?: string;
   urlPath?: string;
+  isRoadmapPage?: boolean;
   historyPath: string;
 }
 
@@ -112,4 +113,9 @@ export interface ReplyInputProps {
   setReply: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   commentHasReplies?: boolean;
   textAreaValue?: string;
+}
+
+export interface RoadMapTabProps {
+  statusList: IStatusListItem[];
+  setSelectedStatus: (item: IStatusListItem) => void;
 }

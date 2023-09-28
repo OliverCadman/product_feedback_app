@@ -5,7 +5,7 @@ import { BacklinkProps } from "../../types/PropTypes/prop.types";
 
 const BackLink: React.FC<BacklinkProps> = ({ urlPath }) => {
   return (
-    <Link to={urlPath} className="link detail-link flex centered">
+    <Link to={urlPath} className="link detail-link">
       <span className="arrow-left-icon">
         <ArrowLeft />
       </span>

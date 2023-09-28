@@ -1,8 +1,9 @@
 import { RouterType } from "../types/router/router.types";
-import ProductFeedback from "./ProductFeedback/ProductFeedback";
-import FeedbackDetail from "./FeedbackDetail/FeedbackDetail";
-import AddFeedback from "./AddFeedback/AddFeedback";
-import EditFeedback from "./EditFeedback/EditFeedback";
+import ProductFeedback from "./ProductFeedback";
+import FeedbackDetail from "./FeedbackDetail";
+import AddFeedback from "./AddFeedback";
+import EditFeedback from "./EditFeedback";
+import Roadmap from "./Roadmap";
 
 const pagesData: RouterType[] = [
   {
@@ -24,6 +25,11 @@ const pagesData: RouterType[] = [
     path: "edit-feedback",
     title: "Edit Feedback",
     element: <EditFeedback />,
+  },
+  {
+    path: "roadmap",
+    title: "Roadmap",
+    element: <Roadmap />,
   },
 ];
 

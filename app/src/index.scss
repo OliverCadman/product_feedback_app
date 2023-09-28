@@ -19,8 +19,8 @@ button {
 
 #root {
   min-height: 100vh;
-  background-color: $light-gray;
 }
+
 
 menu, ul, ol {
   list-style-type: none;
@@ -97,6 +97,13 @@ a.btn-link {
   text-decoration: none;
 }
 
+.hide-md {
+  display: block;
+  @include tablet() {
+    display: none;
+  }
+}
+
 // Mobile Overlay
 .opaque-overlay {
   display: none;
@@ -147,15 +154,15 @@ a.btn-link {
 .link-btn {
   font-size: 0.813rem;
   color: $white;
-  min-width: 119px;
-  min-height: 40px;
+  width: 119px;
+  height: 40px;
   border-radius: 10px;
   transition: background-color 0.2s ease;
 
   @include tablet() {
     font-size: .875rem;
-    min-width: 144px;
-    min-height: 42px;
+    width: 144px;
+    height: 42px;
   }
 
   @include desktop() {
@@ -210,6 +217,10 @@ a.btn-link {
   background-color: $white;
 }
 
+.main-bg {
+  background-color: $light-gray;
+}
+
 .border-10 {
   border-radius: 10px;
 }
@@ -229,7 +240,6 @@ a.btn-link {
 }
 
 // Components
-@import "./components/mobile/Nav/navmob";
 @import "./components/SharedNavBanner/shared-nav-banner";
 @import "./components/SharedFeedbackHeader/shared-feedback-header";
 @import "./components/FeedbackBoard/feedbackboard";
@@ -251,10 +261,13 @@ a.btn-link {
 @import "./components/Dropdown/dropdown";
 @import "./components/InputErrorMessage/input-error-message";
 
+
 // Mobile-specific Styles
 @import "./components/mobile/Nav/navmob";
 @import "./components/mobile/Sidebar/sidebar-mob";
+@import "./components/mobile/RoadmapTabs/roadmap-tabs";
 
 // Pages
 @import "./pages/ProductFeedback/product-feedback";
 @import "./pages/FeedbackDetail/feedback-detail";
+@import "./pages/Roadmap/roadmap";

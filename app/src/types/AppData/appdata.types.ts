@@ -88,4 +88,8 @@ export type AppData = {
     titleInput: IInput;
     descriptionInput: IInput;
   };
+  roadmapState: {
+    selectedStatus?: string;
+    statusOptions: IStatusListItem[];
+  };
 };

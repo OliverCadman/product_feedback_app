@@ -8,17 +8,27 @@ const SharedNavBanner: React.FC<SharedNavBannerProps> = ({
   hasAccompanyingButton,
   historyPath,
   urlPath,
+  isRoadmapPage,
 }) => {
   return (
     <div
-      className={`flex row-between ${
+      className={`flex row-between centered ${
         !hasAccompanyingButton ? "fixed-height-44" : ""
-      }`}
+      }
+         ${isRoadmapPage ? "roadmap-nav__banner" : ""}`}
     >
-      <BackLink urlPath={historyPath} />
+      <div>
+        <BackLink urlPath={historyPath} />
+        {isRoadmapPage ? <h1>Roadmap</h1> : ""}
+      </div>
       {hasAccompanyingButton && urlPath ? (
-        <Link to={urlPath} className="btn-blue link-btn flex centered">
-          Edit Feedback
+        <Link
+          to={urlPath}
+          className={`link-btn flex centered ${
+            isRoadmapPage ? "btn-magenta" : "btn-blue"
+          }`}
+        >
+          {isRoadmapPage ? "+ Add Feedback" : "Edit Feedback"}
         </Link>
       ) : (
         ""

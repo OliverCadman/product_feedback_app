@@ -1,0 +1,24 @@
+.roadmap-tab__container {
+    padding: 1.25rem 0;
+    
+    li {
+        flex-basis: 33.3333%;
+        text-align: center;
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
+        font-size: 0.813rem;
+        letter-spacing: -0.18px;
+        font-weight: $fw-semibold;
+        color: $dark-blue-2;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+}

@@ -11,6 +11,8 @@ const Router = () => {
       return <Route path={`/${path}`} element={element} key={index} />;
     } else if (title.includes("Edit")) {
       return <Route path="/edit-feedback/:id" element={element} key={index} />;
+    } else if (title.includes("Roadmap")) {
+      return <Route path="/roadmap" element={element} key={index} />;
     } else {
       return <Route path="/" element={element} key={index} />;
     }
