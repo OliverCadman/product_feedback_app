@@ -1,0 +1,30 @@
+.roadmap-column__container {
+    @include tablet() {
+        gap: 0.625rem;
+
+        .roadmap-column__header {  
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            h2, p {
+                font-size: 0.875rem;
+            }
+    
+            h2 {
+                letter-spacing: -0.19px;
+                color: $dark-blue-2;
+                margin-bottom: 0.25rem;
+            }
+
+            p {
+                color: $dark-gray-blue;
+            }
+
+        }
+    }
+
+    @include desktop() {
+        gap: 1.875rem;
+    }
+
+    
+}

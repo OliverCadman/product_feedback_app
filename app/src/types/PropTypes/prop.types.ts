@@ -3,6 +3,7 @@ import {
   IReply,
   ICategoryListItem,
   IStatusListItem,
+  IProductRequest,
 } from "../AppData/appdata.types";
 
 export interface FeedbackFormContainerProps {
@@ -119,4 +120,12 @@ export interface RoadMapTabProps {
   statusList: IStatusListItem[];
   setSelectedStatus: (item: IStatusListItem, index: number) => void;
   activeTabIndex: number;
+}
+
+export interface RoadMapColumnProps {
+  id: number;
+  items: IProductRequest[];
+  columnColor?: string;
+  name?: string;
+  description?: string;
 }

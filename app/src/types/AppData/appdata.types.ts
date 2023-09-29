@@ -26,6 +26,7 @@ export interface IStatusListItem {
   selected: boolean;
   title: string;
   key: string;
+  description: string;
 }
 
 export interface IComment {
@@ -87,10 +88,6 @@ export type AppData = {
   feedbackFormInputs: {
     titleInput: IInput;
     descriptionInput: IInput;
-  };
-  roadmapState: {
-    selectedStatus?: string;
-    statusOptions: IStatusListItem[];
   };
   activeTabIndex: number;
 };

@@ -2,7 +2,11 @@ import React from "react";
 import SharedNavBanner from "../../components/SharedNavBanner/SharedNavBanner";
 import RoadmapTabs from "../../components/mobile/RoadmapTabs/RoadmapTabs";
 import { UseAppContext } from "../../context/AppDataContext";
-import { IStatusListItem } from "../../types/AppData/appdata.types";
+import {
+  IProductRequest,
+  IStatusListItem,
+} from "../../types/AppData/appdata.types";
+import RoadmapColumn from "../../components/Roadmap/RoadmapColumn";
 
 const Roadmap = () => {
   const { state, dispatch } = UseAppContext();
@@ -14,8 +18,16 @@ const Roadmap = () => {
   };
 
   const setTabIndex = (index: number) => {
-    console.log(index);
     dispatch({ type: "SET_ACTIVE_TAB_INDEX", payload: index });
+  };
+
+  const filterFeatureRequests = (
+    productRequests: IProductRequest[],
+    title: string,
+  ) => {
+    return productRequests.filter((request: IProductRequest) => {
+      return request.status.toLowerCase() === title.toLowerCase();
+    });
   };
 
   return (
@@ -33,6 +45,23 @@ const Roadmap = () => {
           activeTabIndex={state.activeTabIndex}
         />
       </div>
+      <section className="roadmap-column__container flex">
+        {state.statuses.map((status: IStatusListItem) => {
+          const { id, title, description } = status;
+          const plannedFeatures = filterFeatureRequests(
+            state.data.productRequests,
+            title,
+          );
+          return (
+            <RoadmapColumn
+              key={id}
+              description={description}
+              name={title}
+              items={plannedFeatures}
+            />
+          );
+        })}
+      </section>
     </div>
   );
 };
