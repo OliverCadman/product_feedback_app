@@ -108,6 +108,13 @@ a.btn-link {
   }
 }
 
+.hide-sm {
+  display: none;
+  @include tablet() {
+    display: flex;
+  }
+}
+
 // Mobile Overlay
 .opaque-overlay {
   display: none;

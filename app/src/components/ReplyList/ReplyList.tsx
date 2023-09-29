@@ -1,8 +1,6 @@
-import React, { RefObject } from "react";
+import React from "react";
 import { ReplyListProps } from "../../types/PropTypes/prop.types";
 import Reply from "../Reply/Reply";
-import { useEffect, useRef, useState } from "react";
-
 const ReplyList: React.FC<ReplyListProps> = ({
   replies,
   imageElement,

@@ -24,6 +24,10 @@
     @include tablet() {
         border-radius: 10px;
         padding: 1.688rem 2rem;
+        width: 100%;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
 
         a {
             font-size: 0.875rem;
@@ -36,9 +40,6 @@
     } 
 
     @include desktop() {
-        width: 100%;
         max-width: 1110px;
-        margin-left: auto;
-        margin-right: auto;
     }
 }

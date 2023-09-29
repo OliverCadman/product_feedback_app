@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import { ReplyProps } from "../../types/PropTypes/prop.types";
 import { getImageURL } from "../../utils/helpers";
 import { UseAppContext } from "../../context/AppDataContext";
-import CommentInput from "../CommentInput/CommentInput";
 
 const Reply: React.FC<ReplyProps> = (props) => {
   const replyImageRef: React.RefObject<HTMLImageElement> = useRef(null);

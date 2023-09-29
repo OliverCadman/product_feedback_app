@@ -124,7 +124,7 @@ export interface RoadMapTabProps {
 }
 
 export interface RoadMapColumnProps {
-  id: number;
+  id?: number;
   items: IProductRequest[];
   columnColor?: string;
   name?: string;

@@ -6,7 +6,6 @@ import FeedbackFormWrapper from "../../components/FeedbackFormWrapper/FeedbackFo
 import SharedFeedbackHeader from "../../components/SharedFeedbackHeader/SharedFeedbackHeader";
 import { ReactComponent as PlugSVG } from "../../assets/shared/icon-new-feedback.svg";
 import FeedbackForm from "../../components/FeedbackForm/FeedbackForm";
-import { ICategoryListItem } from "../../types/AppData/appdata.types";
 
 const AddFeedback: React.FC = () => {
   return (

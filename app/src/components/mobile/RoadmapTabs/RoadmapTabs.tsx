@@ -16,8 +16,6 @@ const RoadmapTabs: React.FC<RoadMapTabProps> = ({
       ? "underline-3"
       : "";
 
-  console.log(activeTabIndex);
-
   return (
     <menu className={`flex roadmap-tab__container ${underlineStyles}`}>
       {statusList.map((status: IStatusListItem, index: number) => {

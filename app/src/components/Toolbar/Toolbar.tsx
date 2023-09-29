@@ -1,4 +1,3 @@
-import React from "react";
 import { ReactComponent as IconSuggestions } from "../../assets/suggestions/icon-suggestions.svg";
 import { Link } from "react-router-dom";
 

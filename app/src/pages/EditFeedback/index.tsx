@@ -1,4 +1,3 @@
-import React from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import FeedbackFormWrapper from "../../components/FeedbackFormWrapper/FeedbackFormWrapper";
 import FeedbackFormContainer from "../../components/FeedbackFormContainer/FeedbackFormContainer";

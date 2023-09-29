@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useEffect } from "react";
+import React from "react";
 import SharedNavBanner from "../../components/SharedNavBanner/SharedNavBanner";
 import Suggestion from "../../components/Suggestion/Suggestion";
 import { useParams } from "react-router-dom";

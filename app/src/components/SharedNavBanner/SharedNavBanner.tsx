@@ -1,5 +1,4 @@
 import React from "react";
-import FeedbackButton from "../FeedbackButton/FeedbackButton";
 import BackLink from "../BackLink/BackLink";
 import { SharedNavBannerProps } from "../../types/PropTypes/prop.types";
 import { Link } from "react-router-dom";

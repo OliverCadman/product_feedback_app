@@ -1,4 +1,3 @@
-import React from "react";
 import SharedNavBanner from "../../components/SharedNavBanner/SharedNavBanner";
 import RoadmapTabs from "../../components/mobile/RoadmapTabs/RoadmapTabs";
 import { UseAppContext } from "../../context/AppDataContext";
@@ -44,8 +43,27 @@ const Roadmap = () => {
           statusList={state.statuses}
           activeTabIndex={state.activeTabIndex}
         />
+        {state.statuses.map((status: IStatusListItem) => {
+          if (status.selected) {
+            const plannedFeatures = filterFeatureRequests(
+              state.data.productRequests,
+              status.title,
+            );
+            const { id, title, description, color } = status;
+            return (
+              <RoadmapColumn
+                key={id}
+                id={id}
+                description={description}
+                name={title}
+                items={plannedFeatures}
+                columnColor={color}
+              />
+            );
+          }
+        })}
       </div>
-      <section className="roadmap-column__container flex">
+      <section className="roadmap__wrapper hide-sm">
         {state.statuses.map((status: IStatusListItem) => {
           const { id, title, description, color } = status;
           const plannedFeatures = filterFeatureRequests(
