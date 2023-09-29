@@ -54,6 +54,7 @@ const initialState: AppData = {
     replyingTo: "",
   },
   idOfCommentReceivingReply: "",
+  activeTabIndex: 0,
 };
 
 const AppDataContext = createContext<{

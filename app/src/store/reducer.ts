@@ -464,6 +464,12 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "SET_ACTIVE_TAB_INDEX": {
+      return {
+        ...state,
+        activeTabIndex: action.payload,
+      };
+    }
     default: {
       throw new Error("Unexpected action type.");
     }

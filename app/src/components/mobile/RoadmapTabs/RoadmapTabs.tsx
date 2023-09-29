@@ -5,16 +5,28 @@ import { IStatusListItem } from "../../../types/AppData/appdata.types";
 const RoadmapTabs: React.FC<RoadMapTabProps> = ({
   statusList,
   setSelectedStatus,
+  activeTabIndex,
 }) => {
+  const underlineStyles =
+    activeTabIndex === 0
+      ? "underline-1"
+      : activeTabIndex === 1
+      ? "underline-2"
+      : activeTabIndex === 2
+      ? "underline-3"
+      : "";
+
+  console.log(activeTabIndex);
+
   return (
-    <menu className="flex roadmap-tab__container">
-      {statusList.map((status: IStatusListItem) => {
+    <menu className={`flex roadmap-tab__container ${underlineStyles}`}>
+      {statusList.map((status: IStatusListItem, index: number) => {
         return (
           <li key={status.id}>
             <button
               type="button"
               className={status.selected ? "active" : ""}
-              onClick={() => setSelectedStatus(status)}
+              onClick={() => setSelectedStatus(status, index)}
             >
               {status.title}
             </button>

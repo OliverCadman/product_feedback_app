@@ -117,5 +117,6 @@ export interface ReplyInputProps {
 
 export interface RoadMapTabProps {
   statusList: IStatusListItem[];
-  setSelectedStatus: (item: IStatusListItem) => void;
+  setSelectedStatus: (item: IStatusListItem, index: number) => void;
+  activeTabIndex: number;
 }

@@ -92,4 +92,5 @@ export type AppData = {
     selectedStatus?: string;
     statusOptions: IStatusListItem[];
   };
+  activeTabIndex: number;
 };

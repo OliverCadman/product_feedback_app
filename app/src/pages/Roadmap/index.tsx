@@ -7,8 +7,15 @@ import { IStatusListItem } from "../../types/AppData/appdata.types";
 const Roadmap = () => {
   const { state, dispatch } = UseAppContext();
 
-  const setSelectedStatus = (item: IStatusListItem) => {
+  const setSelectedStatus = (item: IStatusListItem, index: number) => {
     dispatch({ type: "SET_SELECTED_STATUS", payload: item });
+
+    setTabIndex(index);
+  };
+
+  const setTabIndex = (index: number) => {
+    console.log(index);
+    dispatch({ type: "SET_ACTIVE_TAB_INDEX", payload: index });
   };
 
   return (
@@ -23,6 +30,7 @@ const Roadmap = () => {
         <RoadmapTabs
           setSelectedStatus={setSelectedStatus}
           statusList={state.statuses}
+          activeTabIndex={state.activeTabIndex}
         />
       </div>
     </div>
