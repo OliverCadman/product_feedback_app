@@ -27,6 +27,7 @@ export interface IStatusListItem {
   title: string;
   key: string;
   description: string;
+  color: string;
 }
 
 export interface IComment {

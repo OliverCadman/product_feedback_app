@@ -30,6 +30,7 @@ export interface SuggestionProps {
   comments?: IComment[];
   category?: string;
   page?: string;
+  color?: string;
 }
 
 export interface SharedNavBannerProps {

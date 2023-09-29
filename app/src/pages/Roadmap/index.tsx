@@ -47,7 +47,7 @@ const Roadmap = () => {
       </div>
       <section className="roadmap-column__container flex">
         {state.statuses.map((status: IStatusListItem) => {
-          const { id, title, description } = status;
+          const { id, title, description, color } = status;
           const plannedFeatures = filterFeatureRequests(
             state.data.productRequests,
             title,
@@ -55,9 +55,11 @@ const Roadmap = () => {
           return (
             <RoadmapColumn
               key={id}
+              id={id}
               description={description}
               name={title}
               items={plannedFeatures}
+              columnColor={color}
             />
           );
         })}

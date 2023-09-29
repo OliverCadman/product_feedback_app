@@ -24,6 +24,16 @@
 
     @include desktop() {
         gap: 1.875rem;
+
+        .roadmap-column__header {
+            h2 {
+                font-size: 1.125rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
     }
 
     

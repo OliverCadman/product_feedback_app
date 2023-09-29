@@ -14,6 +14,7 @@ const Suggestion: React.FC<SuggestionProps> = ({
   title,
   category,
   page,
+  color,
 }) => {
   const commentsExist = comments && comments.length > 0;
 
@@ -23,8 +24,26 @@ const Suggestion: React.FC<SuggestionProps> = ({
         page === "roadmap" ? "roadmap" : ""
       }`}
     >
+      {page === "roadmap" && status ? (
+        <div
+          className="suggestion__border__roadmap"
+          style={{ backgroundColor: color }}
+        ></div>
+      ) : (
+        ""
+      )}
       <div className="suggestion__content">
-        {page === "roadmap" && status ? <p>{formatString(status)}</p> : ""}
+        {page === "roadmap" && status ? (
+          <p className="flex centered-vertical">
+            <span
+              className="colored-circle"
+              style={{ backgroundColor: color }}
+            ></span>
+            {formatString(status)}
+          </p>
+        ) : (
+          ""
+        )}
         {page === "product-feedback" ? (
           <h2>
             <Link to={`/${id}`} className="link suggestion__link">

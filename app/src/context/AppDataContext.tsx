@@ -45,6 +45,7 @@ const initialState: AppData = {
       description: "Ideas prioritized for research",
       selected: true,
       key: "statuses",
+      color: "#f49f85",
     },
     {
       id: 2,
@@ -52,6 +53,7 @@ const initialState: AppData = {
       description: "Currently being developed",
       selected: false,
       key: "statuses",
+      color: "#ad1fea",
     },
     {
       id: 3,
@@ -59,6 +61,7 @@ const initialState: AppData = {
       description: "Released features",
       selected: false,
       key: "statuses",
+      color: "#62bcfa",
     },
   ],
   isInputValid: true,

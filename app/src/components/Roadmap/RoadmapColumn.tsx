@@ -30,6 +30,7 @@ const RoadmapColumn: React.FC<RoadMapColumnProps> = ({
             description={description}
             comments={comments}
             category={category}
+            color={columnColor}
             page="roadmap"
           />
         );
