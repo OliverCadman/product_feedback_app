@@ -1,8 +1,9 @@
 import React from "react";
-import { ReactComponent as HamburgerIcon } from "../../../assets/shared/mobile/icon-hamburger.svg";
-import { ReactComponent as CloseIcon } from "../../../assets/shared/mobile/icon-close.svg";
+import { UseAppContext } from "../../../context/AppDataContext";
 
 const NavMob: React.FC = () => {
+  const { state, dispatch } = UseAppContext();
+
   return (
     <nav>
       <div className="nav--mobile flex row-between align-center bar-padding">
@@ -13,7 +14,17 @@ const NavMob: React.FC = () => {
           </div>
         </div>
         <div className="nav--sidebar-icon">
-          <HamburgerIcon />
+          <button
+            className={`hamburger-icon ${state.mobileNavOpen ? "open" : ""}`}
+            type="button"
+            onClick={() =>
+              dispatch({ type: "TOGGLE_MOBILE_NAV", payload: null })
+            }
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </nav>

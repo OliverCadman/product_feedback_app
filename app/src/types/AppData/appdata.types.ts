@@ -78,6 +78,7 @@ export type AppData = {
       selectedItem: string;
     };
   };
+  mobileNavOpen: boolean;
   categories: ICategoryListItem[];
   statuses: IStatusListItem[];
   isInputValid: boolean | undefined;

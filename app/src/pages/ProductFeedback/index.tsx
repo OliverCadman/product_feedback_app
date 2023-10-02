@@ -7,6 +7,7 @@ import LogoBrandBackgroundDesktop from "../../assets/suggestions/desktop/backgro
 import LogoBrandBackgroundTablet from "../../assets/suggestions/tablet/background-header.png";
 import SidebarMob from "../../components/mobile/Sidebar/SidebarMob";
 import Toolbar from "../../components/Toolbar/Toolbar";
+import { UseAppContext } from "../../context/AppDataContext";
 
 const backgroundCSS = `
   @media screen and (min-width: 768px) {
@@ -24,6 +25,8 @@ const backgroundCSS = `
 `;
 
 const ProductFeedback: React.FC = () => {
+  const { state } = UseAppContext();
+
   return (
     <>
       <style scoped>{backgroundCSS}</style>
@@ -33,7 +36,9 @@ const ProductFeedback: React.FC = () => {
         <div className="toolbar-sm__container toolbar-bg">
           <Toolbar />
         </div>
-        <div className="opaque-overlay"></div>
+        <div
+          className={`opaque-overlay ${state.mobileNavOpen ? "show" : ""}`}
+        ></div>
         <div className="product-feedback__container flex">
           <aside className="product-feedback__panels">
             <div className="product-feedback__panel logo-brand">

@@ -19,6 +19,7 @@ button {
 
 #root {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
@@ -117,14 +118,23 @@ a.btn-link {
 
 // Mobile Overlay
 .opaque-overlay {
-  display: none;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 72.469px; // Height of mobile navbar
   left: 0;
-  z-index: 1;
+  z-index: -1;
   background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+
+  &.show {
+    z-index: 1;
+    opacity: 1;
+  }
 
   @include tablet() {
     display: none;
@@ -253,12 +263,10 @@ a.btn-link {
 // Components
 @import "./components/SharedNavBanner/shared-nav-banner";
 @import "./components/SharedFeedbackHeader/shared-feedback-header";
-@import "./components/FeedbackBoard/feedbackboard";
 @import "./components/NoFeedbackAlert/no-feedback-alert";
 @import "./components/Sidebar/Categories/categories";
 @import "./components/Sidebar/Roadmap/roadmap";
 @import "./components/Suggestion/suggestion";
-@import "./components/SuggestionList/suggestion-list";
 @import "./components/Toolbar/toolbar";
 @import "./components/BackLink/back-link";
 @import "./components/Comment/comment";

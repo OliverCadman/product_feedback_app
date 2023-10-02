@@ -13,8 +13,12 @@ export const reducer: Reducer<AppData, AppDataAction> = (
   action: AppDataAction | undefined,
 ) => {
   switch (action?.type) {
-    case "DELETE_FEEDBACK": {
-      return state;
+    case "TOGGLE_MOBILE_NAV": {
+      return {
+        ...state,
+        mobileNavOpen:
+          action.payload === null ? !state.mobileNavOpen : action.payload,
+      };
     }
     case "INVALID_INPUT": {
       switch (action.payload) {

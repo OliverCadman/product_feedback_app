@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { DropdownProps } from "../../types/PropTypes/prop.types";
 import { ReactComponent as IconCheck } from "../../assets/shared/icon-check.svg";
 import { ReactComponent as IconArrowDown } from "../../assets/shared/icon-arrow-down.svg";
 import { Transition } from "@headlessui/react";
+import ToggledTransition from "../../animations/ToggledTransition";
 
 const Dropdown: React.FC<DropdownProps> = ({
   isListOpen,
@@ -31,18 +32,11 @@ const Dropdown: React.FC<DropdownProps> = ({
         {listItems.map((item, index) => {
           const { id, title, selected, key } = item;
           return (
-            <Transition
-              as="li"
-              key={id}
-              style={
-                isListOpen ? { transitionDelay: `${40 * index}ms` } : undefined
-              }
-              enter="transition ease-out duration-300"
-              enterFrom="transform opacity-0 translate-y-40"
-              leave="no-transition"
-              leaveFrom="transform opacity-100 translate-y-0"
-              leaveTo="opacity-0"
-              show={isListOpen}
+            <ToggledTransition
+              element="li"
+              isOpen={isListOpen}
+              elementIndex={index}
+              key={index}
             >
               <button
                 type="button"
@@ -54,7 +48,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 {title}
                 {selectedItem?.title === title ? <IconCheck /> : ""}
               </button>
-            </Transition>
+            </ToggledTransition>
           );
         })}
       </ul>

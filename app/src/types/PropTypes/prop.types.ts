@@ -130,3 +130,10 @@ export interface RoadMapColumnProps {
   name?: string;
   description?: string;
 }
+
+export interface ToggledTransitionProps {
+  isOpen: boolean;
+  element?: React.ElementType;
+  elementIndex?: number;
+  children: React.ReactNode;
+}

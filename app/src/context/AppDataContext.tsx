@@ -76,6 +76,7 @@ const initialState: AppData = {
   },
   idOfCommentReceivingReply: "",
   activeTabIndex: 0,
+  mobileNavOpen: false,
 };
 
 const AppDataContext = createContext<{

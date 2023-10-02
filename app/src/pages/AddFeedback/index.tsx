@@ -6,8 +6,11 @@ import FeedbackFormWrapper from "../../components/FeedbackFormWrapper/FeedbackFo
 import SharedFeedbackHeader from "../../components/SharedFeedbackHeader/SharedFeedbackHeader";
 import { ReactComponent as PlugSVG } from "../../assets/shared/icon-new-feedback.svg";
 import FeedbackForm from "../../components/FeedbackForm/FeedbackForm";
+import { UseSidebarClose } from "../../hooks/UseSidebarClose";
 
 const AddFeedback: React.FC = () => {
+  const sidebar = UseSidebarClose();
+
   return (
     <Wrapper>
       <SharedNavBanner

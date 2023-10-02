@@ -6,9 +6,12 @@ import {
   IStatusListItem,
 } from "../../types/AppData/appdata.types";
 import RoadmapColumn from "../../components/Roadmap/RoadmapColumn";
+import { UseSidebarClose } from "../../hooks/UseSidebarClose";
 
 const Roadmap = () => {
   const { state, dispatch } = UseAppContext();
+
+  UseSidebarClose();
 
   const setSelectedStatus = (item: IStatusListItem, index: number) => {
     dispatch({ type: "SET_SELECTED_STATUS", payload: item });

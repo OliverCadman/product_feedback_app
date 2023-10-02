@@ -1,14 +1,23 @@
 .sidebar-mob {
-    display: none;
     width: 271px;
     height: 100%;
     position: absolute;
     top: 72.469px; // Height of mobile navbar
     bottom: 0;
-    right: 0;
+    right: -100%;
     background-color: $light-gray;
     z-index: 2;
     padding: 1.5rem;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    transition-delay: 0.2s;
+    
+
+    &.open {
+        right: 0;
+    }
 
     @include tablet() {
         display: none;
