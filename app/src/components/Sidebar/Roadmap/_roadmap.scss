@@ -3,6 +3,7 @@
         font-size: 1.125rem;
         letter-spacing: -0.25px;
         font-weight: $fw-semibold;
+        color: $dark-blue-2;
     }
 
     .roadmap__link {
@@ -15,11 +16,11 @@
 }
 
 .roadmap__items-list {
-    padding-left: 0.875rem;
     margin-top: 1.5rem;
     font-size: 1rem;
     color: $dark-gray-blue;
     li {
+        margin: 0.5rem 0;
         &::marker {
             margin-right: 1rem;
             color: pink;

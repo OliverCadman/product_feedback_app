@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { UseAppContext } from "../../../context/AppDataContext";
+import {
+  IProductRequest,
+  IStatusListItem,
+} from "../../../types/AppData/appdata.types";
+import { filterFeatureRequests } from "../../../utils/helpers";
 
 const Roadmap: React.FC = () => {
+  const { state } = UseAppContext();
+
   return (
     <div className="product-feedback__panel widget-container">
       <div className="roadmap__header flex row-between align-center">
@@ -12,24 +20,28 @@ const Roadmap: React.FC = () => {
       </div>
       <div className="roadmap__items">
         <ul className="roadmap__items-list">
-          <li>
-            <div className="flex row-between">
-              <p>Planned</p>
-              <p>2</p>
-            </div>
-          </li>
-          <li>
-            <div className="flex row-between">
-              <p>In-Progress</p>
-              <p>3</p>
-            </div>
-          </li>
-          <li>
-            <div className="flex row-between">
-              <p>Live</p>
-              <p>1</p>
-            </div>
-          </li>
+          {state.statuses.map((status: IStatusListItem) => {
+            const { id, title, color } = status;
+
+            const filteredFeatureRequest = filterFeatureRequests(
+              state.data.productRequests,
+              title,
+            );
+            return (
+              <li key={id}>
+                <div className="flex row-between">
+                  <p>
+                    <span
+                      className="colored-circle"
+                      style={{ backgroundColor: color }}
+                    ></span>
+                    {title}
+                  </p>
+                  <p>{filteredFeatureRequest.productRequests.length}</p>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

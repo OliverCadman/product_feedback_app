@@ -1,12 +1,10 @@
 import SharedNavBanner from "../../components/SharedNavBanner/SharedNavBanner";
 import RoadmapTabs from "../../components/mobile/RoadmapTabs/RoadmapTabs";
 import { UseAppContext } from "../../context/AppDataContext";
-import {
-  IProductRequest,
-  IStatusListItem,
-} from "../../types/AppData/appdata.types";
+import { IStatusListItem } from "../../types/AppData/appdata.types";
 import RoadmapColumn from "../../components/Roadmap/RoadmapColumn";
 import { UseSidebarClose } from "../../hooks/UseSidebarClose";
+import { filterFeatureRequests } from "../../utils/helpers";
 
 const Roadmap = () => {
   const { state, dispatch } = UseAppContext();
@@ -21,15 +19,6 @@ const Roadmap = () => {
 
   const setTabIndex = (index: number) => {
     dispatch({ type: "SET_ACTIVE_TAB_INDEX", payload: index });
-  };
-
-  const filterFeatureRequests = (
-    productRequests: IProductRequest[],
-    title: string,
-  ) => {
-    return productRequests.filter((request: IProductRequest) => {
-      return request.status.toLowerCase() === title.toLowerCase();
-    });
   };
 
   return (
@@ -59,7 +48,7 @@ const Roadmap = () => {
                 id={id}
                 description={description}
                 name={title}
-                items={plannedFeatures}
+                items={plannedFeatures.productRequests}
                 columnColor={color}
               />
             );
@@ -79,7 +68,7 @@ const Roadmap = () => {
               id={id}
               description={description}
               name={title}
-              items={plannedFeatures}
+              items={plannedFeatures.productRequests}
               columnColor={color}
             />
           );

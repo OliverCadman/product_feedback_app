@@ -260,6 +260,16 @@ a.btn-link {
     outline: 1px solid $textfield-danger;
 }
 
+// Shared
+
+.colored-circle {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 1.25rem;
+}
+
 // Components
 @import "./components/SharedNavBanner/shared-nav-banner";
 @import "./components/SharedFeedbackHeader/shared-feedback-header";
