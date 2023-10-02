@@ -19,8 +19,6 @@ export interface ICategoryListItem {
   selected: boolean;
   title: string;
   key: string;
-  color: string;
-  description: string;
 }
 
 export interface IStatusListItem {

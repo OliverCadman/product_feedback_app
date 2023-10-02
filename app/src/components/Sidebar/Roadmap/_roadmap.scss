@@ -12,6 +12,16 @@
         font-weight: $fw-semibold;
         display: inline;
         vertical-align: bottom;
+        transition: all 0.2s ease;
+        
+
+        @include desktop() {
+            cursor: pointer;
+            &:hover {
+                color: $blue-hover;
+                text-decoration: underline;
+            }
+        }
     }
 }
 

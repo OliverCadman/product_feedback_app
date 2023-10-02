@@ -32,11 +32,11 @@ const initialState: AppData = {
     },
   },
   categories: [
-    { id: 1, title: "Feature", selected: true, key: "categories" },
-    { id: 2, title: "UI", selected: false, key: "categories" },
-    { id: 3, title: "UX", selected: false, key: "categories" },
-    { id: 4, title: "Enhancement", selected: false, key: "categories" },
-    { id: 5, title: "Bug", selected: false, key: "categories" },
+    { id: 1, title: "UI", selected: false, key: "categories" },
+    { id: 2, title: "UX", selected: false, key: "categories" },
+    { id: 3, title: "Enhancement", selected: false, key: "categories" },
+    { id: 4, title: "Bug", selected: false, key: "categories" },
+    { id: 5, title: "Feature", selected: true, key: "categories" },
   ],
   statuses: [
     {

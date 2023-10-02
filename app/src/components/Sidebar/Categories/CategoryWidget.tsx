@@ -1,18 +1,25 @@
-import React from 'react'
+import React from "react";
+import { UseAppContext } from "../../../context/AppDataContext";
 
 const CategoryWidget: React.FC = () => {
+  const { state } = UseAppContext();
   return (
-     <div className="product-feedback__panel widget-container categories">
-          <div className="categories__widget-wrapper flex">
-            {Array.from(new Array(6)).map((x, i) => {
-              return <button className="category__widget" type="button" key={i}>
-                        UX
-                    </button>
-            })}
-          </div>
-        </div>
-    
-  )
-}
+    <div className="product-feedback__panel widget-container categories">
+      <div className="categories__widget-wrapper flex">
+        <button className="category__widget" type="button">
+          All
+        </button>
+        {state.categories.map((category, i) => {
+          console.log(category);
+          return (
+            <button className="category__widget" type="button" key={i}>
+              {category.title}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-export default CategoryWidget
+export default CategoryWidget;
