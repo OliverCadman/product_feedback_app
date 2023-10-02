@@ -25,12 +25,12 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
   const navigate = useNavigate();
 
   const selectItem = (item: ICategoryListItem | IStatusListItem) => {
-    const { id, key } = item;
+    const { id, key, title } = item;
 
     if (key.toLowerCase() === "categories") {
       dispatch({
         type: "SET_SELECTED_CATEGORY",
-        payload: { id },
+        payload: { id, title },
       });
     } else {
       dispatch({
@@ -81,7 +81,12 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
       (item: ICategoryListItem | IStatusListItem) => item.selected === true,
     );
 
-    if (foundItem) return foundItem;
+    if (foundItem) {
+      if (foundItem.title !== "All") {
+        return foundItem;
+      }
+      return items[1];
+    }
 
     return items[0];
   };

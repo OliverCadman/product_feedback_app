@@ -1,9 +1,9 @@
 import { ReactComponent as NoFeedbackIcon } from "../../assets/suggestions/illustration-empty.svg";
-import FeedbackButton from "../FeedbackButton/FeedbackButton";
+import { Link } from "react-router-dom";
 
 const NoFeedbackAlert = () => {
   return (
-    <section className="no-feedback__container centered">
+    <section className="no-feedback__container flex centered">
       <div className="no-feedback__content">
         <NoFeedbackIcon />
         <h2>There is no feedback yet.</h2>
@@ -11,12 +11,9 @@ const NoFeedbackAlert = () => {
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </p>
-        <FeedbackButton
-          isReplyButton={false}
-          buttonType="button"
-          className="btn-magenta"
-          textContent="+ Add Feedback"
-        />
+        <Link to="/add-feedback" className="btn btn-magenta link-btn">
+          + Add Feedback
+        </Link>
       </div>
     </section>
   );

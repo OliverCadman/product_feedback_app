@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavMob from "../../components/mobile/Nav/NavMob";
-import FeedbackBoard from "../../components/FeedbackBoard/FeedbackBoard";
+import SuggestionList from "../../components/SuggestionList/SuggestionList";
 import CategoryWidget from "../../components/Sidebar/Categories/CategoryWidget";
 import Roadmap from "../../components/Sidebar/Roadmap/Roadmap";
 import LogoBrandBackgroundDesktop from "../../assets/suggestions/desktop/background-header.png";
@@ -8,6 +8,9 @@ import LogoBrandBackgroundTablet from "../../assets/suggestions/tablet/backgroun
 import SidebarMob from "../../components/mobile/Sidebar/SidebarMob";
 import Toolbar from "../../components/Toolbar/Toolbar";
 import { UseAppContext } from "../../context/AppDataContext";
+import { useMemo } from "react";
+import { IProductRequest } from "../../types/AppData/appdata.types";
+import NoFeedbackAlert from "../../components/NoFeedbackAlert/NoFeedbackAlert";
 
 const backgroundCSS = `
   @media screen and (min-width: 768px) {
@@ -25,7 +28,33 @@ const backgroundCSS = `
 `;
 
 const ProductFeedback: React.FC = () => {
-  const { state } = UseAppContext();
+  const { state, dispatch } = UseAppContext();
+
+  useEffect(() => {
+    if (state.selectedFilterOption !== "All") {
+      dispatch({
+        type: "SET_SELECTED_CATEGORY",
+        payload: { id: state.categories[0].id, title: "All" },
+      });
+    }
+  }, []);
+
+  const filteredRequests = useMemo(() => {
+    let res = state.data.productRequests;
+
+    if (state.selectedFilterOption !== "All") {
+      res = state.data.productRequests?.filter(
+        (productRequest: IProductRequest) => {
+          return (
+            productRequest.category.toLowerCase() ===
+            state.selectedFilterOption.toLowerCase()
+          );
+        },
+      );
+    }
+
+    return res;
+  }, [state.selectedFilterOption]);
 
   return (
     <>
@@ -56,8 +85,11 @@ const ProductFeedback: React.FC = () => {
             <div className="toolbar-lg__container toolbar-bg">
               <Toolbar />
             </div>
-            <FeedbackBoard />
-            {/* <NoFeedbackAlert /> */}
+            {filteredRequests.length > 0 ? (
+              <SuggestionList productRequests={filteredRequests} />
+            ) : (
+              <NoFeedbackAlert />
+            )}
           </section>
         </div>
       </main>

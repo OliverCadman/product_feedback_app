@@ -2,7 +2,6 @@ import React from "react";
 import { DropdownProps } from "../../types/PropTypes/prop.types";
 import { ReactComponent as IconCheck } from "../../assets/shared/icon-check.svg";
 import { ReactComponent as IconArrowDown } from "../../assets/shared/icon-arrow-down.svg";
-import { Transition } from "@headlessui/react";
 import ToggledTransition from "../../animations/ToggledTransition";
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -30,26 +29,29 @@ const Dropdown: React.FC<DropdownProps> = ({
       </button>
       <ul className="dd-list" role="list">
         {listItems.map((item, index) => {
-          const { id, title, selected, key } = item;
-          return (
-            <ToggledTransition
-              element="li"
-              isOpen={isListOpen}
-              elementIndex={index}
-              key={index}
-            >
-              <button
-                type="button"
-                className={`flex row-between centered ${
-                  selectedItem?.title === title ? "active" : ""
-                }`}
-                onClick={() => selectItem(item)}
+          const { id, title } = item;
+
+          if (title !== "All") {
+            return (
+              <ToggledTransition
+                element="li"
+                isOpen={isListOpen}
+                elementIndex={index}
+                key={index}
               >
-                {title}
-                {selectedItem?.title === title ? <IconCheck /> : ""}
-              </button>
-            </ToggledTransition>
-          );
+                <button
+                  type="button"
+                  className={`flex row-between centered ${
+                    selectedItem?.title === title ? "active" : ""
+                  }`}
+                  onClick={() => selectItem(item)}
+                >
+                  {title}
+                  {selectedItem?.title === title ? <IconCheck /> : ""}
+                </button>
+              </ToggledTransition>
+            );
+          }
         })}
       </ul>
     </div>

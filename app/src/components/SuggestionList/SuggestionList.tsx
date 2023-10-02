@@ -1,12 +1,14 @@
 import Suggestion from "../Suggestion/Suggestion";
 import { UseAppContext } from "../../context/AppDataContext";
+import { IProductRequest } from "../../types/AppData/appdata.types";
+import { SuggestionListProps } from "../../types/PropTypes/prop.types";
 
-const SuggestionList = () => {
+const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
   const { state } = UseAppContext();
 
   return (
     <section className="section-list">
-      {state.data.productRequests?.map((request) => {
+      {productRequests?.map((request: IProductRequest) => {
         const { id, description, status, title, upvotes, comments, category } =
           request;
         return (

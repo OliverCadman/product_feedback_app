@@ -277,6 +277,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       );
       return {
         ...state,
+        selectedFilterOption: action.payload.title,
         categories: updatedCategories,
         dropdownState: {
           ...state.dropdownState,

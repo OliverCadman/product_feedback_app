@@ -1,4 +1,7 @@
-import { IProductRequest } from "../types/AppData/appdata.types";
+import {
+  ICategoryListItem,
+  IProductRequest,
+} from "../types/AppData/appdata.types";
 
 export const getImageURL = (name: string) => {
   return new URL(`${name}`, import.meta.url).href.replace("/utils", "");
@@ -14,4 +17,15 @@ export const filterFeatureRequests = (
     }),
     status: title,
   };
+};
+
+export const filterFeatureCategories = (
+  categories: ICategoryListItem[],
+  productRequestCategory: string,
+) => {
+  return categories.filter((category: ICategoryListItem) => {
+    return (
+      category.title.toLowerCase() === productRequestCategory.toLowerCase()
+    );
+  });
 };

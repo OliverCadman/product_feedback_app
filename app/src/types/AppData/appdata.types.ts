@@ -92,4 +92,5 @@ export type AppData = {
     descriptionInput: IInput;
   };
   activeTabIndex: number;
+  selectedFilterOption: string;
 };

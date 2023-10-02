@@ -6,6 +6,10 @@ import {
   IProductRequest,
 } from "../AppData/appdata.types";
 
+export interface SuggestionListProps {
+  productRequests: IProductRequest[];
+}
+
 export interface FeedbackFormContainerProps {
   icon: React.ReactNode;
   iconType: string;

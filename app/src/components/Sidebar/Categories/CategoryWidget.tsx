@@ -2,18 +2,25 @@ import React from "react";
 import { UseAppContext } from "../../../context/AppDataContext";
 
 const CategoryWidget: React.FC = () => {
-  const { state } = UseAppContext();
+  const { state, dispatch } = UseAppContext();
   return (
     <div className="product-feedback__panel widget-container categories">
       <div className="categories__widget-wrapper flex">
-        <button className="category__widget" type="button">
-          All
-        </button>
         {state.categories.map((category, i) => {
-          console.log(category);
+          const { id, title, selected } = category;
           return (
-            <button className="category__widget" type="button" key={i}>
-              {category.title}
+            <button
+              className={`category__widget ${selected ? "active" : ""}`}
+              type="button"
+              key={i}
+              onClick={() => {
+                dispatch({
+                  type: "SET_SELECTED_CATEGORY",
+                  payload: { id, title },
+                });
+              }}
+            >
+              {title}
             </button>
           );
         })}
