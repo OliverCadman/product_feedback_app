@@ -18,6 +18,11 @@ const CategoryWidget: React.FC = () => {
                   type: "SET_SELECTED_CATEGORY",
                   payload: { id, title },
                 });
+
+                dispatch({
+                  type: "FILTER_PRODUCT_REQUESTS",
+                  payload: title,
+                });
               }}
             >
               {title}

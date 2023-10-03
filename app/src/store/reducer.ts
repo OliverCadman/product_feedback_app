@@ -7,7 +7,7 @@ import {
 } from "../types/AppData/appdata.types";
 import { Reducer } from "react";
 import { IComment } from "../types/AppData/appdata.types";
-import { arraySwap } from "@dnd-kit/sortable";
+import data from "../data/data";
 
 export const reducer: Reducer<AppData, AppDataAction> = (
   state: AppData,
@@ -503,6 +503,31 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "FILTER_PRODUCT_REQUESTS": {
+      const productRequestCopy = JSON.parse(
+        JSON.stringify(state.data.productRequests),
+      );
+      console.log(action.payload);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          productRequests:
+            action.payload !== "All"
+              ? data.productRequests.filter((request: IProductRequest) => {
+                  console.log(
+                    request.category.toLowerCase(),
+                    action.payload.toLowerCase(),
+                  );
+                  return (
+                    request.category.toLowerCase() ===
+                    action.payload.toLowerCase()
+                  );
+                })
+              : data.productRequests,
+        },
+      };
+    }
     case "SET_REQUEST_STATUS": {
       const { updatedStatus, requestId } = action.payload;
       const productRequestCopy = JSON.parse(
@@ -549,6 +574,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       }
       // Most comments
       // Least comments
+      console.log(productRequestCopy);
       return {
         ...state,
         data: {

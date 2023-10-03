@@ -39,23 +39,6 @@ const ProductFeedback: React.FC = () => {
     }
   }, []);
 
-  const filteredRequests = useMemo(() => {
-    let res = state.data.productRequests;
-
-    if (state.selectedFilterOption !== "All") {
-      res = state.data.productRequests?.filter(
-        (productRequest: IProductRequest) => {
-          return (
-            productRequest.category.toLowerCase() ===
-            state.selectedFilterOption.toLowerCase()
-          );
-        },
-      );
-    }
-
-    return res;
-  }, [state.selectedFilterOption]);
-
   return (
     <>
       <style scoped>{backgroundCSS}</style>
@@ -85,8 +68,8 @@ const ProductFeedback: React.FC = () => {
             <div className="toolbar-lg__container toolbar-bg">
               <Toolbar />
             </div>
-            {filteredRequests.length > 0 ? (
-              <SuggestionList productRequests={filteredRequests} />
+            {state.data.productRequests.length > 0 ? (
+              <SuggestionList productRequests={state.data.productRequests} />
             ) : (
               <NoFeedbackAlert />
             )}
