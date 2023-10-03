@@ -263,6 +263,18 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "TOGGLE_SORT_DROPDOWN": {
+      return {
+        ...state,
+        dropdownState: {
+          ...state.dropdownState,
+          sortDropdown: {
+            ...state.dropdownState.sortDropdown,
+            isDropdownOpen: !state.dropdownState.sortDropdown.isDropdownOpen,
+          },
+        },
+      };
+    }
     case "SET_SELECTED_CATEGORY": {
       const updatedCategories = state.categories.map(
         (item: ICategoryListItem) => {
@@ -518,7 +530,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
-    case "SET_REQUEST_INDEX": {
+    case "SET_SELECTED_SORT_OPTION": {
       return {
         ...state,
       };

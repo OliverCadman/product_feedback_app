@@ -7,9 +7,29 @@
     border-radius: 5px;
     transition: outline 0.1s ease;
 
-     &.focus {
+    &.focus {
           outline: 1px solid $blue;  
         }
+
+    &.sort {
+        background-color: transparent;
+        padding: 0.25rem;
+        
+        .dd-header-title {
+            color: $white;
+        }
+
+        .dd-list {
+            min-width: 255px;
+        }
+
+        .arrow-up-icon {
+            margin-left: 0.5rem;
+            svg path {
+                stroke: $white;
+            }
+        }
+    }
     
     & > button {
         background: transparent;

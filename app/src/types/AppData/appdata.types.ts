@@ -14,12 +14,16 @@ export interface IProductRequest {
   comments?: IComment[];
 }
 
-export interface ICategoryListItem {
+export interface IGenericListItem {
   id: number;
   selected: boolean;
   title: string;
   key: string;
 }
+
+export type ICategoryListItem = IGenericListItem;
+
+export type ISortListItem = IGenericListItem;
 
 export interface IStatusListItem {
   id: number;
@@ -75,10 +79,15 @@ export type AppData = {
       isDropdownOpen: boolean;
       selectedItem: string;
     };
+    sortDropdown: {
+      isDropdownOpen: boolean;
+      selectedItem: string;
+    };
   };
   mobileNavOpen: boolean;
   categories: ICategoryListItem[];
   statuses: IStatusListItem[];
+  sortOptions: ISortListItem[];
   isInputValid: boolean | undefined;
   commentInput: "";
   replyInput: "";
@@ -93,6 +102,7 @@ export type AppData = {
   };
   activeTabIndex: number;
   selectedFilterOption: string;
+  selectedSortOption: string;
   draggedItem?: {
     data: IProductRequest;
     isDragActive: boolean;

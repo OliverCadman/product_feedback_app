@@ -16,6 +16,10 @@ const initialState: AppData = {
       isDropdownOpen: false,
       selectedItem: "",
     },
+    sortDropdown: {
+      isDropdownOpen: false,
+      selectedItem: "",
+    },
   },
   feedbackFormInputs: {
     titleInput: {
@@ -80,6 +84,13 @@ const initialState: AppData = {
   activeTabIndex: 0,
   mobileNavOpen: false,
   draggedItem: undefined,
+  sortOptions: [
+    { id: 1, title: "Most Upvotes", selected: true, key: "sort-options" },
+    { id: 2, title: "Least Upvotes", selected: false, key: "sort-options" },
+    { id: 3, title: "Most Comments", selected: false, key: "sort-options" },
+    { id: 4, title: "Least Comments", selected: false, key: "sort-options" },
+  ],
+  selectedSortOption: "Most Upvotes",
 };
 
 const AppDataContext = createContext<{

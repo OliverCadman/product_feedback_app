@@ -66,6 +66,7 @@ export interface DropdownProps {
   selectItem: (item: ICategoryListItem | IStatusListItem) => void;
   toggleList: (listType: string) => void;
   listType: string;
+  dropdownType?: string;
 }
 
 export interface ButtonProps {

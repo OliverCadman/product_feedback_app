@@ -12,9 +12,14 @@ const Dropdown: React.FC<DropdownProps> = ({
   toggleList,
   selectedItem,
   listType,
+  dropdownType,
 }) => {
   return (
-    <div className={`dd-wrapper ${isListOpen ? "focus" : ""}`}>
+    <div
+      className={`dd-wrapper ${isListOpen ? "focus" : ""} ${
+        dropdownType && dropdownType === "sort" ? "sort" : ""
+      }`}
+    >
       <button
         type="button"
         className="dd-header"
