@@ -7,6 +7,7 @@ import {
 } from "../types/AppData/appdata.types";
 import { Reducer } from "react";
 import { IComment } from "../types/AppData/appdata.types";
+import { arraySwap } from "@dnd-kit/sortable";
 
 export const reducer: Reducer<AppData, AppDataAction> = (
   state: AppData,
@@ -53,7 +54,6 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           };
         }
         case "feedbackDescription": {
-          console.log("feedback!");
           return {
             ...state,
             feedbackFormInputs: {
@@ -213,7 +213,6 @@ export const reducer: Reducer<AppData, AppDataAction> = (
 
       const updatedProductComments = productFeedback.comments.map(
         (mappedComment: IComment) => {
-          console.log(mappedComment);
           return mappedComment.id === commentId ? comment : mappedComment;
         },
       );
@@ -432,9 +431,6 @@ export const reducer: Reducer<AppData, AppDataAction> = (
     case "SET_DEFAULT_FORM_VALUES": {
       const { title, description, category, status } = action.payload;
 
-      console.log(category);
-      console.log(status);
-
       const updateItems = (
         list: ICategoryListItem[] | IStatusListItem[],
         title: string,
@@ -473,6 +469,58 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       return {
         ...state,
         activeTabIndex: action.payload,
+      };
+    }
+    case "ACTIVATE_DRAG": {
+      const { id, title, status, category, description, comments } =
+        action.payload;
+
+      return {
+        ...state,
+        draggedItem: {
+          ...state.draggedItem,
+          data: {
+            ...state.draggedItem?.data,
+            id,
+            title,
+            status,
+            category,
+            description,
+            comments,
+          },
+        },
+      };
+    }
+    case "SET_REQUEST_STATUS": {
+      const { updatedStatus, requestId } = action.payload;
+      const productRequestCopy = JSON.parse(
+        JSON.stringify(state.data.productRequests),
+      );
+
+      const requestToUpdate = productRequestCopy.find(
+        (request: IProductRequest) => {
+          return request.id === requestId;
+        },
+      );
+
+      if (!requestToUpdate)
+        return {
+          ...state,
+        };
+
+      requestToUpdate.status = updatedStatus;
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          productRequests: productRequestCopy,
+        },
+      };
+    }
+    case "SET_REQUEST_INDEX": {
+      return {
+        ...state,
       };
     }
     default: {

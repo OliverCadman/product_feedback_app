@@ -26,7 +26,7 @@ export interface FeedbackFormProps {
 }
 
 export interface SuggestionProps {
-  id?: string;
+  id: string;
   status?: string;
   upvotes?: number;
   description?: string;
@@ -35,6 +35,11 @@ export interface SuggestionProps {
   category?: string;
   page?: string;
   color?: string;
+  index?: number;
+  dragStyle?: {
+    opacity: number;
+    listStyle: string;
+  };
 }
 
 export interface SharedNavBannerProps {
@@ -128,10 +133,10 @@ export interface RoadMapTabProps {
 }
 
 export interface RoadMapColumnProps {
-  id?: number;
+  id: number | string;
   items: IProductRequest[];
   columnColor?: string;
-  name?: string;
+  name: string;
   description?: string;
 }
 

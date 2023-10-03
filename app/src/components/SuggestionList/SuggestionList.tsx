@@ -8,7 +8,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
 
   return (
     <section className="section-list">
-      {productRequests?.map((request: IProductRequest) => {
+      {productRequests?.map((request: IProductRequest, index: number) => {
         const { id, description, status, title, upvotes, comments, category } =
           request;
         return (
@@ -21,6 +21,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
             upvotes={upvotes}
             comments={comments}
             category={category}
+            index={index}
             page="product-feedback"
           />
         );

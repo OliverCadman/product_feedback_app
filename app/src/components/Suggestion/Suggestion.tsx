@@ -4,6 +4,8 @@ import { ReactComponent as CaretUpIcon } from "../../assets/shared/icon-arrow-up
 import { ReactComponent as CommentIcon } from "../../assets/shared/icon-comments.svg";
 import { SuggestionProps } from "../../types/PropTypes/prop.types";
 import { Link } from "react-router-dom";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 const Suggestion: React.FC<SuggestionProps> = ({
   id,
@@ -15,14 +17,36 @@ const Suggestion: React.FC<SuggestionProps> = ({
   category,
   page,
   color,
+  index,
+  dragStyle,
 }) => {
   const commentsExist = comments && comments.length > 0;
+
+  const { attributes, listeners, setNodeRef, transition, transform } =
+    useSortable({
+      id,
+      data: {
+        index,
+        status,
+        id,
+      },
+    });
+
+  const dragStyles = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    ...dragStyle,
+  };
 
   return (
     <article
       className={`suggestion__container row-between ${
         page === "roadmap" ? "roadmap" : ""
       }`}
+      {...attributes}
+      {...listeners}
+      ref={setNodeRef}
+      style={dragStyles}
     >
       {page === "roadmap" && status ? (
         <div

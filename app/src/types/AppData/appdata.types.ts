@@ -93,4 +93,8 @@ export type AppData = {
   };
   activeTabIndex: number;
   selectedFilterOption: string;
+  draggedItem?: {
+    data: IProductRequest;
+    isDragActive: boolean;
+  };
 };

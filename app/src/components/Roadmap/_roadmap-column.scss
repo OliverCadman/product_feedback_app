@@ -19,6 +19,7 @@
     @include tablet() {
         gap: 0.625rem;
         padding: 0;
+        flex-basis: 50%;
         
         .roadmap-column__header {  
             margin-top: 2rem;
