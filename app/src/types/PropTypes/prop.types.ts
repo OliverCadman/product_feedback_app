@@ -4,6 +4,8 @@ import {
   ICategoryListItem,
   IStatusListItem,
   IProductRequest,
+  ISortListItem,
+  IGenericListItem,
 } from "../AppData/appdata.types";
 
 export interface SuggestionListProps {
@@ -62,7 +64,7 @@ export interface DropdownProps {
   headerTitle?: string;
   isListOpen: boolean;
   listItems: ICategoryListItem[] | IStatusListItem[];
-  selectedItem: ICategoryListItem | IStatusListItem;
+  selectedItem: ICategoryListItem | IStatusListItem | ISortListItem;
   selectItem: (item: ICategoryListItem | IStatusListItem) => void;
   toggleList: (listType: string) => void;
   listType: string;

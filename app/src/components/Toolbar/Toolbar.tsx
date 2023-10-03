@@ -2,12 +2,35 @@ import { ReactComponent as IconSuggestions } from "../../assets/suggestions/icon
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 import { UseAppContext } from "../../context/AppDataContext";
+import { ISortListItem } from "../../types/AppData/appdata.types";
 
 const Toolbar = () => {
   const { state, dispatch } = UseAppContext();
 
   const toggleDropdown = () => {
     dispatch({ type: "TOGGLE_SORT_DROPDOWN", payload: null });
+  };
+
+  const selectItem = (item: ISortListItem) => {
+    dispatch({
+      type: "SET_SELECTED_SORT_OPTION",
+      payload: { sortOption: item.title },
+    });
+  };
+
+  const findSelectedSortOption = (
+    sortOptions: ISortListItem[],
+    sortOption: string,
+  ) => {
+    const foundOption = sortOptions.find(
+      (option: ISortListItem) => option.title === sortOption,
+    );
+
+    if (foundOption) {
+      return foundOption;
+    } else {
+      return sortOptions[0];
+    }
   };
 
   return (
@@ -25,10 +48,14 @@ const Toolbar = () => {
             listItems={state.sortOptions}
             isListOpen={state.dropdownState.sortDropdown.isDropdownOpen}
             listType="li"
-            selectedItem={state.sortOptions[1]}
+            selectedItem={findSelectedSortOption(
+              state.sortOptions,
+              state.selectedSortOption,
+            )}
             headerTitle={state.selectedSortOption}
             toggleList={toggleDropdown}
             dropdownType="sort"
+            selectItem={selectItem}
           />
         </li>
         <li>

@@ -531,8 +531,38 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       };
     }
     case "SET_SELECTED_SORT_OPTION": {
+      const { sortOption } = action.payload;
+
+      let productRequestCopy = JSON.parse(
+        JSON.stringify(state.data.productRequests),
+      );
+      // Upvotes
+      if (sortOption.includes("Upvotes")) {
+        console.log(sortOption.includes("Most"));
+        productRequestCopy = productRequestCopy.sort(
+          (currentRequest: IProductRequest, nextRequest: IProductRequest) => {
+            return sortOption.includes("Most")
+              ? nextRequest.upvotes - currentRequest.upvotes
+              : currentRequest.upvotes - nextRequest.upvotes;
+          },
+        );
+      }
+      // Most comments
+      // Least comments
       return {
         ...state,
+        data: {
+          ...state.data,
+          productRequests: productRequestCopy,
+        },
+        selectedSortOption: sortOption,
+        dropdownState: {
+          ...state.dropdownState,
+          sortDropdown: {
+            ...state.dropdownState.sortDropdown,
+            isDropdownOpen: false,
+          },
+        },
       };
     }
     default: {
