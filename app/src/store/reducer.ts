@@ -515,10 +515,6 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           productRequests:
             action.payload !== "All"
               ? data.productRequests.filter((request: IProductRequest) => {
-                  console.log(
-                    request.category.toLowerCase(),
-                    action.payload.toLowerCase(),
-                  );
                   return (
                     request.category.toLowerCase() ===
                     action.payload.toLowerCase()
@@ -569,6 +565,22 @@ export const reducer: Reducer<AppData, AppDataAction> = (
             return sortOption.includes("Most")
               ? nextRequest.upvotes - currentRequest.upvotes
               : currentRequest.upvotes - nextRequest.upvotes;
+          },
+        );
+      } else if (sortOption.includes("Comments")) {
+        productRequestCopy = productRequestCopy.sort(
+          (currentRequest: IProductRequest, nextRequest: IProductRequest) => {
+            const currentRequestCommentLength = currentRequest.comments?.length;
+            const nextRequestCommentLength = nextRequest.comments?.length;
+            if (sortOption.includes("Most")) {
+              if (!currentRequestCommentLength) return 1;
+              if (!nextRequestCommentLength) return -1;
+              return nextRequestCommentLength - currentRequestCommentLength;
+            } else {
+              if (!currentRequestCommentLength) return -1;
+              if (!nextRequestCommentLength) return 1;
+              return currentRequestCommentLength - nextRequestCommentLength;
+            }
           },
         );
       }
