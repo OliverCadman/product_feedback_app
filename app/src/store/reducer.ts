@@ -620,16 +620,19 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       );
 
-      const upvoteExists = Boolean(
+      const upvote =
+        productRequestToUpvote &&
         upvotedRequestsCopy.find((request: IProductRequest) => {
-          return request.id === action.payload;
-        }),
-      );
+          return request.id === productRequestToUpvote.id;
+        });
+
+      const upvoteExists = Boolean(upvote);
 
       if (!upvoteExists) {
         upvotedRequestsCopy.push(productRequestToUpvote);
       } else {
-        upvotedRequestsCopy.shift(productRequestToUpvote);
+        let index = upvotedRequestsCopy.indexOf(upvote);
+        upvotedRequestsCopy.splice(index, 1);
       }
 
       if (productRequestToUpvote) {
