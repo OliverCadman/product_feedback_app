@@ -8,7 +8,15 @@
     @include tablet() {
         min-height: 600px;
         margin-top: 1.5rem;
+    }
 
+    @include desktop() {
+        margin-top: 88px;
+        margin-left: 271px;
+        position: fixed;
+        width: calc(1110px - 271px);
+        min-height: 558px;
+        max-height: 558px;
     }
 
     .no-feedback__content {

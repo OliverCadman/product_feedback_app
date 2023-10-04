@@ -65,6 +65,10 @@
     }
 
     &:not(.roadmap) {
+        @include desktop() {
+            display: grid;
+            grid-template-columns: 40px 1fr 40px;
+        }
         .suggestion__content {
              h2 {
                     font-size: 0.813rem;
@@ -129,6 +133,12 @@
     
             .suggestion__icon-wrapper.comment {
                 display: flex;
+            }
+        }
+
+        @include desktop() {
+            .suggestion__content {
+                margin-left: 2.5rem;
             }
         }
     }

@@ -18,6 +18,14 @@
         width: 100%;
         border-radius: 10px;
     }
+
+    @include desktop() {
+        position: fixed;
+        top: 94px;
+        margin-left: 271px;
+        width: 100%;
+        max-width: calc(1110px - 271px);
+    }
 }
 
 .toolbar-bg {

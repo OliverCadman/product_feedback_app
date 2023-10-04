@@ -1,0 +1,13 @@
+@include desktop() {
+    .section-list__container {
+        margin-left: 271px;
+        margin-top: 88px;
+        position: fixed;
+        width: 100%;
+        max-width: 839px;
+        top: 79px;
+        bottom: 0;
+        overflow: scroll;
+        z-index: 5;
+    }
+}

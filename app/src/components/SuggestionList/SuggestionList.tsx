@@ -14,22 +14,30 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
   }, [state.data.productRequests]);
 
   return (
-    <section className="section-list">
-      {productRequests?.map((request: IProductRequest, index: number) => {
-        const { id, description, status, title, upvotes, comments, category } =
-          request;
-        return (
-          <Transition
-            appear
-            key={id}
-            show={state.isProductListShowing}
-            style={{ transitionDelay: `${50 * index}ms` }}
-            enter="transition ease-out duration-300"
-            enterFrom="transform opacity-0 translate-y-40"
-            leave="no-transition"
-            leaveFrom="transform opacity-100 translate-y-0"
-            leaveTo="opacity-0"
-          >
+    <div className="section-list__container">
+      <section className="section-list">
+        {productRequests?.map((request: IProductRequest, index: number) => {
+          const {
+            id,
+            description,
+            status,
+            title,
+            upvotes,
+            comments,
+            category,
+          } = request;
+          return (
+            // <Transition
+            //   appear
+            //   key={id}
+            //   show={state.isProductListShowing}
+            //   style={{ transitionDelay: `${50 * index}ms` }}
+            //   enter="transition ease-out duration-300"
+            //   enterFrom="transform opacity-0 translate-y-40"
+            //   leave="no-transition"
+            //   leaveFrom="transform opacity-100 translate-y-0"
+            //   leaveTo="opacity-0"
+            // >
             <Suggestion
               id={id}
               description={description}
@@ -41,10 +49,11 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
               index={index}
               page="product-feedback"
             />
-          </Transition>
-        );
-      })}
-    </section>
+            // </Transition>
+          );
+        })}
+      </section>
+    </div>
   );
 };
 
