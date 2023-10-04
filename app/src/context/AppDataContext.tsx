@@ -7,6 +7,7 @@ import data from "../data/data";
 
 const initialState: AppData = {
   data: data,
+  isModalDisplayed: false,
   isProductListShowing: true,
   dropdownState: {
     categoryDropdown: {

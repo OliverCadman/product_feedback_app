@@ -8,6 +8,7 @@ import {
 import { Reducer } from "react";
 import { IComment } from "../types/AppData/appdata.types";
 import data from "../data/data";
+import { findItem, removeItem } from "../utils/helpers";
 
 export const reducer: Reducer<AppData, AppDataAction> = (
   state: AppData,
@@ -622,17 +623,12 @@ export const reducer: Reducer<AppData, AppDataAction> = (
 
       const upvote =
         productRequestToUpvote &&
-        upvotedRequestsCopy.find((request: IProductRequest) => {
-          return request.id === productRequestToUpvote.id;
-        });
+        findItem(upvotedRequestsCopy, productRequestToUpvote.id);
 
-      const upvoteExists = Boolean(upvote);
-
-      if (!upvoteExists) {
+      if (!upvote) {
         upvotedRequestsCopy.push(productRequestToUpvote);
       } else {
-        let index = upvotedRequestsCopy.indexOf(upvote);
-        upvotedRequestsCopy.splice(index, 1);
+        removeItem(upvotedRequestsCopy, upvote);
       }
 
       if (productRequestToUpvote) {
@@ -647,6 +643,37 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           },
         };
       }
+    }
+    case "TOGGLE_MODAL": {
+      return {
+        ...state,
+        isModalDisplayed: !state.isModalDisplayed,
+      };
+    }
+    case "DELETE_FEEDBACK": {
+      const productRequestCopy = JSON.parse(
+        JSON.stringify(state.data.productRequests),
+      );
+
+      const productRequestToDelete = findItem(
+        productRequestCopy,
+        action.payload,
+      );
+
+      if (productRequestToDelete) {
+        const requestDeleted = removeItem(
+          productRequestCopy,
+          productRequestToDelete,
+        );
+      }
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          productRequests: productRequestCopy,
+        },
+        isModalDisplayed: false,
+      };
     }
     default: {
       throw new Error("Unexpected action type.");

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { checkFormValidity } from "../../data/utils/validation";
 import InputErrorMessage from "../InputErrorMessage/InputErrorMessage";
 import { nanoid } from "nanoid";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 import { useNavigate } from "react-router-dom";
 import { FeedbackFormProps } from "../../types/PropTypes/prop.types";
@@ -139,104 +140,143 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
     navigate("/");
   };
 
+  const handleDelete = (itemId?: string) => {
+    dispatch({ type: "DELETE_FEEDBACK", payload: itemId });
+    navigate("/");
+  };
+
+  const closeModal = () => {
+    dispatch({ type: "TOGGLE_MODAL", payload: null });
+  };
+
   return (
-    <form className="feedback__form" onSubmit={handleFormSubmit}>
-      <div className="form-group">
-        <label htmlFor="feedback-title">Feedback Title</label>
-        <p>Add a short, descriptive headline</p>
-        <div className="form-control">
-          <input
-            type="text"
-            id="feedback-title"
-            className={`input-focusable ${
-              state.feedbackFormInputs.titleInput.showError ? "error" : ""
-            }`}
-            value={state.feedbackFormInputs.titleInput.inputValue}
-            onChange={(e: React.SyntheticEvent<HTMLInputElement>) =>
-              setInput((e.target as HTMLInputElement).value, "title")
-            }
-          />
-          {state.feedbackFormInputs.titleInput.showError ? (
-            <InputErrorMessage />
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-      <div className="form-group">
-        <label htmlFor="feedback-categories">Category</label>
-        <p>Choose a category for your feedback</p>
-        <div className="form-control">
-          <Dropdown
-            headerTitle={findSelectedItem(state.categories)?.title}
-            isListOpen={state.dropdownState.categoryDropdown.isDropdownOpen}
-            listItems={state.categories}
-            selectItem={selectItem}
-            toggleList={toggleList}
-            selectedItem={findSelectedItem(state.categories)}
-            listType="category"
-          />
-        </div>
-      </div>
-      {findSelectedItem(state.categories)?.title.toLowerCase() === "feature" ? (
+    <>
+      <form className="feedback__form" onSubmit={handleFormSubmit}>
         <div className="form-group">
-          <label htmlFor="feedback-categories">
-            {isEditing ? "Update Status" : "Status"}
-          </label>
-          <p>Change feature state</p>
+          <label htmlFor="feedback-title">Feedback Title</label>
+          <p>Add a short, descriptive headline</p>
+          <div className="form-control">
+            <input
+              type="text"
+              id="feedback-title"
+              className={`input-focusable ${
+                state.feedbackFormInputs.titleInput.showError ? "error" : ""
+              }`}
+              value={state.feedbackFormInputs.titleInput.inputValue}
+              onChange={(e: React.SyntheticEvent<HTMLInputElement>) =>
+                setInput((e.target as HTMLInputElement).value, "title")
+              }
+            />
+            {state.feedbackFormInputs.titleInput.showError ? (
+              <InputErrorMessage />
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="feedback-categories">Category</label>
+          <p>Choose a category for your feedback</p>
           <div className="form-control">
             <Dropdown
-              headerTitle={findSelectedItem(state.statuses)?.title}
-              isListOpen={state.dropdownState.statusDropdown.isDropdownOpen}
-              listItems={state.statuses}
+              headerTitle={findSelectedItem(state.categories)?.title}
+              isListOpen={state.dropdownState.categoryDropdown.isDropdownOpen}
+              listItems={state.categories}
               selectItem={selectItem}
               toggleList={toggleList}
-              selectedItem={findSelectedItem(state.statuses)}
-              listType="feature"
+              selectedItem={findSelectedItem(state.categories)}
+              listType="category"
             />
           </div>
         </div>
+        {findSelectedItem(state.categories)?.title.toLowerCase() ===
+        "feature" ? (
+          <div className="form-group">
+            <label htmlFor="feedback-categories">
+              {isEditing ? "Update Status" : "Status"}
+            </label>
+            <p>Change feature state</p>
+            <div className="form-control">
+              <Dropdown
+                headerTitle={findSelectedItem(state.statuses)?.title}
+                isListOpen={state.dropdownState.statusDropdown.isDropdownOpen}
+                listItems={state.statuses}
+                selectItem={selectItem}
+                toggleList={toggleList}
+                selectedItem={findSelectedItem(state.statuses)}
+                listType="feature"
+              />
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="form-group">
+          <label htmlFor="feedback-detail">Feedback Detail</label>
+          <p>
+            Include any specific comments on what should be improved, added etc
+          </p>
+          <div className="form-control">
+            <textarea
+              id="feedback-detail"
+              className={`input-focusable ${
+                state.feedbackFormInputs.descriptionInput.showError
+                  ? "error"
+                  : ""
+              }`}
+              value={state.feedbackFormInputs.descriptionInput.inputValue}
+              onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) =>
+                setInput((e.target as HTMLTextAreaElement).value, "description")
+              }
+            ></textarea>
+            {state.feedbackFormInputs.descriptionInput.showError ? (
+              <InputErrorMessage />
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className="submit-btn__container">
+          <menu className={`flex ${isEditing ? "edit-form" : ""}`}>
+            {isEditing ? (
+              <li>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() =>
+                    dispatch({ type: "TOGGLE_MODAL", payload: null })
+                  }
+                >
+                  Delete
+                </button>
+              </li>
+            ) : (
+              ""
+            )}
+            <li>
+              <button type="submit" className="btn btn-magenta">
+                {isEditing ? "Save Changes" : "Add Feedback"}
+              </button>
+            </li>
+            <li>
+              <Link to="/" className="btn btn-dark-blue">
+                Cancel
+              </Link>
+            </li>
+          </menu>
+        </div>
+      </form>
+      {state.isModalDisplayed ? (
+        <DeleteModal
+          closeModal={closeModal}
+          itemId={feedbackId}
+          handleDelete={handleDelete}
+          itemTitle={feedbackTitle}
+        />
       ) : (
         ""
       )}
-      <div className="form-group">
-        <label htmlFor="feedback-detail">Feedback Detail</label>
-        <p>
-          Include any specific comments on what should be improved, added etc
-        </p>
-        <div className="form-control">
-          <textarea
-            id="feedback-detail"
-            className={`input-focusable ${
-              state.feedbackFormInputs.descriptionInput.showError ? "error" : ""
-            }`}
-            value={state.feedbackFormInputs.descriptionInput.inputValue}
-            onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) =>
-              setInput((e.target as HTMLTextAreaElement).value, "description")
-            }
-          ></textarea>
-          {state.feedbackFormInputs.descriptionInput.showError ? (
-            <InputErrorMessage />
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-      <div className="submit-btn__container">
-        <menu className="flex">
-          <li>
-            <button type="submit" className="btn btn-magenta">
-              Add Feedback
-            </button>
-          </li>
-          <li>
-            <Link to="/" className="btn btn-dark-blue">
-              Cancel
-            </Link>
-          </li>
-        </menu>
-      </div>
-    </form>
+    </>
   );
 };
 

@@ -46,6 +46,13 @@ export interface SuggestionProps {
   userHasUpvoted: boolean;
 }
 
+export interface DeleteModalProps {
+  itemTitle?: string;
+  itemId?: string;
+  closeModal: () => void;
+  handleDelete: (itemId: string) => void;
+}
+
 export interface SharedNavBannerProps {
   hasAccompanyingButton?: boolean;
   feedbackId?: string;

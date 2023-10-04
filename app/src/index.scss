@@ -11,6 +11,7 @@
 html, body {
   position: relative;
   overflow-x: hidden;
+  height: 100vh;
 }
 
 :root, button {
@@ -23,7 +24,6 @@ button {
 }
 
 #root {
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -239,6 +239,21 @@ a.btn-link {
   }
 }
 
+.btn-danger {
+  background-color: $danger;
+
+  @include tablet() {
+    min-width: 93px;
+  }
+
+  @include desktop() {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: $danger-hover;
+    }
+  }
+}
+
 .white-bg {
   background-color: $white;
 }
@@ -296,6 +311,7 @@ a.btn-link {
 @import "./components/Dropdown/dropdown";
 @import "./components/InputErrorMessage/input-error-message";
 @import "./components/Roadmap/roadmap-column";
+@import "./components/DeleteModal/delete-modal";
 
 
 // Mobile-specific Styles

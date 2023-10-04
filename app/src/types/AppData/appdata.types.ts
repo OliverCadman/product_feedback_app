@@ -108,4 +108,5 @@ export type AppData = {
     data: IProductRequest;
     isDragActive: boolean;
   };
+  isModalDisplayed: boolean;
 };

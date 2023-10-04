@@ -29,3 +29,24 @@ export const filterFeatureCategories = (
     );
   });
 };
+
+export const findItem = (itemList: IProductRequest[], id: string) => {
+  const item = itemList.find((request: IProductRequest) => {
+    return request.id === id;
+  });
+
+  if (item) return item;
+
+  return false;
+};
+
+export const removeItem = (
+  itemList: IProductRequest[],
+  item: IProductRequest | undefined,
+) => {
+  if (!item) return;
+  let index = itemList.indexOf(item);
+  itemList.splice(index, 1);
+
+  return itemList;
+};
