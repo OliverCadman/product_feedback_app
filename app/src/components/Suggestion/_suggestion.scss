@@ -38,6 +38,8 @@
         min-height: 32px;
         align-items: center;
         border-radius: 10px;
+        border: none;
+        cursor: pointer;
 
         svg {
             margin-right: 0.625rem;
@@ -46,6 +48,24 @@
         p {
             font-weight: $fw-bold;
             color: $dark-blue-2;
+        }
+
+        &.active {
+            background-color: $blue;
+            p {
+                color: $white;
+            }
+
+            svg path {
+                stroke: $white;
+            }
+        }
+
+        @include desktop() {
+            transition: background-color 0.2s ease;
+            &:not(.active):hover {
+                background-color: $lightblue-hover;
+            }
         }
     }
 

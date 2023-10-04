@@ -9,9 +9,12 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
   const { state, dispatch } = UseAppContext();
 
   useEffect(() => {
-    console.log("hi");
     dispatch({ type: "RESET_SHOW_PRODUCT_LIST", payload: null });
   }, [state.data.productRequests]);
+
+  const handleClick = (itemId: string) => {
+    dispatch({ type: "SET_UPVOTED_REQUESTS", payload: itemId });
+  };
 
   return (
     <div className="section-list__container">
@@ -48,6 +51,14 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
                 category={category}
                 index={index}
                 page="product-feedback"
+                handleUpvoteClick={handleClick}
+                userHasUpvoted={Boolean(
+                  state.data.currentUser.upvotedRequests.find(
+                    (request: IProductRequest) => {
+                      return id === request.id;
+                    },
+                  ),
+                )}
               />
             </Transition>
           );

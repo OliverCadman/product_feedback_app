@@ -49,7 +49,10 @@ export interface IReply {
 }
 
 export interface IAppData {
-  currentUser: IUser;
+  currentUser: {
+    userDetails: IUser;
+    upvotedRequests: IProductRequest[] | [];
+  };
   productRequests: IProductRequest[];
 }
 
@@ -66,10 +69,7 @@ export interface IInput {
 }
 
 export type AppData = {
-  data: {
-    currentUser: IUser;
-    productRequests: IProductRequest[];
-  };
+  data: IAppData;
   isProductListShowing: boolean;
   dropdownState: {
     categoryDropdown: {

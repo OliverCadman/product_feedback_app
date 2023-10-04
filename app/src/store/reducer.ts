@@ -608,6 +608,43 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         },
       };
     }
+    case "SET_UPVOTED_REQUESTS": {
+      console.log(action.payload);
+      const upvotedRequestsCopy = JSON.parse(
+        JSON.stringify(state.data.currentUser.upvotedRequests),
+      );
+
+      const productRequestToUpvote = state.data.productRequests.find(
+        (request: IProductRequest) => {
+          return request.id === action.payload;
+        },
+      );
+
+      const upvoteExists = Boolean(
+        upvotedRequestsCopy.find((request: IProductRequest) => {
+          return request.id === action.payload;
+        }),
+      );
+
+      if (!upvoteExists) {
+        upvotedRequestsCopy.push(productRequestToUpvote);
+      } else {
+        upvotedRequestsCopy.shift(productRequestToUpvote);
+      }
+
+      if (productRequestToUpvote) {
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            currentUser: {
+              ...state.data.currentUser,
+              upvotedRequests: upvotedRequestsCopy,
+            },
+          },
+        };
+      }
+    }
     default: {
       throw new Error("Unexpected action type.");
     }

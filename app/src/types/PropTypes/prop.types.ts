@@ -42,6 +42,8 @@ export interface SuggestionProps {
     opacity: number;
     listStyle: string;
   };
+  handleUpvoteClick?: (itemId: string) => void;
+  userHasUpvoted: boolean;
 }
 
 export interface SharedNavBannerProps {

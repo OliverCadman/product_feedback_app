@@ -3,9 +3,12 @@ import { IAppData } from "../types/AppData/appdata.types";
 
 const data: IAppData = {
   currentUser: {
-    image: "./assets/user-images/image-zena.jpg",
-    name: "Zena Kelley",
-    username: "velvetround",
+    userDetails: {
+      image: "./assets/user-images/image-zena.jpg",
+      name: "Zena Kelley",
+      username: "velvetround",
+    },
+    upvotedRequests: [],
   },
   productRequests: [
     {

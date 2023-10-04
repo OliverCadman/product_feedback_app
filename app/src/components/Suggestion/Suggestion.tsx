@@ -19,6 +19,8 @@ const Suggestion: React.FC<SuggestionProps> = ({
   color,
   index,
   dragStyle,
+  handleUpvoteClick,
+  userHasUpvoted,
 }) => {
   const commentsExist = comments && comments.length > 0;
 
@@ -85,10 +87,16 @@ const Suggestion: React.FC<SuggestionProps> = ({
         </div>
       </div>
       <div className="suggestion__icon-wrapper pill">
-        <div className="suggestion__icon pill pill-bg flex centered">
+        <button
+          className={`suggestion__icon pill pill-bg flex centered ${
+            userHasUpvoted ? "active" : ""
+          }`}
+          type="button"
+          onClick={() => handleUpvoteClick && handleUpvoteClick(id)}
+        >
           <CaretUpIcon />
           <p>{upvotes}</p>
-        </div>
+        </button>
       </div>
       <div className="suggestion__icon-wrapper comment">
         <div className="suggestion__icon comment flex centered">
