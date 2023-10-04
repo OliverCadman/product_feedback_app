@@ -21,6 +21,12 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           action.payload === null ? !state.mobileNavOpen : action.payload,
       };
     }
+    case "RESET_SHOW_PRODUCT_LIST": {
+      return {
+        ...state,
+        isProductListShowing: true,
+      };
+    }
     case "INVALID_INPUT": {
       switch (action.payload) {
         case "comment": {
@@ -510,6 +516,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       console.log(action.payload);
       return {
         ...state,
+        isProductListShowing: false,
         data: {
           ...state.data,
           productRequests:
@@ -584,11 +591,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           },
         );
       }
-      // Most comments
-      // Least comments
-      console.log(productRequestCopy);
       return {
         ...state,
+        isProductListShowing: false,
         data: {
           ...state.data,
           productRequests: productRequestCopy,

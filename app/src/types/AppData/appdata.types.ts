@@ -70,6 +70,7 @@ export type AppData = {
     currentUser: IUser;
     productRequests: IProductRequest[];
   };
+  isProductListShowing: boolean;
   dropdownState: {
     categoryDropdown: {
       isDropdownOpen: boolean;
