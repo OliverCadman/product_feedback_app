@@ -38,7 +38,10 @@ const Toolbar = () => {
       <div className="toolbar__suggestion-count flex">
         <IconSuggestions />
         <p>
-          <span className="suggestion-count">6</span>Suggestions
+          <span className="suggestion-count">
+            {state.data.productRequests.length}
+          </span>
+          Suggestions
         </p>
       </div>
       <menu className="w-100 flex row-between align-center toolbar__menu">

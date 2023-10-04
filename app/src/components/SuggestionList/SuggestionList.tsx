@@ -27,29 +27,29 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ productRequests }) => {
             category,
           } = request;
           return (
-            // <Transition
-            //   appear
-            //   key={id}
-            //   show={state.isProductListShowing}
-            //   style={{ transitionDelay: `${50 * index}ms` }}
-            //   enter="transition ease-out duration-300"
-            //   enterFrom="transform opacity-0 translate-y-40"
-            //   leave="no-transition"
-            //   leaveFrom="transform opacity-100 translate-y-0"
-            //   leaveTo="opacity-0"
-            // >
-            <Suggestion
-              id={id}
-              description={description}
-              status={status}
-              title={title}
-              upvotes={upvotes}
-              comments={comments}
-              category={category}
-              index={index}
-              page="product-feedback"
-            />
-            // </Transition>
+            <Transition
+              appear
+              key={id}
+              show={state.isProductListShowing}
+              style={{ transitionDelay: `${50 * index}ms` }}
+              enter="transition ease-out duration-300"
+              enterFrom="transform opacity-0 translate-y-40"
+              leave="no-transition"
+              leaveFrom="transform opacity-100 translate-y-0"
+              leaveTo="opacity-0"
+            >
+              <Suggestion
+                id={id}
+                description={description}
+                status={status}
+                title={title}
+                upvotes={upvotes}
+                comments={comments}
+                category={category}
+                index={index}
+                page="product-feedback"
+              />
+            </Transition>
           );
         })}
       </section>
