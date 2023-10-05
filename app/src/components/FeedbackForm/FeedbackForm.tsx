@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {
   ICategoryListItem,
-  IStatusListItem,
+  IStatusListItem
 } from "../../types/AppData/appdata.types";
 import Dropdown from "../Dropdown/Dropdown";
 import { UseAppContext } from "../../context/AppDataContext";
@@ -20,7 +20,7 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
   feedbackDescription,
   feedbackCategory,
   feedbackStatus,
-  feedbackId,
+  feedbackId
 }) => {
   const { state, dispatch } = UseAppContext();
   const navigate = useNavigate();
@@ -31,12 +31,12 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
     if (key.toLowerCase() === "categories") {
       dispatch({
         type: "SET_SELECTED_CATEGORY",
-        payload: { id, title },
+        payload: { id, title }
       });
     } else {
       dispatch({
         type: "SET_SELECTED_STATUS",
-        payload: { id },
+        payload: { id }
       });
     }
   };
@@ -49,8 +49,8 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
           title: feedbackTitle,
           description: feedbackDescription,
           category: feedbackCategory,
-          status: feedbackStatus,
-        },
+          status: feedbackStatus
+        }
       });
     }
   }, []);
@@ -60,8 +60,8 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
       type: "SET_FEEDBACK_FORM_INPUT",
       payload: {
         inputType,
-        input,
-      },
+        input
+      }
     });
   };
 
@@ -79,7 +79,7 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
 
   const findSelectedItem = (items: ICategoryListItem[] | IStatusListItem[]) => {
     const foundItem = items.find(
-      (item: ICategoryListItem | IStatusListItem) => item.selected === true,
+      (item: ICategoryListItem | IStatusListItem) => item.selected === true
     );
 
     if (foundItem) {
@@ -100,24 +100,24 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
 
     const invalidTitlePayload = {
       type: "INVALID_INPUT",
-      payload: "feedbackTitle",
+      payload: "feedbackTitle"
     };
 
     const invalidDescriptionPayload = {
       type: "INVALID_INPUT",
-      payload: "feedbackDescription",
+      payload: "feedbackDescription"
     };
 
     const titleValid = checkFormValidity(
       state.feedbackFormInputs.titleInput.inputValue,
       dispatch,
-      invalidTitlePayload,
+      invalidTitlePayload
     );
 
     const descriptionValid = checkFormValidity(
       state.feedbackFormInputs.descriptionInput.inputValue,
       dispatch,
-      invalidDescriptionPayload,
+      invalidDescriptionPayload
     );
 
     if (!titleValid || !descriptionValid) return false;
@@ -127,7 +127,7 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
       description: descriptionInput,
       category: findSelectedItem(state.categories).title,
       status: findSelectedItem(state.statuses).title,
-      id: feedbackId,
+      id: feedbackId
     };
 
     if (isEditing) {
@@ -137,12 +137,12 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
       dispatch({ type: "ADD_FEEDBACK", payload: feedbackPayload });
     }
 
-    navigate("/");
+    navigate("/product_feedback_app/");
   };
 
   const handleDelete = (itemId?: string) => {
     dispatch({ type: "DELETE_FEEDBACK", payload: itemId });
-    navigate("/");
+    navigate("/product_feedback_app/");
   };
 
   const closeModal = () => {
@@ -259,7 +259,7 @@ const AddFeedbackForm: React.FC<FeedbackFormProps> = ({
               </button>
             </li>
             <li>
-              <Link to="/" className="btn btn-dark-blue">
+              <Link to="/product_feedback_app" className="btn btn-dark-blue">
                 Cancel
               </Link>
             </li>

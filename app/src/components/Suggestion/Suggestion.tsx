@@ -20,7 +20,7 @@ const Suggestion: React.FC<SuggestionProps> = ({
   index,
   dragStyle,
   handleUpvoteClick,
-  userHasUpvoted,
+  userHasUpvoted
 }) => {
   const commentsExist = comments && comments.length > 0;
 
@@ -30,14 +30,14 @@ const Suggestion: React.FC<SuggestionProps> = ({
       data: {
         index,
         status,
-        id,
-      },
+        id
+      }
     });
 
   const dragStyles = {
     transform: CSS.Transform.toString(transform),
     transition,
-    ...dragStyle,
+    ...dragStyle
   };
 
   return (
@@ -72,7 +72,10 @@ const Suggestion: React.FC<SuggestionProps> = ({
         )}
         {page === "product-feedback" ? (
           <h2>
-            <Link to={`/${id}`} className="link suggestion__link">
+            <Link
+              to={`/product_feedback_app/${id}`}
+              className="link suggestion__link"
+            >
               {title}
             </Link>
           </h2>

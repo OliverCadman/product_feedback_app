@@ -14,16 +14,16 @@ const Toolbar = () => {
   const selectItem = (item: ISortListItem) => {
     dispatch({
       type: "SET_SELECTED_SORT_OPTION",
-      payload: { sortOption: item.title },
+      payload: { sortOption: item.title }
     });
   };
 
   const findSelectedSortOption = (
     sortOptions: ISortListItem[],
-    sortOption: string,
+    sortOption: string
   ) => {
     const foundOption = sortOptions.find(
-      (option: ISortListItem) => option.title === sortOption,
+      (option: ISortListItem) => option.title === sortOption
     );
 
     if (foundOption) {
@@ -53,7 +53,7 @@ const Toolbar = () => {
             listType="li"
             selectedItem={findSelectedSortOption(
               state.sortOptions,
-              state.selectedSortOption,
+              state.selectedSortOption
             )}
             headerTitle={state.selectedSortOption}
             toggleList={toggleDropdown}
@@ -62,7 +62,10 @@ const Toolbar = () => {
           />
         </li>
         <li>
-          <Link to="/add-feedback" className="btn btn-magenta link-btn">
+          <Link
+            to="/product_feedback_app/add-feedback"
+            className="btn btn-magenta link-btn"
+          >
             + Add Feedback
           </Link>
         </li>

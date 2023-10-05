@@ -12,7 +12,7 @@ import FeedbackForm from "../../components/FeedbackForm/FeedbackForm";
 const EditFeedback = () => {
   const { id } = useParams();
 
-  const { state, dispatch } = UseAppContext();
+  const { state } = UseAppContext();
 
   const feedback = state.data.productRequests.find(
     (product: IProductRequest) => {
@@ -24,7 +24,7 @@ const EditFeedback = () => {
     return (
       <Wrapper>
         <SharedNavBanner
-          historyPath={`/${id}`}
+          historyPath={`/product_feedback_app/${id}`}
           urlPath={undefined}
           hasAccompanyingButton={false}
           feedbackId={undefined}

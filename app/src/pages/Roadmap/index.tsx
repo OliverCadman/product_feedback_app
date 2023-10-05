@@ -3,7 +3,7 @@ import RoadmapTabs from "../../components/mobile/RoadmapTabs/RoadmapTabs";
 import { UseAppContext } from "../../context/AppDataContext";
 import {
   IProductRequest,
-  IStatusListItem,
+  IStatusListItem
 } from "../../types/AppData/appdata.types";
 import RoadmapColumn from "../../components/Roadmap/RoadmapColumn";
 import { UseSidebarClose } from "../../hooks/UseSidebarClose";
@@ -17,7 +17,7 @@ import {
   closestCenter,
   DragStartEvent,
   DragOverEvent,
-  DragEndEvent,
+  DragEndEvent
 } from "@dnd-kit/core";
 import { DragOverlay } from "@dnd-kit/core";
 import Suggestion from "../../components/Suggestion/Suggestion";
@@ -45,7 +45,7 @@ const Roadmap = () => {
     const draggedItem = state.data.productRequests.find(
       (request: IProductRequest) => {
         return request.id === active.id;
-      },
+      }
     );
 
     if (!draggedItem) return;
@@ -60,8 +60,8 @@ const Roadmap = () => {
         category,
         upvotes,
         comments,
-        status,
-      },
+        status
+      }
     });
   };
 
@@ -70,7 +70,7 @@ const Roadmap = () => {
 
     const [activeContainerId, overContainerId] = [
       active?.data?.current?.sortable?.containerId,
-      over?.data?.current?.sortable?.containerId || over?.data?.current?.id,
+      over?.data?.current?.sortable?.containerId || over?.data?.current?.id
     ];
 
     if (activeContainerId && overContainerId) {
@@ -81,8 +81,8 @@ const Roadmap = () => {
         type: "SET_REQUEST_STATUS",
         payload: {
           updatedStatus: over?.data?.current?.status,
-          requestId: active?.data?.current?.id,
-        },
+          requestId: active?.data?.current?.id
+        }
       });
     }
   };
@@ -92,7 +92,7 @@ const Roadmap = () => {
 
     const [activeContainerId, overContainerId] = [
       active?.data?.current?.sortable?.containerId,
-      over?.data?.current?.sortable?.containerId,
+      over?.data?.current?.sortable?.containerId
     ];
 
     console.log(over);
@@ -100,12 +100,12 @@ const Roadmap = () => {
 
   const activationConstraints = {
     delay: 150,
-    tolerance: 3,
+    tolerance: 3
   };
 
   const dragSensors = useSensors(
     useSensor(MouseSensor, { activationConstraint: activationConstraints }),
-    useSensor(TouchSensor, { activationConstraint: activationConstraints }),
+    useSensor(TouchSensor, { activationConstraint: activationConstraints })
   );
 
   return (
@@ -117,10 +117,10 @@ const Roadmap = () => {
     >
       <div className="roadmap__container main-bg">
         <SharedNavBanner
-          historyPath="/"
+          historyPath="/product_feedback_app/"
           hasAccompanyingButton={true}
           isRoadmapPage={true}
-          urlPath="/add-feedback"
+          urlPath="/product_feedback_app/add-feedback"
         />
         <div className="hide-md">
           <RoadmapTabs
@@ -132,7 +132,7 @@ const Roadmap = () => {
             if (status.selected) {
               const plannedFeatures = filterFeatureRequests(
                 state.data.productRequests,
-                status.title,
+                status.title
               );
               const { id, title, description, color } = status;
               return (
@@ -153,7 +153,7 @@ const Roadmap = () => {
             const { id, title, description, color } = status;
             const plannedFeatures = filterFeatureRequests(
               state.data.productRequests,
-              title,
+              title
             );
             const columnId = nanoid();
             return (

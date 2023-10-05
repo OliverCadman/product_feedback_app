@@ -6,15 +6,41 @@ const Router = () => {
   const pageRoutes = pagesData.map((page: RouterType, index: number) => {
     const { path, title, element } = page;
     if (title.includes("Detail")) {
-      return <Route path={`/:id`} element={element} key={index} />;
+      return (
+        <Route
+          path={`/product_feedback_app/:id`}
+          element={element}
+          key={index}
+        />
+      );
     } else if (title.includes("Add")) {
-      return <Route path={`/${path}`} element={element} key={index} />;
+      return (
+        <Route
+          path={`/product_feedback_app/${path}`}
+          element={element}
+          key={index}
+        />
+      );
     } else if (title.includes("Edit")) {
-      return <Route path="/edit-feedback/:id" element={element} key={index} />;
+      return (
+        <Route
+          path="/product_feedback_app/edit-feedback/:id"
+          element={element}
+          key={index}
+        />
+      );
     } else if (title.includes("Roadmap")) {
-      return <Route path="/roadmap" element={element} key={index} />;
+      return (
+        <Route
+          path="/product_feedback_app/roadmap"
+          element={element}
+          key={index}
+        />
+      );
     } else {
-      return <Route path="/" element={element} key={index} />;
+      return (
+        <Route path="/product_feedback_app/" element={element} key={index} />
+      );
     }
   });
 

@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { UseAppContext } from "../../../context/AppDataContext";
-import {
-  IProductRequest,
-  IStatusListItem,
-} from "../../../types/AppData/appdata.types";
+import { IStatusListItem } from "../../../types/AppData/appdata.types";
 import { filterFeatureRequests } from "../../../utils/helpers";
 
 const Roadmap: React.FC = () => {
@@ -14,7 +11,7 @@ const Roadmap: React.FC = () => {
     <div className="product-feedback__panel widget-container">
       <div className="roadmap__header flex row-between align-center">
         <h2>Roadmap</h2>
-        <Link to="roadmap" className="roadmap__link">
+        <Link to="/product_feedback_app/roadmap" className="roadmap__link">
           View
         </Link>
       </div>
@@ -25,7 +22,7 @@ const Roadmap: React.FC = () => {
 
             const filteredFeatureRequest = filterFeatureRequests(
               state.data.productRequests,
-              title,
+              title
             );
             return (
               <li key={id}>

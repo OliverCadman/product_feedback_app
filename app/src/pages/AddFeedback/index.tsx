@@ -15,7 +15,7 @@ const AddFeedback: React.FC = () => {
     <Wrapper>
       <SharedNavBanner
         urlPath={undefined}
-        historyPath="/"
+        historyPath="/product_feedback_app/"
         hasAccompanyingButton={false}
         feedbackId={undefined}
       />
