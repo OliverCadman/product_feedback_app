@@ -11,7 +11,10 @@ const NoFeedbackAlert = () => {
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </p>
-        <Link to="/add-feedback" className="btn btn-magenta link-btn">
+        <Link
+          to="/product_feedback_app/add-feedback"
+          className="btn btn-magenta link-btn"
+        >
           + Add Feedback
         </Link>
       </div>
