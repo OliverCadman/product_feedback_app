@@ -8,30 +8,33 @@ export interface IProductRequest {
   id: string;
   title: string;
   category: string;
-  upvotes: number;
+  upvotes?: number;
   status: string;
   description: string;
   comments?: IComment[];
 }
 
-export interface IGenericListItem {
+export interface ISortListItem {
   id: number;
   selected: boolean;
   title: string;
   key: string;
 }
 
-export type ICategoryListItem = IGenericListItem;
-
-export type ISortListItem = IGenericListItem;
+export interface ICategoryListItem {
+  id: number;
+  selected: boolean;
+  title: string;
+  key: string;
+}
 
 export interface IStatusListItem {
   id: number;
   selected: boolean;
   title: string;
   key: string;
-  description: string;
-  color: string;
+  description?: string;
+  color?: string;
 }
 
 export interface IComment {
@@ -106,7 +109,7 @@ export type AppData = {
   selectedSortOption: string;
   draggedItem?: {
     data: IProductRequest;
-    isDragActive: boolean;
+    isDragActive?: boolean;
   };
   isModalDisplayed: boolean;
 };

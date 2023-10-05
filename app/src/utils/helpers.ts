@@ -50,3 +50,6 @@ export const removeItem = (
 
   return itemList;
 };
+
+export const copyProductRequests = (prevData: IProductRequest[]) =>
+  JSON.parse(JSON.stringify(prevData));

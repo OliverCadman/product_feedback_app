@@ -9,28 +9,28 @@ const pagesData: RouterType[] = [
   {
     path: "",
     title: "Feedback Collection",
-    element: <ProductFeedback />,
+    element: <ProductFeedback />
   },
   {
     path: "feedback-detail",
     title: "Feedback Detail",
-    element: <FeedbackDetail />,
+    element: <FeedbackDetail />
   },
   {
     path: "add-feedback",
     title: "Add Feedback",
-    element: <AddFeedback />,
+    element: <AddFeedback />
   },
   {
     path: "edit-feedback",
     title: "Edit Feedback",
-    element: <EditFeedback />,
+    element: <EditFeedback />
   },
   {
     path: "roadmap",
     title: "Roadmap",
-    element: <Roadmap />,
-  },
+    element: <Roadmap />
+  }
 ];
 
 export default pagesData;

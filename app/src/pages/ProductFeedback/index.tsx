@@ -8,8 +8,6 @@ import LogoBrandBackgroundTablet from "../../assets/suggestions/tablet/backgroun
 import SidebarMob from "../../components/mobile/Sidebar/SidebarMob";
 import Toolbar from "../../components/Toolbar/Toolbar";
 import { UseAppContext } from "../../context/AppDataContext";
-import { useMemo } from "react";
-import { IProductRequest } from "../../types/AppData/appdata.types";
 import NoFeedbackAlert from "../../components/NoFeedbackAlert/NoFeedbackAlert";
 
 const backgroundCSS = `
@@ -34,7 +32,7 @@ const ProductFeedback: React.FC = () => {
     if (state.selectedFilterOption !== "All") {
       dispatch({
         type: "SET_SELECTED_CATEGORY",
-        payload: { id: state.categories[0].id, title: "All" },
+        payload: { id: state.categories[0].id, title: "All" }
       });
     }
   }, []);

@@ -3,29 +3,29 @@ import {
   AppData,
   ICategoryListItem,
   IProductRequest,
-  IStatusListItem,
+  IStatusListItem
 } from "../types/AppData/appdata.types";
 import { Reducer } from "react";
 import { IComment } from "../types/AppData/appdata.types";
 import data from "../data/data";
-import { findItem, removeItem } from "../utils/helpers";
+import { findItem, removeItem, copyProductRequests } from "../utils/helpers";
 
 export const reducer: Reducer<AppData, AppDataAction> = (
   state: AppData,
-  action: AppDataAction | undefined,
+  action: AppDataAction | undefined
 ) => {
   switch (action?.type) {
     case "TOGGLE_MOBILE_NAV": {
       return {
         ...state,
         mobileNavOpen:
-          action.payload === null ? !state.mobileNavOpen : action.payload,
+          action.payload === null ? !state.mobileNavOpen : action.payload
       };
     }
     case "RESET_SHOW_PRODUCT_LIST": {
       return {
         ...state,
-        isProductListShowing: true,
+        isProductListShowing: true
       };
     }
     case "INVALID_INPUT": {
@@ -35,7 +35,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
             ...state,
             isInputValid: false,
             invalidInputFlagRaised: true,
-            showCommentInputError: true,
+            showCommentInputError: true
           };
         }
         case "reply": {
@@ -43,7 +43,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
             ...state,
             isInputValid: false,
             invalidInputFlagRaised: true,
-            showReplyInputError: true,
+            showReplyInputError: true
           };
         }
         case "feedbackTitle": {
@@ -55,9 +55,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
                 ...state.feedbackFormInputs.titleInput,
                 isInputValid: false,
                 invalidInputFlagRaised: true,
-                showError: true,
-              },
-            },
+                showError: true
+              }
+            }
           };
         }
         case "feedbackDescription": {
@@ -69,9 +69,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
                 ...state.feedbackFormInputs.descriptionInput,
                 isInputValid: false,
                 invalidInputFlagRaised: true,
-                showError: true,
-              },
-            },
+                showError: true
+              }
+            }
           };
         }
       }
@@ -83,7 +83,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       return {
         ...state,
         commentInput: action.payload.input,
-        showCommentInputError: state.invalidInputFlagRaised ? true : false,
+        showCommentInputError: state.invalidInputFlagRaised ? true : false
       };
     }
     case "SET_REPLY": {
@@ -93,7 +93,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       return {
         ...state,
         replyInput: action.payload.input,
-        showReplyInputError: state.invalidInputFlagRaised ? true : false,
+        showReplyInputError: state.invalidInputFlagRaised ? true : false
       };
     }
 
@@ -102,16 +102,16 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         ...state,
         replyToggler: {
           showReply: action.payload.showReply,
-          replyingTo: action.payload.replyingTo,
+          replyingTo: action.payload.replyingTo
         },
         showReplyInputError: false,
-        replyInput: "",
+        replyInput: ""
       };
     }
     case "SET_ID_COMMENT_RECEIVING_REPLY": {
       return {
         ...state,
-        idOfCommentReceivingReply: action.payload,
+        idOfCommentReceivingReply: action.payload
       };
     }
 
@@ -119,24 +119,24 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       return {
         ...state,
         showReplyInputError: false,
-        replyInput: "",
+        replyInput: ""
       };
     }
 
     case "ADD_COMMENT": {
-      const productRequestCopy = JSON.parse(
-        JSON.stringify(state.data.productRequests),
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
       );
 
       const {
         feedbackId,
         commentId,
         user: { image, username, name },
-        content,
+        content
       } = action.payload;
 
       const feedback = productRequestCopy.find(
-        (item: IProductRequest) => item.id === feedbackId,
+        (item: IProductRequest) => item.id === feedbackId
       );
 
       if (!feedback)
@@ -148,9 +148,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         user: {
           image,
           username,
-          name,
+          name
         },
-        replies: [],
+        replies: []
       };
 
       const newCommentArray = [...(feedback.comments as IComment[])];
@@ -161,7 +161,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       const updatedProductRequests = productRequestCopy.map(
         (product: IProductRequest) => {
           return product.id === feedbackId ? feedback : product;
-        },
+        }
       );
 
       return {
@@ -169,13 +169,13 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         commentInput: "",
         data: {
           ...state.data,
-          productRequests: updatedProductRequests,
-        },
+          productRequests: updatedProductRequests
+        }
       };
     }
     case "ADD_REPLY": {
-      const productRequestCopy = JSON.parse(
-        JSON.stringify(state.data.productRequests),
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
       );
 
       const {
@@ -184,22 +184,22 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         replyingTo,
         user: { image, username, name },
         content,
-        productId,
+        productId
       } = action.payload;
 
       const productFeedback = productRequestCopy.find(
         (product: IProductRequest) => {
           return product.comments?.find(
-            (comment: IComment) => comment.id === commentId,
+            (comment: IComment) => comment.id === commentId
           );
-        },
+        }
       );
 
       if (!productFeedback)
         throw new Error(`Could not find product feedback with ID ${commentId}`);
 
       const comment = productFeedback.comments?.find(
-        (comment: IComment) => comment.id === commentId,
+        (comment: IComment) => comment.id === commentId
       );
 
       const newReplyArray = [...comment.replies];
@@ -211,8 +211,8 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         user: {
           image: image,
           name: name,
-          username: username,
-        },
+          username: username
+        }
       };
 
       newReplyArray.push(newReply);
@@ -221,7 +221,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       const updatedProductComments = productFeedback.comments.map(
         (mappedComment: IComment) => {
           return mappedComment.id === commentId ? comment : mappedComment;
-        },
+        }
       );
 
       productFeedback.comments = updatedProductComments;
@@ -229,7 +229,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
       const updatedProductRequests = productRequestCopy.map(
         (product: IProductRequest) => {
           return product.id === productId ? productFeedback : product;
-        },
+        }
       );
 
       return {
@@ -237,12 +237,12 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         replyInput: "",
         data: {
           ...state.data,
-          productRequests: updatedProductRequests,
+          productRequests: updatedProductRequests
         },
         replyToggler: {
           showReply: false,
-          replyingTo: "",
-        },
+          replyingTo: ""
+        }
       };
     }
     case "TOGGLE_CATEGORY_DROPDOWN": {
@@ -252,10 +252,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state.dropdownState,
           categoryDropdown: {
             ...state.dropdownState.categoryDropdown,
-            isDropdownOpen:
-              !state.dropdownState.categoryDropdown.isDropdownOpen,
-          },
-        },
+            isDropdownOpen: !state.dropdownState.categoryDropdown.isDropdownOpen
+          }
+        }
       };
     }
     case "TOGGLE_STATUS_DROPDOWN": {
@@ -265,9 +264,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state.dropdownState,
           statusDropdown: {
             ...state.dropdownState.statusDropdown,
-            isDropdownOpen: !state.dropdownState.statusDropdown.isDropdownOpen,
-          },
-        },
+            isDropdownOpen: !state.dropdownState.statusDropdown.isDropdownOpen
+          }
+        }
       };
     }
     case "TOGGLE_SORT_DROPDOWN": {
@@ -277,9 +276,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state.dropdownState,
           sortDropdown: {
             ...state.dropdownState.sortDropdown,
-            isDropdownOpen: !state.dropdownState.sortDropdown.isDropdownOpen,
-          },
-        },
+            isDropdownOpen: !state.dropdownState.sortDropdown.isDropdownOpen
+          }
+        }
       };
     }
     case "SET_SELECTED_CATEGORY": {
@@ -291,7 +290,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
             item.selected = false;
           }
           return item;
-        },
+        }
       );
       return {
         ...state,
@@ -301,13 +300,13 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state.dropdownState,
           categoryDropdown: {
             ...state.dropdownState.categoryDropdown,
-            isDropdownOpen: false,
+            isDropdownOpen: false
           },
           statusDropdown: {
             ...state.dropdownState.statusDropdown,
-            isDropdownOpen: false,
-          },
-        },
+            isDropdownOpen: false
+          }
+        }
       };
     }
     case "SET_SELECTED_STATUS": {
@@ -326,13 +325,13 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state.dropdownState,
           categoryDropdown: {
             ...state.dropdownState.categoryDropdown,
-            isDropdownOpen: false,
+            isDropdownOpen: false
           },
           statusDropdown: {
             ...state.dropdownState.statusDropdown,
-            isDropdownOpen: false,
-          },
-        },
+            isDropdownOpen: false
+          }
+        }
       };
     }
     case "SET_FEEDBACK_FORM_INPUT": {
@@ -355,9 +354,9 @@ export const reducer: Reducer<AppData, AppDataAction> = (
               showError: state.feedbackFormInputs.titleInput
                 .invalidInputFlagRaised
                 ? true
-                : false,
-            },
-          },
+                : false
+            }
+          }
         };
       } else {
         return {
@@ -371,17 +370,17 @@ export const reducer: Reducer<AppData, AppDataAction> = (
               showError: state.feedbackFormInputs.descriptionInput
                 .invalidInputFlagRaised
                 ? true
-                : false,
-            },
-          },
+                : false
+            }
+          }
         };
       }
     }
     case "ADD_FEEDBACK": {
       const { id, title, description, status, category } = action.payload;
 
-      const productRequestCopy: IProductRequest[] = JSON.parse(
-        JSON.stringify(state.data.productRequests),
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
       );
 
       const newFeedback: IProductRequest = {
@@ -391,7 +390,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         status: status.toLowerCase(),
         category: category.toLowerCase(),
         upvotes: 0,
-        comments: [],
+        comments: []
       };
 
       const newProductRequestArray = [...productRequestCopy];
@@ -401,7 +400,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         ...state,
         data: {
           ...state.data,
-          productRequests: newProductRequestArray,
+          productRequests: newProductRequestArray
         },
         feedbackFormInputs: {
           ...state.feedbackFormInputs,
@@ -409,27 +408,27 @@ export const reducer: Reducer<AppData, AppDataAction> = (
             inputValue: "",
             isInputValid: true,
             invalidInputFlagRaised: false,
-            showError: false,
+            showError: false
           },
           descriptionInput: {
             inputValue: "",
             isInputValid: true,
             invalidInputFlagRaised: false,
-            showError: false,
-          },
-        },
+            showError: false
+          }
+        }
       };
     }
     case "EDIT_FEEDBACK": {
-      const productRequestCopy: IProductRequest[] = JSON.parse(
-        JSON.stringify(state.data.productRequests),
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
       );
 
       const { id, title, description, category, status } = action.payload;
       const feedbackToChange = productRequestCopy.find(
         (item: IProductRequest) => {
           return item.id === id;
-        },
+        }
       );
 
       if (feedbackToChange) {
@@ -442,8 +441,8 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state,
           data: {
             ...state.data,
-            productRequests: productRequestCopy,
-          },
+            productRequests: productRequestCopy
+          }
         };
       }
     }
@@ -452,7 +451,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
 
       const updateItems = (
         list: ICategoryListItem[] | IStatusListItem[],
-        title: string,
+        title: string
       ) => {
         return list.map((item: ICategoryListItem | IStatusListItem) => {
           if (item.title.toLowerCase() === title.toLowerCase()) {
@@ -475,19 +474,19 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state.feedbackFormInputs,
           titleInput: {
             ...state.feedbackFormInputs.titleInput,
-            inputValue: title,
+            inputValue: title
           },
           descriptionInput: {
             ...state.feedbackFormInputs.descriptionInput,
-            inputValue: description,
-          },
-        },
+            inputValue: description
+          }
+        }
       };
     }
     case "SET_ACTIVE_TAB_INDEX": {
       return {
         ...state,
-        activeTabIndex: action.payload,
+        activeTabIndex: action.payload
       };
     }
     case "ACTIVATE_DRAG": {
@@ -505,16 +504,12 @@ export const reducer: Reducer<AppData, AppDataAction> = (
             status,
             category,
             description,
-            comments,
-          },
-        },
+            comments
+          }
+        }
       };
     }
     case "FILTER_PRODUCT_REQUESTS": {
-      const productRequestCopy = JSON.parse(
-        JSON.stringify(state.data.productRequests),
-      );
-      console.log(action.payload);
       return {
         ...state,
         isProductListShowing: false,
@@ -528,25 +523,25 @@ export const reducer: Reducer<AppData, AppDataAction> = (
                     action.payload.toLowerCase()
                   );
                 })
-              : data.productRequests,
-        },
+              : data.productRequests
+        }
       };
     }
     case "SET_REQUEST_STATUS": {
       const { updatedStatus, requestId } = action.payload;
-      const productRequestCopy = JSON.parse(
-        JSON.stringify(state.data.productRequests),
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
       );
 
       const requestToUpdate = productRequestCopy.find(
         (request: IProductRequest) => {
           return request.id === requestId;
-        },
+        }
       );
 
       if (!requestToUpdate)
         return {
-          ...state,
+          ...state
         };
 
       requestToUpdate.status = updatedStatus;
@@ -555,25 +550,23 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         ...state,
         data: {
           ...state.data,
-          productRequests: productRequestCopy,
-        },
+          productRequests: productRequestCopy
+        }
       };
     }
     case "SET_SELECTED_SORT_OPTION": {
       const { sortOption } = action.payload;
 
-      let productRequestCopy = JSON.parse(
-        JSON.stringify(state.data.productRequests),
-      );
-      // Upvotes
+      let productRequestCopy = copyProductRequests(state.data.productRequests);
+
       if (sortOption.includes("Upvotes")) {
-        console.log(sortOption.includes("Most"));
         productRequestCopy = productRequestCopy.sort(
           (currentRequest: IProductRequest, nextRequest: IProductRequest) => {
-            return sortOption.includes("Most")
-              ? nextRequest.upvotes - currentRequest.upvotes
-              : currentRequest.upvotes - nextRequest.upvotes;
-          },
+            if (nextRequest.upvotes && currentRequest.upvotes)
+              return sortOption.includes("Most")
+                ? nextRequest.upvotes - currentRequest.upvotes
+                : currentRequest.upvotes - nextRequest.upvotes;
+          }
         );
       } else if (sortOption.includes("Comments")) {
         productRequestCopy = productRequestCopy.sort(
@@ -589,7 +582,7 @@ export const reducer: Reducer<AppData, AppDataAction> = (
               if (!nextRequestCommentLength) return 1;
               return currentRequestCommentLength - nextRequestCommentLength;
             }
-          },
+          }
         );
       }
       return {
@@ -597,38 +590,43 @@ export const reducer: Reducer<AppData, AppDataAction> = (
         isProductListShowing: false,
         data: {
           ...state.data,
-          productRequests: productRequestCopy,
+          productRequests: productRequestCopy
         },
         selectedSortOption: sortOption,
         dropdownState: {
           ...state.dropdownState,
           sortDropdown: {
             ...state.dropdownState.sortDropdown,
-            isDropdownOpen: false,
-          },
-        },
+            isDropdownOpen: false
+          }
+        }
       };
     }
     case "SET_UPVOTED_REQUESTS": {
-      console.log(action.payload);
-      const upvotedRequestsCopy = JSON.parse(
-        JSON.stringify(state.data.currentUser.upvotedRequests),
+      const upvotedRequestsCopy = copyProductRequests(
+        state.data.currentUser.upvotedRequests
       );
 
-      const productRequestToUpvote = state.data.productRequests.find(
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
+      );
+
+      const productRequestToUpvote = productRequestCopy.find(
         (request: IProductRequest) => {
           return request.id === action.payload;
-        },
+        }
       );
 
       const upvote =
         productRequestToUpvote &&
         findItem(upvotedRequestsCopy, productRequestToUpvote.id);
 
-      if (!upvote) {
+      if (productRequestToUpvote && !upvote) {
         upvotedRequestsCopy.push(productRequestToUpvote);
-      } else {
+        productRequestToUpvote.upvotes++;
+      } else if (productRequestToUpvote && upvote) {
         removeItem(upvotedRequestsCopy, upvote);
+        productRequestToUpvote.upvotes--;
       }
 
       if (productRequestToUpvote) {
@@ -636,43 +634,44 @@ export const reducer: Reducer<AppData, AppDataAction> = (
           ...state,
           data: {
             ...state.data,
+            productRequests: productRequestCopy,
             currentUser: {
               ...state.data.currentUser,
-              upvotedRequests: upvotedRequestsCopy,
-            },
-          },
+              upvotedRequests: upvotedRequestsCopy
+            }
+          }
         };
       }
     }
     case "TOGGLE_MODAL": {
       return {
         ...state,
-        isModalDisplayed: !state.isModalDisplayed,
+        isModalDisplayed: !state.isModalDisplayed
       };
     }
     case "DELETE_FEEDBACK": {
-      const productRequestCopy = JSON.parse(
-        JSON.stringify(state.data.productRequests),
+      const productRequestCopy = copyProductRequests(
+        state.data.productRequests
       );
 
       const productRequestToDelete = findItem(
         productRequestCopy,
-        action.payload,
+        action.payload
       );
 
       if (productRequestToDelete) {
         const requestDeleted = removeItem(
           productRequestCopy,
-          productRequestToDelete,
+          productRequestToDelete
         );
       }
       return {
         ...state,
         data: {
           ...state.data,
-          productRequests: productRequestCopy,
+          productRequests: productRequestCopy
         },
-        isModalDisplayed: false,
+        isModalDisplayed: false
       };
     }
     default: {

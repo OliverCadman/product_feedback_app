@@ -18,7 +18,7 @@ const Comment: React.FC<CommentProps> = ({
   content,
   replies,
   lastComment,
-  productId,
+  productId
 }) => {
   const imageRef: React.RefObject<HTMLImageElement> = useRef(null);
   const [imageElement, setImageElement] = useState<HTMLImageElement | null>();
@@ -49,7 +49,7 @@ const Comment: React.FC<CommentProps> = ({
   const setReply = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({
       type: "SET_REPLY",
-      payload: { input: e.target.value },
+      payload: { input: e.target.value }
     });
   };
 
@@ -58,7 +58,7 @@ const Comment: React.FC<CommentProps> = ({
     if (
       !checkFormValidity(state.replyInput, dispatch, {
         type: "INVALID_INPUT",
-        payload: "reply",
+        payload: "reply"
       })
     )
       return;
@@ -71,12 +71,12 @@ const Comment: React.FC<CommentProps> = ({
         content: state.replyInput,
         replyingTo: state.replyToggler.replyingTo,
         user: {
-          image: state.data.currentUser.image,
-          name: state.data.currentUser.name,
-          username: state.data.currentUser.username,
+          image: state.data.currentUser.userDetails.image,
+          name: state.data.currentUser.userDetails.name,
+          username: state.data.currentUser.userDetails.username
         },
-        productId: productId,
-      },
+        productId: productId
+      }
     });
   };
 
@@ -92,7 +92,7 @@ const Comment: React.FC<CommentProps> = ({
               height: `${lineHeight}px`,
               background: "#647196",
               opacity: ".1",
-              width: "1px",
+              width: "1px"
             }}
           ></div>
         ) : (
@@ -116,8 +116,8 @@ const Comment: React.FC<CommentProps> = ({
                     type: "TOGGLE_REPLY",
                     payload: {
                       showReply: true,
-                      replyingTo: username,
-                    },
+                      replyingTo: username
+                    }
                   });
                 } else if (
                   state.replyToggler.showReply &&
@@ -127,18 +127,18 @@ const Comment: React.FC<CommentProps> = ({
                     type: "TOGGLE_REPLY",
                     payload: {
                       showReply: false,
-                      replyingTo: "",
-                    },
+                      replyingTo: ""
+                    }
                   });
                 }
                 dispatch({
                   type: "SET_ID_COMMENT_RECEIVING_REPLY",
-                  payload: id,
+                  payload: id
                 });
 
                 dispatch({
                   type: "INITIALIZE_INPUT",
-                  payload: null,
+                  payload: null
                 });
               }}
             >

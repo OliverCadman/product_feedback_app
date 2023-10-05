@@ -1,7 +1,7 @@
-import { IAppData } from "../AppData/appdata.types";
+import { AppData } from "../AppData/appdata.types";
 
 export type AppDataState = {
-  appData: IAppData;
+  appData: AppData;
 };
 
 enum AppDataActionType {
@@ -32,7 +32,7 @@ enum AppDataActionType {
   SET_REQUEST_INDEX = "SET_REQUEST_INDEX",
   FILTER_PRODUCT_REQUESTS = "FILTER_PRODUCT_REQUESTS",
   SET_UPVOTED_REQUESTS = "SET_UPVOTED_REQUESTS",
-  TOGGLE_MODAL = "TOGGLE_MODAL",
+  TOGGLE_MODAL = "TOGGLE_MODAL"
 }
 
 export interface AppDataAction {

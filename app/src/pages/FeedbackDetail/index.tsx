@@ -15,7 +15,7 @@ const FeedbackDetail: React.FC = () => {
   const { id } = useParams();
   const { state, dispatch } = UseAppContext();
   const foundSuggestion = state.data.productRequests.find(
-    (request) => request.id === id,
+    (request) => request.id === id
   );
 
   if (foundSuggestion) {
@@ -28,7 +28,7 @@ const FeedbackDetail: React.FC = () => {
       if (
         !checkFormValidity(state.commentInput, dispatch, {
           type: "INVALID_INPUT",
-          payload: "comment",
+          payload: "comment"
         })
       )
         return;
@@ -40,19 +40,19 @@ const FeedbackDetail: React.FC = () => {
           commentId: nanoid(),
           content: state.commentInput,
           user: {
-            image: state.data.currentUser.image,
-            name: state.data.currentUser.name,
-            username: state.data.currentUser.username,
+            image: state.data.currentUser.userDetails.image,
+            name: state.data.currentUser.userDetails.name,
+            username: state.data.currentUser.userDetails.username
           },
-          replies: [],
-        },
+          replies: []
+        }
       });
     };
 
     const setComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       dispatch({
         type: "SET_COMMENT",
-        payload: { input: e.target.value, inputType: "comment" },
+        payload: { input: e.target.value, inputType: "comment" }
       });
     };
 
@@ -65,23 +65,30 @@ const FeedbackDetail: React.FC = () => {
           feedbackId={id}
         />
         <div className="feedback-detail__wrapper">
-          <Suggestion
-            title={title}
-            comments={comments}
-            status={status}
-            upvotes={upvotes}
-            category={category}
-            description={description}
-            page="feedback-detail"
-          />
+          {id && (
+            <Suggestion
+              id={id}
+              title={title}
+              comments={comments}
+              status={status}
+              upvotes={upvotes}
+              category={category}
+              description={description}
+              page="feedback-detail"
+            />
+          )}
         </div>
         <div className="comments__container white-bg border-10">
           <div className="comments__header">
             <h2>{comments ? `${comments.length} comments` : "No Comments"}</h2>
           </div>
-          <RefContextProvider>
-            <CommentList comments={comments} productId={id} />
-          </RefContextProvider>
+          {comments ? (
+            <RefContextProvider>
+              <CommentList comments={comments} productId={id} />
+            </RefContextProvider>
+          ) : (
+            ""
+          )}
         </div>
         <div className="comment-input__container white-bg border-10">
           <CommentInput

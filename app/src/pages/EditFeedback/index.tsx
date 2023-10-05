@@ -17,7 +17,7 @@ const EditFeedback = () => {
   const feedback = state.data.productRequests.find(
     (product: IProductRequest) => {
       return product.id === id;
-    },
+    }
   );
 
   if (feedback) {
@@ -44,6 +44,8 @@ const EditFeedback = () => {
         </FeedbackFormContainer>
       </Wrapper>
     );
+  } else {
+    return <></>;
   }
 };
 

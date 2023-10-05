@@ -4,8 +4,7 @@ import {
   ICategoryListItem,
   IStatusListItem,
   IProductRequest,
-  ISortListItem,
-  IGenericListItem,
+  ISortListItem
 } from "../AppData/appdata.types";
 
 export interface SuggestionListProps {
@@ -43,7 +42,7 @@ export interface SuggestionProps {
     listStyle: string;
   };
   handleUpvoteClick?: (itemId: string) => void;
-  userHasUpvoted: boolean;
+  userHasUpvoted?: boolean;
 }
 
 export interface DeleteModalProps {
