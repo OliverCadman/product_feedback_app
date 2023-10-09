@@ -60,7 +60,7 @@ const FeedbackDetail: React.FC = () => {
       <Wrapper>
         <SharedNavBanner
           urlPath={`/product_feedback_app/edit-feedback/${id}`}
-          historyPath="/"
+          historyPath="/product_feedback_app"
           hasAccompanyingButton={true}
           feedbackId={id}
         />
