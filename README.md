@@ -1,6 +1,6 @@
 # Frontend Mentor - Product feedback app solution
 
-This is a solution to the [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is my solution to the [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6)
 
 ## Table of contents
 
@@ -11,8 +11,7 @@ This is a solution to the [Product feedback app challenge on Frontend Mentor](ht
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+  - [Lessons to take](#lessons-going-forward)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -36,20 +35,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Screenshot of project featured on AmIResponsive](./docs/readme_assets/amiresponsive.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Source Code](https://github.com/OliverCadman/product_feedback_app)
+- Live Site URL: [Live Site](https://olivercadman.github.io/product_feedback_app/)
 
 ## My process
 
@@ -59,15 +50,13 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - TypeScript
 - Context API
 - React Reducer
+- DnD Toolkit
 - Semantic HTML5 markup
 - SCSS
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Styled Components](https://styled-components.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
@@ -81,7 +70,7 @@ A particular challenge which I faced involved creating a vertical rule to style 
 This is the second time I have used the DnD kit to implement drag and drop functionality in a project. Updating the state of an item's container is always a challenge, as well as transferring information about the dragged element to the target container, and just setting up the Drag and Drop context overall!
 
 
-### What I would do differently next time
+### Lessons going forward
 
 #### SCSS
 - In future, I will avoid nesting media queries inside of single CSS rules, as for reasons which have become quite clear to me through developing this project, organising SCSS in this way can become quite cumbersome quite quickly. In future, I will keep my media queries at the top level.
@@ -89,10 +78,5 @@ This is the second time I have used the DnD kit to implement drag and drop funct
 #### Code organisation
 - While the inclusion of the Reducer and Context API allowed for more modular code, I think I can adhere to convention a little bit more when organising my files. For instance, I think I will rename all SCSS module files to be more general, such as '_index.scss'.
 
-
 #### Redux
 - For my next large project, I will use Redux for sure.
-
-
-
-
